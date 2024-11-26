@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c1m0og321bxa8" path="res://_resources/packables/test.tscn" id="2_vb116"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2tqpf"]
+size = Vector3(3.02, 3.02, 3.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_feif8"]
 size = Vector3(1, 5, 5)
@@ -49,34 +50,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.376, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.1676, 0)
 
 [node name="BoxArea" parent="." index="1"]
-editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, the should actually be a tiny bit bigger than the area everything should fit in."
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea" index="0"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("BoxShape3D_2tqpf")
 
+[node name="FenceArea" parent="." index="2"]
+editor_description = "This is meant to surround BoxArea completely and be flush with it; this level is only complete if packables are colliding with BoxArea and not FenceArea."
+
 [node name="x+" type="CollisionShape3D" parent="FenceArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01, 0, 0)
 shape = SubResource("BoxShape3D_feif8")
 
 [node name="x-" type="CollisionShape3D" parent="FenceArea" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01, 0, 0)
 shape = SubResource("BoxShape3D_towl2")
 
 [node name="y+" type="CollisionShape3D" parent="FenceArea" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01, 0)
 shape = SubResource("BoxShape3D_afb7b")
 
 [node name="y-" type="CollisionShape3D" parent="FenceArea" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01, 0)
 shape = SubResource("BoxShape3D_u7xkf")
 
 [node name="z+" type="CollisionShape3D" parent="FenceArea" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.01)
 shape = SubResource("BoxShape3D_t454f")
 
 [node name="z-" type="CollisionShape3D" parent="FenceArea" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01)
 shape = SubResource("BoxShape3D_o2xpi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry" index="0"]
@@ -107,7 +110,7 @@ camera_attributes = SubResource("CameraAttributesPractical_f67ph")
 transform = Transform3D(0.939693, -0.336824, 0.0593912, 0, 0.173648, 0.984808, -0.34202, -0.925417, 0.163176, 0, 5, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.99, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_wovpj")
