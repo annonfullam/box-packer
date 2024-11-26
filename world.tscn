@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=8 format=3 uid="uid://cpoyyuw6wlaoc"]
 
+[ext_resource type="Script" path="res://_scripts/orbit_camera.gd" id="1_uhg1u"]
 [ext_resource type="PackedScene" uid="uid://ydk1kk8wa52" path="res://prefabs/packable.tscn" id="4_cvcba"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
@@ -22,9 +23,8 @@ size = Vector3(1, 0.01, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.40988)
 environment = SubResource("Environment_cxj5b")
 
-[node name="ControlSchemeHandler" type="Node" parent="Camera3D"]
-
 [node name="CameraOrbiter" type="Node" parent="Camera3D"]
+script = ExtResource("1_uhg1u")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
