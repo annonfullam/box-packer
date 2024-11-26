@@ -6,12 +6,6 @@ class_name OrbitCamera
 @export var orbit_speed: float = 1
 @export var sens: float = 0.1
 
-@export_group("Box Walls")
-@export var back: Node3D
-@export var front: Node3D
-@export var left: Node3D
-@export var right: Node3D
-
 var orbit_x: float
 var orbit_y: float
 
@@ -56,31 +50,3 @@ func _process(delta: float) -> void:
 	camera.global_transform.origin = target.global_transform.origin + new_pos
 	camera.look_at(target.global_transform.origin)
 	
-	
-	hide_relevant_box_walls()
-
-
-func hide_relevant_box_walls():
-	var direction: Vector3 = target.global_position - camera.global_position
-	
-	
-	# FIXME: This is a TERRIBLE way to do this. So bad.
-	if sign(direction.x) < 0: # if camera is on the right side of the box
-		right.hide()
-	else:
-		right.show()
-	
-	if sign(direction.x) > 0:
-		left.hide()
-	else:
-		left.show()
-	
-	if sign(direction.z) > 0: # if camera is in front of the box
-		back.hide()
-	else:
-		back.show()
-	
-	if sign(direction.z) < 0:
-		front.hide()
-	else:
-		front.show()
