@@ -1,12 +1,27 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpoyyuw6wlaoc"]
 
-[ext_resource type="Script" path="res://orbit_camera.gd" id="1_5s4rv"]
-[ext_resource type="Script" path="res://control_scheme_handler.gd" id="2_nber3"]
-[ext_resource type="Script" path="res://interactable_ibject.gd" id="3_pjhc3"]
+[ext_resource type="Script" path="res://_scripts/orbit_camera.gd" id="1_l7fd2"]
+[ext_resource type="Script" path="res://_scripts/interactable_object.gd" id="2_50fjd"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
 background_mode = 1
 background_color = Color(0.521569, 0.521569, 0.560784, 1)
+
+[sub_resource type="GDScript" id="GDScript_7dvpk"]
+script/source = "extends Node
+
+var control_camera: bool = true
+
+@export var camera_controls: OrbitCamera
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed and not event.is_echo():
+			if event.keycode == KEY_H:
+				camera_controls.process_mode = Node.PROCESS_MODE_DISABLED if control_camera else Node.PROCESS_MODE_ALWAYS
+				control_camera = !control_camera
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_i2ulj"]
 size = Vector3(0.01, 1, 1)
@@ -25,11 +40,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.40988)
 environment = SubResource("Environment_cxj5b")
 
 [node name="ControlSchemeHandler" type="Node" parent="Camera3D" node_paths=PackedStringArray("camera_controls")]
-script = ExtResource("2_nber3")
+script = SubResource("GDScript_7dvpk")
 camera_controls = NodePath("../CameraOrbiter")
 
 [node name="CameraOrbiter" type="Node" parent="Camera3D" node_paths=PackedStringArray("target", "back", "front", "left", "right", "camera")]
-script = ExtResource("1_5s4rv")
+script = ExtResource("1_l7fd2")
 target = NodePath("../../DirectionalLight3D/Box")
 back = NodePath("../../DirectionalLight3D/Box/BoxBackWall")
 front = NodePath("../../DirectionalLight3D/Box/BoxFrontWall")
@@ -79,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497314, 0)
 shape = SubResource("BoxShape3D_ppuxo")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-script = ExtResource("3_pjhc3")
+script = ExtResource("2_50fjd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("CylinderMesh_yjy48")

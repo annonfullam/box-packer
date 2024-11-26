@@ -41,9 +41,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	# Limit vertical orbit angle
-	orbit_x = clamp(orbit_x, -89, 89)
-	# Limit orbit distance
+	orbit_x = clamp(orbit_x, -89, 89) # If angle goes to 90, the look_at() method will throw errors.
 	orbit_distance = clamp(orbit_distance, target.scale.x + 2, target.scale.x * 4)
 	
 	var rad_x: float = deg_to_rad(orbit_x)
