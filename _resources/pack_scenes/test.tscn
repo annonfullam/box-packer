@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqar5j4oollcu"]
+[gd_scene load_steps=15 format=3 uid="uid://cqar5j4oollcu"]
 
 [ext_resource type="PackedScene" uid="uid://bxidsw7ftvked" path="res://prefabs/pack_scene.tscn" id="1_kwv1f"]
 [ext_resource type="PackedScene" uid="uid://c1m0og321bxa8" path="res://_resources/packables/test.tscn" id="2_vb116"]
@@ -21,6 +21,7 @@ size = Vector3(5, 1, 5)
 size = Vector3(5, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2xpi"]
+margin = 0.0
 size = Vector3(5, 5, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5f816"]
@@ -36,13 +37,19 @@ ambient_light_sky_contribution = 0.9
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f67ph"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wovpj"]
+size = Vector3(3, 1, 3)
+
 [node name="PackScene" instance=ExtResource("1_kwv1f")]
 
 [node name="Packable" parent="Packables" index="0" instance=ExtResource("2_vb116")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.376, 0)
 
 [node name="Packable2" parent="Packables" index="1" instance=ExtResource("2_vb116")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26784, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.1676, 0)
+
+[node name="BoxArea" parent="." index="1"]
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, the should actually be a tiny bit bigger than the area everything should fit in."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea" index="0"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -98,3 +105,12 @@ camera_attributes = SubResource("CameraAttributesPractical_f67ph")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Geometry" index="6"]
 transform = Transform3D(0.939693, -0.336824, 0.0593912, 0, 0.173648, 0.984808, -0.34202, -0.925417, 0.163176, 0, 5, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.99, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_wovpj")
+
+[node name="Camera3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18532, 4.55668, 0)
