@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=10 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://orbit_camera.gd" id="1_5s4rv"]
 [ext_resource type="Script" path="res://control_scheme_handler.gd" id="2_nber3"]
 [ext_resource type="Script" path="res://interactable_ibject.gd" id="3_pjhc3"]
+[ext_resource type="PackedScene" uid="uid://ydk1kk8wa52" path="res://prefabs/packable.tscn" id="4_cvcba"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
 background_mode = 1
@@ -79,6 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497314, 0)
 shape = SubResource("BoxShape3D_ppuxo")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+process_mode = 4
 script = ExtResource("3_pjhc3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
@@ -87,3 +89,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("CylinderShape3D_quqiw")
+
+[node name="Packable" parent="." instance=ExtResource("4_cvcba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56313, 0.029016)
