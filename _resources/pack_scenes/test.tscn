@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqar5j4oollcu"]
+
+[ext_resource type="PackedScene" uid="uid://bxidsw7ftvked" path="res://prefabs/pack_scene.tscn" id="1_kwv1f"]
+[ext_resource type="PackedScene" uid="uid://c1m0og321bxa8" path="res://_resources/packables/test.tscn" id="2_vb116"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tqpf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feif8"]
+size = Vector3(1, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_towl2"]
+size = Vector3(1, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afb7b"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7xkf"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t454f"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2xpi"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5f816"]
+size = Vector2(3, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2k5rt"]
+size = Vector2(3, 3)
+
+[sub_resource type="Environment" id="Environment_8yuq4"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 0.9375, 0.75, 1)
+ambient_light_sky_contribution = 0.9
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f67ph"]
+
+[node name="PackScene" instance=ExtResource("1_kwv1f")]
+
+[node name="Packable" parent="Packables" index="0" instance=ExtResource("2_vb116")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.376, 0)
+
+[node name="Packable2" parent="Packables" index="1" instance=ExtResource("2_vb116")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26784, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea" index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_2tqpf")
+
+[node name="x+" type="CollisionShape3D" parent="FenceArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+shape = SubResource("BoxShape3D_feif8")
+
+[node name="x-" type="CollisionShape3D" parent="FenceArea" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+shape = SubResource("BoxShape3D_towl2")
+
+[node name="y+" type="CollisionShape3D" parent="FenceArea" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_afb7b")
+
+[node name="y-" type="CollisionShape3D" parent="FenceArea" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+shape = SubResource("BoxShape3D_u7xkf")
+
+[node name="z+" type="CollisionShape3D" parent="FenceArea" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+shape = SubResource("BoxShape3D_t454f")
+
+[node name="z-" type="CollisionShape3D" parent="FenceArea" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+shape = SubResource("BoxShape3D_o2xpi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+mesh = SubResource("PlaneMesh_5f816")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Geometry" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5)
+mesh = SubResource("PlaneMesh_2k5rt")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Geometry" index="2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5, 0, 0)
+mesh = SubResource("PlaneMesh_2k5rt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Geometry" index="3"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.5, 0, 0)
+mesh = SubResource("PlaneMesh_2k5rt")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Geometry" index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.5)
+mesh = SubResource("PlaneMesh_2k5rt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Geometry" index="5"]
+environment = SubResource("Environment_8yuq4")
+camera_attributes = SubResource("CameraAttributesPractical_f67ph")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Geometry" index="6"]
+transform = Transform3D(0.939693, -0.336824, 0.0593912, 0, 0.173648, 0.984808, -0.34202, -0.925417, 0.163176, 0, 5, 0)

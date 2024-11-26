@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxidsw7ftvked"]
+[gd_scene load_steps=3 format=3 uid="uid://bxidsw7ftvked"]
 
 [ext_resource type="Script" path="res://_scripts/pack_scene.gd" id="1_8vh4e"]
+[ext_resource type="Script" path="res://_scripts/orbit_camera.gd" id="2_0ichl"]
 
 [node name="PackScene" type="Node3D"]
 script = ExtResource("1_8vh4e")
@@ -12,3 +13,10 @@ editor_description = "This is the Area3D that all the packables have to be in fo
 
 [node name="FenceArea" type="Area3D" parent="."]
 editor_description = "This is meant to surround BoxArea completely; this level is only complete if packables are colliding with BoxArea and not FenceArea."
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target", "camera")]
+script = ExtResource("2_0ichl")
+target = NodePath("../BoxArea")
+camera = NodePath(".")
