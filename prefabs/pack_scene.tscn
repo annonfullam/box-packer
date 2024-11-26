@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxidsw7ftvked"]
+[gd_scene load_steps=2 format=3 uid="uid://bxidsw7ftvked"]
 
 [ext_resource type="Script" path="res://_scripts/pack_scene.gd" id="1_8vh4e"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_hv2j3"]
 
 [node name="PackScene" type="Node3D"]
 script = ExtResource("1_8vh4e")
 
 [node name="Packables" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_hv2j3")
+[node name="BoxArea" type="Area3D" parent="."]
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete"
+
+[node name="FenceArea" type="Area3D" parent="."]
+editor_description = "This is meant to surround BoxArea completely; this level is only complete if packables are colliding with BoxArea and not FenceArea."
