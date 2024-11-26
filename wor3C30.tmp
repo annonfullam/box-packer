@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpoyyuw6wlaoc"]
+
+[ext_resource type="Script" path="res://orbit_camera.gd" id="1_5s4rv"]
+[ext_resource type="Script" path="res://control_scheme_handler.gd" id="2_nber3"]
+[ext_resource type="Script" path="res://interactable_ibject.gd" id="3_pjhc3"]
+
+[sub_resource type="Environment" id="Environment_cxj5b"]
+background_mode = 1
+background_color = Color(0.521569, 0.521569, 0.560784, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2ulj"]
+size = Vector3(0.01, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
+size = Vector3(1, 0.01, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yjy48"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_quqiw"]
+
+[node name="World" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.40988)
+environment = SubResource("Environment_cxj5b")
+
+[node name="ControlSchemeHandler" type="Node" parent="Camera3D" node_paths=PackedStringArray("camera_controls")]
+script = ExtResource("2_nber3")
+camera_controls = NodePath("../CameraOrbiter")
+
+[node name="CameraOrbiter" type="Node" parent="Camera3D" node_paths=PackedStringArray("target", "back", "front", "left", "right", "camera")]
+script = ExtResource("1_5s4rv")
+target = NodePath("../../Box")
+back = NodePath("../../Box/BoxBackWall")
+front = NodePath("../../Box/BoxFrontWall")
+left = NodePath("../../Box/BoxLeftWall")
+right = NodePath("../../Box/BoxRightWall")
+camera = NodePath("..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+
+[node name="Box" type="Node3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="BoxRightWall" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_i2ulj")
+skeleton = NodePath("")
+
+[node name="BoxBackWall" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -0.5)
+visible = false
+mesh = SubResource("BoxMesh_i2ulj")
+skeleton = NodePath("")
+
+[node name="BoxLeftWall" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_i2ulj")
+skeleton = NodePath("")
+
+[node name="BoxFrontWall" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.5)
+visible = false
+mesh = SubResource("BoxMesh_i2ulj")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+
+[node name="BoxBottom" type="MeshInstance3D" parent="Box/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_i2ulj")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497314, 0)
+shape = SubResource("BoxShape3D_ppuxo")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+script = ExtResource("3_pjhc3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CylinderMesh_yjy48")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CylinderShape3D_quqiw")
