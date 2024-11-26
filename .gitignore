@@ -15,3 +15,4 @@ data_*/
 mono_crash.*.json
 
 # User added ignores
+addons/fabimakesgames.embed_game/bin/~embed_game.windows.template_debug.x86_64.dll

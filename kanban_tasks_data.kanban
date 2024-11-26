@@ -10,7 +10,9 @@
 		{
 			"uuid": "55001b9f-948b-48f7-af44-bf5e736afb42",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"b8684786-2a94-4de7-a889-4bfbc864d1b0"
+			]
 		},
 		{
 			"uuid": "b44d4bdc-6807-4d54-bfd7-96edec9605c1",
@@ -27,6 +29,13 @@
 		{
 			"uuid": "c407fa0e-51a2-4ea7-a470-d511c0510495",
 			"title": "New task",
+			"description": "",
+			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
+			"steps": []
+		},
+		{
+			"uuid": "b8684786-2a94-4de7-a889-4bfbc864d1b0",
+			"title": "peepee, AND poopoo",
 			"description": "",
 			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
 			"steps": []

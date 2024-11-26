@@ -1,8 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=7 format=3 uid="uid://cpoyyuw6wlaoc"]
 
-[ext_resource type="Script" path="res://orbit_camera.gd" id="1_5s4rv"]
-[ext_resource type="Script" path="res://control_scheme_handler.gd" id="2_nber3"]
-[ext_resource type="Script" path="res://interactable_ibject.gd" id="3_pjhc3"]
 [ext_resource type="PackedScene" uid="uid://ydk1kk8wa52" path="res://prefabs/packable.tscn" id="4_cvcba"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
@@ -25,18 +22,9 @@ size = Vector3(1, 0.01, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.40988)
 environment = SubResource("Environment_cxj5b")
 
-[node name="ControlSchemeHandler" type="Node" parent="Camera3D" node_paths=PackedStringArray("camera_controls")]
-script = ExtResource("2_nber3")
-camera_controls = NodePath("../CameraOrbiter")
+[node name="ControlSchemeHandler" type="Node" parent="Camera3D"]
 
-[node name="CameraOrbiter" type="Node" parent="Camera3D" node_paths=PackedStringArray("target", "back", "front", "left", "right", "camera")]
-script = ExtResource("1_5s4rv")
-target = NodePath("../../DirectionalLight3D/Box")
-back = NodePath("../../DirectionalLight3D/Box/BoxBackWall")
-front = NodePath("../../DirectionalLight3D/Box/BoxFrontWall")
-left = NodePath("../../DirectionalLight3D/Box/BoxLeftWall")
-right = NodePath("../../DirectionalLight3D/Box/BoxRightWall")
-camera = NodePath("..")
+[node name="CameraOrbiter" type="Node" parent="Camera3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
@@ -81,7 +69,6 @@ shape = SubResource("BoxShape3D_ppuxo")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 process_mode = 4
-script = ExtResource("3_pjhc3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("CylinderMesh_yjy48")
