@@ -116,12 +116,14 @@ mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="BoxArea" type="Area3D" parent="."]
 editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea"]
 shape = SubResource("BoxShape3D_hnn0c")
 
 [node name="FenceArea" type="Area3D" parent="."]
 editor_description = "This is meant to surround BoxArea completely and be flush with it; this level is only complete if packables are colliding with BoxArea and not FenceArea."
+visible = false
 
 [node name="x+" type="CollisionShape3D" parent="FenceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01, 0, 0)

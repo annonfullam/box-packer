@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cqh271w0c78uu"]
 
-[ext_resource type="Shader" path="res://_resources/packable_highlight_shader.gdshader" id="1_43xww"]
+[ext_resource type="Shader" path="res://_resources/materials and shaders/packable_highlight_shader.gdshader" id="1_43xww"]
 
 [resource]
 render_priority = 127
