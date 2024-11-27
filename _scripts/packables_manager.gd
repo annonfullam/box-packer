@@ -14,17 +14,18 @@ func _ready() -> void:
 	
 		packables.append(packable_component)
 		packable_component.register_in_scene(game_manager)
-		packable_component.selected.connect(func(_hit: Node3D):
-			change_selected(_hit))
+		packable_component.selected.connect(func(hit: Dictionary):
+			change_selected(hit))
 
 
-func change_selected(p_selected: Packable) -> void:
-	if current_selection == p_selected:
+func change_selected(hit: Dictionary) -> void:
+	var packable: Packable = hit.collider.find_child("Packable")
+	if current_selection == packable:
 		print("Already selected!")
 		return
 	
 	if current_selection: current_selection.deselected.emit()
-	current_selection = p_selected
+	current_selection = packable
 
 
 func _input(event: InputEvent) -> void:
@@ -32,8 +33,7 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		
 		var hit: Dictionary = Global.cursor_raycast()
 		if hit.has("collider"):
-			print(hit.collider.name)
-			current_selection.selected.emit(hit.collider.get_node("Packable"))
+			var child = hit.collider.find_child("Packable")
+			if child: child.selected.emit(hit)

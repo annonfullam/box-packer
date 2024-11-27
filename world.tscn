@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=19 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="1_0e5gk"]
 [ext_resource type="Script" path="res://_scripts/packable.gd" id="2_muoor"]
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="3_sgt5w"]
-[ext_resource type="Material" uid="uid://bahpno8yarp2x" path="res://_resources/temp_material.tres" id="3_ttepp"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
 background_mode = 1
@@ -17,8 +16,25 @@ size = Vector3(1, 0.01, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a4y67"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haqpp"]
+albedo_color = Color(0.206125, 0.1785, 0.51, 1)
+metallic = 0.75
+roughness = 0.35
+emission_enabled = true
+emission = Color(0.29, 0.0377, 0.0377, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wnagj"]
+material = SubResource("StandardMaterial3D_haqpp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unwjg"]
+albedo_color = Color(0.206125, 0.1785, 0.51, 1)
+metallic = 0.75
+roughness = 0.35
+emission_enabled = true
+emission = Color(0.04611, 0.29, 0.0377, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_i3i0w"]
-material = ExtResource("3_ttepp")
+material = SubResource("StandardMaterial3D_unwjg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hnn0c"]
 size = Vector3(3.02, 3.02, 3.02)
@@ -73,20 +89,20 @@ shape = SubResource("BoxShape3D_ppuxo")
 script = ExtResource("1_0e5gk")
 
 [node name="PackableThing" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7228, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.903949, 10.7228, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing"]
 shape = SubResource("CylinderShape3D_a4y67")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Packables_Manager/PackableThing"]
-mesh = SubResource("CylinderMesh_i3i0w")
+mesh = SubResource("CylinderMesh_wnagj")
 
 [node name="Packable" type="Node3D" parent="Packables_Manager/PackableThing" node_paths=PackedStringArray("mesh_to_highlight")]
 script = ExtResource("2_muoor")
 mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="PackableThing2" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14398, 1.33807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898793, 3.14398, 1.33807)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing2"]
 shape = SubResource("CylinderShape3D_a4y67")
