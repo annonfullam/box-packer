@@ -1,6 +1,6 @@
 extends Node
 
-
+#region Helper Functions
 func cursor_raycast() -> Dictionary:
 	var camera: Camera3D = get_viewport().get_camera_3d()
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
@@ -13,9 +13,22 @@ func cursor_raycast() -> Dictionary:
 	
 	return space_state.intersect_ray(ray)
 
-@export var packable_highlight_shader: ShaderMaterial = preload("res://_resources/packable_highlight_shader.tres")
+#endregion
+
+
+#region Global References
+var Input_Handler: InputHandler = null
+
+
+#endregion
+
+
+#region Global Shader Stuff
+var packable_highlight_shader: ShaderMaterial = preload("res://_resources/materials and shaders/packable_highlight_shader.tres")
 
 var alpha_timer = 0
 func _process(delta: float) -> void:
 	alpha_timer = fmod(alpha_timer+delta*3, PI*2)
 	packable_highlight_shader.set_shader_parameter("alphaAmt", 0.15+sin(alpha_timer)*0.05)
+	
+#endregion
