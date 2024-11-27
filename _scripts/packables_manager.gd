@@ -30,7 +30,7 @@ var curr_mouse_pos: Vector2
 func _input(event: InputEvent) -> void:
 	# Selection Code
 	if event is InputEventMouseButton:	
-		if event.button_index == MOUSE_BUTTON_LEFT 
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				var hit: Dictionary = Global.cursor_raycast()
 				if hit.has("collider"):
