@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 					var child = hit.collider.find_child("Packable")
 					if child:
 						child.selected.emit(hit)
-						selection_parent = current_selection.parent # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
+						selection_parent = current_selection.get_parent() # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
 			elif current_selection:
 				current_selection.deselected.emit()
 				current_selection=null
