@@ -55,8 +55,7 @@ func _physics_process(delta: float) -> void:
 		control_selection(delta)
 
 var selection_parent: RigidBody3D = null
-@export var rotation_sens: float = 300
-@export var push_pull_sens: float = 500
+
 func control_selection(delta: float):
 	if not selection_parent:
 		return
@@ -64,7 +63,7 @@ func control_selection(delta: float):
 	var input: InputHandler = Global.Input_Handler
 	
 	# Rotation 
-	var rotation_amount = rotation_sens*delta
+	var rotation_amount = input.rotation_sens * delta
 	selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
 	selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
 	selection_parent.angular_velocity.z = input.roll_axis * rotation_amount
@@ -72,9 +71,10 @@ func control_selection(delta: float):
 	
 	# Position handler
 	var plane_pos: Vector3 = plane_raycast(Vector3.FORWARD)
-	selection_parent.linear_velocity = (plane_pos-selection_parent.position)*10
+	selection_parent.linear_velocity = (plane_pos - selection_parent.position) * input.position_sens * delta
 	
-	selection_parent.constant_force.z = input.push_pull_axis * -push_pull_sens
+	# Push / Pull handler
+	selection_parent.linear_velocity.z = input.push_pull_axis * -input.push_pull_sens * delta
 
 func plane_raycast(axis_up: Vector3) -> Vector3:
 	var camera: Camera3D = get_viewport().get_camera_3d()

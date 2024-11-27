@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=29 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_1mahe"]
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="2_bwonv"]
@@ -82,6 +82,10 @@ material = SubResource("StandardMaterial3D_oexqu")
 size = Vector2(3, 3)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_37grk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l01k4"]
+albedo_color = Color(0, 0, 0, 1)
+emission = Color(0.678934, 0.726069, 0.825106, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07cse"]
 size = Vector2(200, 200)
@@ -236,6 +240,7 @@ shape = SubResource("WorldBoundaryShape3D_37grk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Scene Geometry/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+material_override = SubResource("StandardMaterial3D_l01k4")
 mesh = SubResource("PlaneMesh_07cse")
 
 [node name="In Bounds" type="Area3D" parent="."]

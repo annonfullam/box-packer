@@ -1,6 +1,10 @@
 extends Node
 class_name InputHandler
 
+@export var rotation_sens: float = 300
+@export var position_sens: float = 600
+@export var push_pull_sens: float = 500
+
 var roll_axis: float
 var pitch_axis: float
 var yaw_axis: float
