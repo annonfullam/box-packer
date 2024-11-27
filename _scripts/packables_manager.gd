@@ -32,8 +32,11 @@ func _input(event: InputEvent) -> void:
 	if event is not InputEventMouseButton:
 		return
 	
-	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		var hit: Dictionary = Global.cursor_raycast()
-		if hit.has("collider"):
-			var child = hit.collider.find_child("Packable")
-			if child: child.selected.emit(hit)
+	if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			var hit: Dictionary = Global.cursor_raycast()
+			if hit.has("collider"):
+				var child = hit.collider.find_child("Packable")
+				if child: child.selected.emit(hit)
+		elif current_selection:
+			current_selection.deselected.emit()

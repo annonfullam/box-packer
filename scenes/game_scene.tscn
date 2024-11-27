@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=22 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_1mahe"]
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="2_bwonv"]
@@ -20,6 +20,16 @@ emission = Color(0.29, 0.0377, 0.0377, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wnagj"]
 material = SubResource("StandardMaterial3D_bildx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05xp3"]
+albedo_color = Color(0.206125, 0.1785, 0.51, 1)
+metallic = 0.75
+roughness = 0.35
+emission_enabled = true
+emission = Color(0.29, 0.0377, 0.0377, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w6kpw"]
+material = SubResource("StandardMaterial3D_05xp3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unwjg"]
 albedo_color = Color(0.206125, 0.1785, 0.51, 1)
@@ -100,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.903949, -0.202721, -1.14628
 shape = SubResource("CylinderShape3D_a4y67")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Packables_Manager/PackableThing3"]
-mesh = SubResource("CylinderMesh_wnagj")
+mesh = SubResource("CylinderMesh_w6kpw")
 
 [node name="Packable" type="Node3D" parent="Packables_Manager/PackableThing3" node_paths=PackedStringArray("mesh_to_highlight")]
 script = ExtResource("3_lwkrw")
