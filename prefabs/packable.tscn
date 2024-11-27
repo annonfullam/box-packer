@@ -4,6 +4,3 @@
 
 [node name="Packable" type="Node3D"]
 script = ExtResource("1_gq7vt")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-mass = 3.0

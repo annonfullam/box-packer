@@ -13,4 +13,11 @@ func cursor_raycast() -> Dictionary:
 	
 	return space_state.intersect_ray(ray)
 
-#@export var packable_highlight_shader: Material = preload("res://_resources/packable_highlight_shader.tres")
+@export var packable_highlight_shader: ShaderMaterial = preload("res://_resources/packable_highlight_shader.tres")
+
+var alpha_timer = 0
+func _process(delta: float) -> void:
+	alpha_timer = fmod(alpha_timer+delta*3, PI*2)
+	packable_highlight_shader.set_shader_parameter("alphaAmt", 0.15+sin(alpha_timer)*0.05)
+
+
