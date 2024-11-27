@@ -10,8 +10,6 @@ var packables: Array[Packable] = []
 func _ready() -> void:
 	curr_mouse_pos = get_viewport().get_mouse_position()
 	
-	
-	
 	for child in get_children():
 		var packable_component: Packable = child.get_node("Packable")
 		if not packable_component:
@@ -52,12 +50,13 @@ func _input(event: InputEvent) -> void:
 		
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if current_selection:
 		control_selection(delta)
 
 var selection_parent: RigidBody3D = null
-const rotation_sens: float = 300.0
+@export var rotation_sens: float = 300
+@export var push_pull_sens: float = 500
 func control_selection(delta: float):
 	if not selection_parent:
 		return
@@ -65,7 +64,7 @@ func control_selection(delta: float):
 	var input: InputHandler = Global.Input_Handler
 	
 	# Rotation 
-	var rotation_amount = rotation_sens
+	var rotation_amount = rotation_sens*delta
 	selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
 	selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
 	selection_parent.angular_velocity.z = input.roll_axis * rotation_amount
@@ -73,12 +72,9 @@ func control_selection(delta: float):
 	
 	# Position handler
 	var plane_pos: Vector3 = plane_raycast(Vector3.FORWARD)
-	selection_parent.global_position.y = plane_pos.y
-	selection_parent.global_position.x = plane_pos.x
+	selection_parent.linear_velocity = (plane_pos-selection_parent.position)*10
 	
-	var push_pull_sens: float = 500
 	selection_parent.constant_force.z = input.push_pull_axis * -push_pull_sens
-
 
 func plane_raycast(axis_up: Vector3) -> Vector3:
 	var camera: Camera3D = get_viewport().get_camera_3d()
