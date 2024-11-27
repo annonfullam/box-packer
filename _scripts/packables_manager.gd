@@ -3,6 +3,7 @@ class_name Packables_Manager
 
 var current_selection: Packable
 var packables: Array[Packable] = []
+@export var in_bounds: Area3D
 
 @onready var game_manager: GameManager = $"../GameManager"
 
@@ -19,30 +20,27 @@ func _ready() -> void:
 		packables.append(packable_component)
 		packable_component.register_in_scene(game_manager)
 		packable_component.selected.connect(func(hit: Dictionary):
-			change_selected(hit))
-
-
-func change_selected(hit: Dictionary) -> void:
-	var packable: Packable = hit.collider.find_child("Packable")
-	if current_selection == packable:
-		#print("Already selected!")
-		return
-	
-	if current_selection: current_selection.deselected.emit()
-	current_selection = packable
+			current_selection = hit.collider.find_child("Packable"))
+	in_bounds.body_exited.connect(func(node: Node3D):
+		var child = node.find_child("Packable")
+		if child: child.respawn())
 
 var prev_mouse_pos: Vector2
 var curr_mouse_pos: Vector2
 func _input(event: InputEvent) -> void:
 	# Selection Code
 	if event is InputEventMouseButton:	
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var hit: Dictionary = Global.cursor_raycast()
-			if hit.has("collider"):
-				var child = hit.collider.find_child("Packable")
-				if child:
-					child.selected.emit(hit)
-					selection_parent = current_selection.parent # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
+		if event.button_index == MOUSE_BUTTON_LEFT 
+			if event.pressed:
+				var hit: Dictionary = Global.cursor_raycast()
+				if hit.has("collider"):
+					var child = hit.collider.find_child("Packable")
+					if child:
+						child.selected.emit(hit)
+						selection_parent = current_selection.parent # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
+			elif current_selection:
+				current_selection.deselected.emit()
+				current_selection=null
 
 	
 	
@@ -93,4 +91,3 @@ func plane_raycast(axis_up: Vector3) -> Vector3:
 	
 	var result = plane.intersects_ray(from, to)
 	return result if result else Vector3.ZERO # Returns a zero vector if the raycast misses
-	
