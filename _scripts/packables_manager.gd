@@ -3,6 +3,7 @@ class_name Packables_Manager
 
 var current_selection: Packable
 var packables: Array[Packable] = []
+@export var in_bounds: Area3D
 
 @onready var game_manager: GameManager = $"../GameManager"
 
@@ -16,6 +17,9 @@ func _ready() -> void:
 		packable_component.register_in_scene(game_manager)
 		packable_component.selected.connect(func(hit: Dictionary):
 			current_selection = hit.collider.find_child("Packable"))
+	in_bounds.body_exited.connect(func(node: Node3D):
+		var child = node.find_child("Packable")
+		if child: child.respawn())
 
 
 func _input(event: InputEvent) -> void:

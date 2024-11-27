@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=28 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_1mahe"]
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="2_bwonv"]
@@ -86,6 +86,9 @@ size = Vector2(3, 3)
 [sub_resource type="PlaneMesh" id="PlaneMesh_07cse"]
 size = Vector2(200, 200)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vnvyi"]
+size = Vector3(40, 16.4844, 44.1843)
+
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -104,11 +107,12 @@ packable_manager = NodePath("../Packables_Manager")
 [node name="InputHandler" type="Node" parent="GameManager"]
 script = ExtResource("2_wjrm5")
 
-[node name="Packables_Manager" type="Node3D" parent="."]
+[node name="Packables_Manager" type="Node3D" parent="." node_paths=PackedStringArray("in_bounds")]
 script = ExtResource("2_bwonv")
+in_bounds = NodePath("../In Bounds")
 
 [node name="PackableThing" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87029, -1.04858, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87029, -1.76945, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -134,7 +138,7 @@ script = ExtResource("3_lwkrw")
 mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="PackableThing2" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20214, -1.67335, 0.304609)
+transform = Transform3D(1, 0, 0, 0, 0.979994, -0.199026, 0, 0.199026, 0.979994, -7.20214, -1.46513, -0.793739)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing2"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -233,6 +237,12 @@ shape = SubResource("WorldBoundaryShape3D_37grk")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Scene Geometry/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 mesh = SubResource("PlaneMesh_07cse")
+
+[node name="In Bounds" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="In Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24219, -14.5922)
+shape = SubResource("BoxShape3D_vnvyi")
 
 [connection signal="input_event" from="Packables_Manager/PackableThing" to="Packables_Manager/PackableThing" method="_on_input_event"]
 [connection signal="input_event" from="Packables_Manager/PackableThing3" to="Packables_Manager/PackableThing3" method="_on_input_event"]
