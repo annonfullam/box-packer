@@ -1,3 +1,20 @@
 [gd_scene format=3 uid="uid://c7paribay8guo"]
 
 [node name="LevelSelect" type="Node2D"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 600.0
+offset_bottom = 400.0
+columns = 6
+
+[node name="Button" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
