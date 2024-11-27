@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="2_bwonv"]
 [ext_resource type="Script" path="res://_scripts/input_handler.gd" id="2_wjrm5"]
 [ext_resource type="Script" path="res://_scripts/packable.gd" id="3_lwkrw"]
-[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://box.tscn" id="6_pgfcs"]
+[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="6_pgfcs"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
 background_mode = 1
