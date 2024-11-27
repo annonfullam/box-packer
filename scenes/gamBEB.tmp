@@ -95,7 +95,6 @@ mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="PackableThing3" type="RigidBody3D" parent="Packables_Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.903949, -0.202721, -1.14628)
-freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing3"]
 shape = SubResource("CylinderShape3D_a4y67")

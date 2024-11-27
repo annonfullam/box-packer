@@ -5,6 +5,8 @@ var roll_axis: float
 var pitch_axis: float
 var yaw_axis: float
 
+var push_pull_axis: float
+
 func _ready() -> void:
 	# Sets self as input handler unless there already is one.
 	if Global.Input_Handler == null:
@@ -22,6 +24,8 @@ func _process(delta: float) -> void:
 	if pitch_axis == 0 and roll_axis == 0:
 		yaw_axis = Input.get_axis("rotate_yaw_negative", "rotate_yaw_positive")
 	
+	
+	push_pull_axis = Input.get_axis("pull", "push")
 
 
 func _input(event: InputEvent) -> void:

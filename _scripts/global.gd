@@ -7,11 +7,13 @@ func cursor_raycast() -> Dictionary:
 	var raycast_length: float = 1000
 	
 	var space_state: PhysicsDirectSpaceState3D = camera.get_world_3d().direct_space_state
+	
 	var ray: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 	ray.from = camera.project_ray_origin(mouse_pos)
 	ray.to = ray.from + camera.project_ray_normal(mouse_pos) * raycast_length
 	
 	return space_state.intersect_ray(ray)
+
 
 #endregion
 
