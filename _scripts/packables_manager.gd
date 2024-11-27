@@ -12,7 +12,8 @@ func _ready() -> void:
 			return
 
 		packable_component.register_in_scene(game_manager)
-		packable_component.selected.connect(func(): change_selected(packable_component))
+		packable_component.selected.connect(func(_hit: Dictionary):
+			change_selected(packable_component))
 
 
 func change_selected(p_selected: Packable) -> void:

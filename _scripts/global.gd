@@ -1,7 +1,7 @@
 extends Node
 
 
-func get_global_mouse_position() -> Vector3:
+func cursor_raycast() -> Dictionary:
 	var camera: Camera3D = get_viewport().get_camera_3d()
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	
@@ -10,6 +10,6 @@ func get_global_mouse_position() -> Vector3:
 	ray.from = camera.project_ray_origin(mouse_pos)
 	ray.to = ray.from + camera.project_ray_normal(mouse_pos) * 1000
 		
-	var result: Dictionary = space_state.intersect_ray(ray)
-	var object_node: Node3D = result["collider"]
-	return object_node.position
+	return space_state.intersect_ray(ray)
+
+@export var packable_highlight_shader: Material = preload("res://_resources/packable_highlight_shader.tres")

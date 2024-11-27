@@ -7,7 +7,12 @@ signal selected
 @warning_ignore("unused_signal") signal deselected
 
 @onready var rigidbody: RigidBody3D = $".."
+@export var mesh_to_highlight: MeshInstance3D
 
+func _ready() -> void:
+	assert(mesh_to_highlight.mesh.material != null, "there's a packable mesh without a material :(")
+	# this might break when we add custom meshes
+	mesh_to_highlight.mesh.material.next_pass = Global.packable_highlight_shader
 
 func register_in_scene(manager: GameManager) -> void:
 	manager.box_area.body_entered.connect(func(body: Node3D):
@@ -30,10 +35,9 @@ var _in_box: bool = false
 var _in_fence: bool = false
 func inside() -> bool: return !_in_fence && _in_box
 
-# TODO: Raycast detect this object instead of input event. The box areas will block it.
-func on_click(camera: Camera3D, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	print("on click")
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print("selected")
-		selected.emit()
-		#is_selected = true
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index==1:
+		var hit: Dictionary = Global.cursor_raycast()
+		if hit.has("collider"):
+			selected.emit(hit)
+			print("selected!")
