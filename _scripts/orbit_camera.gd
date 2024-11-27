@@ -9,7 +9,7 @@ class_name OrbitCamera
 var orbit_x: float
 var orbit_y: float
 
-@export var camera: Camera3D
+@onready var camera: Camera3D = $".."
 
 func _ready() -> void:
 	camera.global_transform.origin = target.global_transform.origin + Vector3(orbit_distance, 0, 0)

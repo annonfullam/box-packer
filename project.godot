@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
-RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
+Global="*res://_scripts/global.gd"
 
 [editor_plugins]
 
