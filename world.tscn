@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=17 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="1_0e5gk"]
 [ext_resource type="Script" path="res://_scripts/packable.gd" id="2_muoor"]
@@ -94,8 +94,9 @@ shape = SubResource("CylinderShape3D_a4y67")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Packables_Manager/PackableThing2"]
 mesh = SubResource("CylinderMesh_i3i0w")
 
-[node name="Packable" type="Node3D" parent="Packables_Manager/PackableThing2"]
+[node name="Packable" type="Node3D" parent="Packables_Manager/PackableThing2" node_paths=PackedStringArray("mesh_to_highlight")]
 script = ExtResource("2_muoor")
+mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="BoxArea" type="Area3D" parent="."]
 editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."

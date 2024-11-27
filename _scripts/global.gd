@@ -19,5 +19,3 @@ var alpha_timer = 0
 func _process(delta: float) -> void:
 	alpha_timer = fmod(alpha_timer+delta*3, PI*2)
 	packable_highlight_shader.set_shader_parameter("alphaAmt", 0.15+sin(alpha_timer)*0.05)
-
-
