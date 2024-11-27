@@ -15,17 +15,7 @@ func _ready() -> void:
 		packables.append(packable_component)
 		packable_component.register_in_scene(game_manager)
 		packable_component.selected.connect(func(hit: Dictionary):
-			change_selected(hit))
-
-
-func change_selected(hit: Dictionary) -> void:
-	var packable: Packable = hit.collider.find_child("Packable")
-	if current_selection == packable:
-		#print("Already selected!")
-		return
-	
-	if current_selection: current_selection.deselected.emit()
-	current_selection = packable
+			current_selection = hit.collider.find_child("Packable"))
 
 
 func _input(event: InputEvent) -> void:
