@@ -32,12 +32,6 @@ func _process(delta: float) -> void:
 	push_pull_axis = Input.get_axis("pull", "push")
 
 
-func _input(event: InputEvent) -> void:
-	pass
-	# This method will handle all of the non-axes inputs
-	# EX: Jump, etc.
-
-
 #region Actions and Keybinding
 func add_action(name: String, key: Key = KEY_NONE, deadzone: float = 0.0):
 	InputMap.add_action(name, deadzone)

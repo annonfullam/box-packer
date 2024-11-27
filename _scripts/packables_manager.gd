@@ -3,13 +3,13 @@ class_name Packables_Manager
 
 var current_selection: Packable
 var packables: Array[Packable] = []
+
 @export var in_bounds: Area3D
 
 @onready var game_manager: GameManager = $"../GameManager"
 
+
 func _ready() -> void:
-	curr_mouse_pos = get_viewport().get_mouse_position()
-	
 	for child in get_children():
 		var packable_component: Packable = child.get_node("Packable")
 		if not packable_component:
@@ -23,10 +23,8 @@ func _ready() -> void:
 		var child = node.find_child("Packable")
 		if child: child.respawn())
 
-var prev_mouse_pos: Vector2
-var curr_mouse_pos: Vector2
+
 func _input(event: InputEvent) -> void:
-	# Selection Code
 	if event is InputEventMouseButton:	
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -35,26 +33,38 @@ func _input(event: InputEvent) -> void:
 					var child = hit.collider.find_child("Packable")
 					if child:
 						child.selected.emit(hit)
-						selection_parent = current_selection.get_parent() # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
+						start_selection()
 			elif current_selection:
 				current_selection.deselected.emit()
-				current_selection=null
-
-	
-	
-	if event is InputEventMouseMotion:
-		curr_mouse_pos = event.position
-		var dir: Vector2 = curr_mouse_pos - prev_mouse_pos
-		
-		prev_mouse_pos = curr_mouse_pos
-		
+				current_selection = null
+				end_selection()
 
 
+#region Interaction manager
 func _physics_process(delta: float) -> void:
 	if current_selection:
 		control_selection(delta)
 
 var selection_parent: RigidBody3D = null
+
+@export var drop_spot_indicator: Node3D
+@export var pitch_indicator: Node3D
+@export var roll_indicator: Node3D
+@export var yaw_indicator: Node3D
+
+func start_selection():
+	selection_parent = current_selection.get_parent() # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
+	
+	drop_spot_indicator.show()
+
+
+func end_selection():
+	drop_spot_indicator.hide()
+	
+	pitch_indicator.hide()
+	roll_indicator.hide()
+	yaw_indicator.hide()
+
 
 func control_selection(delta: float):
 	if not selection_parent:
@@ -66,7 +76,26 @@ func control_selection(delta: float):
 	var rotation_amount = input.rotation_sens * delta
 	selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
 	selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
-	selection_parent.angular_velocity.z = input.roll_axis * rotation_amount
+	selection_parent.angular_velocity.z = -input.roll_axis * rotation_amount
+	
+	
+	if input.pitch_axis != 0:
+		pitch_indicator.global_position = selection_parent.global_position
+		pitch_indicator.show()
+	else:
+		pitch_indicator.hide()
+	
+	if input.roll_axis != 0:
+		roll_indicator.global_position = selection_parent.global_position
+		roll_indicator.show()
+	else:
+		roll_indicator.hide()
+	
+	if input.yaw_axis != 0:
+		yaw_indicator.global_position = selection_parent.global_position
+		yaw_indicator.show()
+	else:
+		yaw_indicator.hide()
 	
 	
 	# Position handler
@@ -75,6 +104,9 @@ func control_selection(delta: float):
 	
 	# Push / Pull handler
 	selection_parent.linear_velocity.z = input.push_pull_axis * -input.push_pull_sens * delta
+	
+	drop_spot_indicator.global_position = Vector3(selection_parent.global_position.x, drop_spot_indicator.global_position.y, selection_parent.global_position.z)
+
 
 func plane_raycast(axis_up: Vector3) -> Vector3:
 	var camera: Camera3D = get_viewport().get_camera_3d()
@@ -87,3 +119,4 @@ func plane_raycast(axis_up: Vector3) -> Vector3:
 	
 	var result = plane.intersects_ray(from, to)
 	return result if result else Vector3.ZERO # Returns a zero vector if the raycast misses
+#endregion

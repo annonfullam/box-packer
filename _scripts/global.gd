@@ -9,7 +9,7 @@ func cursor_raycast() -> Dictionary:
 	var space_state: PhysicsDirectSpaceState3D = camera.get_world_3d().direct_space_state
 	
 	var ray: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
-	ray.collision_mask=0b00000000_00000000_00000000_00000010
+	ray.collision_mask = 0b00000000_00000000_00000000_00000010
 	ray.from = camera.project_ray_origin(mouse_pos)
 	ray.to = ray.from + camera.project_ray_normal(mouse_pos) * raycast_length
 	

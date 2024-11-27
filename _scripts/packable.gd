@@ -24,7 +24,8 @@ func register_in_scene(manager: GameManager) -> void:
 	manager.fence_area.body_entered.connect(func(body: Node3D):
 		if body != collider: return
 		_in_fence = true)
-		
+
+
 func _ready() -> void:
 	assert(mesh_to_highlight.mesh.material != null, "there's a packable mesh without a material :(")
 	# this might break when we add custom meshes
@@ -38,7 +39,8 @@ func _ready() -> void:
 		"position": collider.position,
 		"rotation": collider.rotation
 	}
-	collider.set_collision_layer_value(2, true) #raycasting
+	collider.set_collision_layer_value(2, true) # raycasting
+
 
 func respawn() -> void:
 	var prev_process_type = collider.process_mode

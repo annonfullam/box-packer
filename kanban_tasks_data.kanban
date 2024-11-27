@@ -15,14 +15,15 @@
 		{
 			"uuid": "b44d4bdc-6807-4d54-bfd7-96edec9605c1",
 			"title": "Doing",
-			"tasks": [
-				"b8684786-2a94-4de7-a889-4bfbc864d1b0"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "2ca20ea3-da4c-4429-a033-2ffb990d3f7c",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"b8684786-2a94-4de7-a889-4bfbc864d1b0",
+				"d184cb19-eec8-4fc3-9425-bc10ee9766b7"
+			]
 		}
 	],
 	"tasks": [
@@ -39,6 +40,22 @@
 			"description": "",
 			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
 			"steps": []
+		},
+		{
+			"uuid": "d184cb19-eec8-4fc3-9425-bc10ee9766b7",
+			"title": "Object mover visualizers",
+			"description": "",
+			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
+			"steps": [
+				{
+					"details": "drop position",
+					"done": true
+				},
+				{
+					"details": "rotation axes",
+					"done": true
+				}
+			]
 		}
 	],
 	"layout": {
