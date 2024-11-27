@@ -4,9 +4,11 @@ class_name GameManager
 @export var box_area: Area3D
 @export var fence_area: Area3D
 
+@export var packable_manager: Packables_Manager
 
+# FIXME: Doesn't work anymore
 func check_all_in() -> void:
-	for child: Packable in get_children():
+	for child: Packable in packable_manager.packables:
 		if not child.inside(): return
 	
 	complete_level()

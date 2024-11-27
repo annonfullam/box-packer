@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=12 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="1_0e5gk"]
 [ext_resource type="Script" path="res://_scripts/packable.gd" id="2_muoor"]
@@ -14,31 +14,24 @@ size = Vector3(0.01, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
 size = Vector3(1, 0.01, 1)
 
+[sub_resource type="GDScript" id="GDScript_artrf"]
+resource_name = "test"
+script/source = "extends RigidBody3D
+
+
+func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	print(\"this\")
+"
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a4y67"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i3i0w"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hnn0c"]
-size = Vector3(3.02, 3.02, 3.02)
+[sub_resource type="BoxShape3D" id="BoxShape3D_hooqg"]
+size = Vector3(5, 5, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nfno1"]
-size = Vector3(1, 5, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_y8cke"]
-size = Vector3(1, 5, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rjfrm"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_puyjf"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j800e"]
-size = Vector3(5, 5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kj1lh"]
-margin = 0.0
-size = Vector3(5, 5, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5al6"]
+size = Vector3(7, 7, 7)
 
 [node name="World" type="Node3D"]
 
@@ -49,14 +42,13 @@ environment = SubResource("Environment_cxj5b")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("box_area", "fence_area", "packable_manager")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("box_area", "fence_area")]
 script = ExtResource("3_sgt5w")
 box_area = NodePath("../BoxArea")
 fence_area = NodePath("../FenceArea")
-packable_manager = NodePath("../Packables_Manager")
 
 [node name="BoxBotton" type="StaticBody3D" parent="."]
-transform = Transform3D(5, -8.34465e-07, -2.74181e-06, 5.96046e-07, 5, -5.96046e-07, -2.74181e-06, 8.34465e-07, 5, -0.180913, 0.884863, 0.117926)
+transform = Transform3D(5, -8.34465e-07, -2.74181e-06, 5.96046e-07, 5, -5.96046e-07, -2.74181e-06, 8.34465e-07, 5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BoxBotton"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, 0)
@@ -72,6 +64,7 @@ script = ExtResource("1_0e5gk")
 
 [node name="PackableThing" type="RigidBody3D" parent="Packables_Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7228, 0)
+script = SubResource("GDScript_artrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -84,6 +77,7 @@ script = ExtResource("2_muoor")
 
 [node name="PackableThing2" type="RigidBody3D" parent="Packables_Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14398, 1.33807)
+script = SubResource("GDScript_artrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing2"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -95,37 +89,16 @@ mesh = SubResource("CylinderMesh_i3i0w")
 script = ExtResource("2_muoor")
 
 [node name="BoxArea" type="Area3D" parent="."]
-editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea"]
-shape = SubResource("BoxShape3D_hnn0c")
+shape = SubResource("BoxShape3D_hooqg")
 
 [node name="FenceArea" type="Area3D" parent="."]
-editor_description = "This is meant to surround BoxArea completely and be flush with it; this level is only complete if packables are colliding with BoxArea and not FenceArea."
+editor_description = "This is meant to surround BoxArea completely; this level is only complete if packables are colliding with BoxArea and not FenceArea."
 
-[node name="x+" type="CollisionShape3D" parent="FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01, 0, 0)
-shape = SubResource("BoxShape3D_nfno1")
-
-[node name="x-" type="CollisionShape3D" parent="FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01, 0, 0)
-shape = SubResource("BoxShape3D_y8cke")
-
-[node name="y+" type="CollisionShape3D" parent="FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01, 0)
-shape = SubResource("BoxShape3D_rjfrm")
-
-[node name="y-" type="CollisionShape3D" parent="FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01, 0)
-shape = SubResource("BoxShape3D_puyjf")
-
-[node name="z+" type="CollisionShape3D" parent="FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.01)
-shape = SubResource("BoxShape3D_j800e")
-
-[node name="z-" type="CollisionShape3D" parent="FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01)
-shape = SubResource("BoxShape3D_kj1lh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FenceArea"]
+shape = SubResource("BoxShape3D_r5al6")
 
 [connection signal="input_event" from="Packables_Manager/PackableThing" to="Packables_Manager/PackableThing" method="_on_input_event"]
 [connection signal="input_event" from="Packables_Manager/PackableThing2" to="Packables_Manager/PackableThing2" method="_on_input_event"]
