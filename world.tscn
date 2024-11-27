@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="1_0e5gk"]
 [ext_resource type="Script" path="res://_scripts/packable.gd" id="2_muoor"]
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="3_sgt5w"]
+[ext_resource type="Material" uid="uid://bahpno8yarp2x" path="res://_resources/temp_material.tres" id="3_ttepp"]
 
 [sub_resource type="Environment" id="Environment_cxj5b"]
 background_mode = 1
@@ -14,18 +15,10 @@ size = Vector3(0.01, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
 size = Vector3(1, 0.01, 1)
 
-[sub_resource type="GDScript" id="GDScript_artrf"]
-resource_name = "test"
-script/source = "extends RigidBody3D
-
-
-func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	print(\"this\")
-"
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a4y67"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i3i0w"]
+material = ExtResource("3_ttepp")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hooqg"]
 size = Vector3(5, 5, 5)
@@ -64,7 +57,6 @@ script = ExtResource("1_0e5gk")
 
 [node name="PackableThing" type="RigidBody3D" parent="Packables_Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7228, 0)
-script = SubResource("GDScript_artrf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -72,8 +64,9 @@ shape = SubResource("CylinderShape3D_a4y67")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Packables_Manager/PackableThing"]
 mesh = SubResource("CylinderMesh_i3i0w")
 
-[node name="Packable" type="Node3D" parent="Packables_Manager/PackableThing"]
+[node name="Packable" type="Node3D" parent="Packables_Manager/PackableThing" node_paths=PackedStringArray("mesh_to_highlight")]
 script = ExtResource("2_muoor")
+mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="BoxArea" type="Area3D" parent="."]
 editor_description = "This is the Area3D that all the packables have to be in for the level to be complete"
