@@ -7,6 +7,8 @@ signal deselected
 @onready var parent: RigidBody3D = $".."
 @export var mesh_to_highlight: MeshInstance3D
 
+var orig_pos_and_rot: Dictionary
+
 func register_in_scene(manager: GameManager) -> void:
 	manager.box_area.body_entered.connect(func(body: Node3D):
 		if body != parent: return
@@ -31,6 +33,22 @@ func _ready() -> void:
 		Global.packable_highlight_shader)
 	deselected.connect(func():
 		mesh_to_highlight.mesh.material.next_pass = null)
+		
+	orig_pos_and_rot = {
+		"position": parent.position,
+		"rotation": parent.rotation
+	}
+
+func respawn() -> void:
+	var prev_process_type = parent.process_mode
+	parent.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	parent.position = orig_pos_and_rot.position
+	parent.rotation = orig_pos_and_rot.rotation
+	parent.linear_velocity = Vector3(0,0,0)
+	parent.angular_velocity = Vector3(0,0,0)
+	
+	parent.process_mode = prev_process_type
 
 
 var _in_box: bool = false

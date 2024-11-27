@@ -30,3 +30,4 @@ func _input(event: InputEvent) -> void:
 				if child: child.selected.emit(hit)
 		elif current_selection:
 			current_selection.deselected.emit()
+			current_selection=null
