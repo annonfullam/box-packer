@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=27 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_1mahe"]
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="2_bwonv"]
@@ -41,12 +41,6 @@ emission = Color(0.04611, 0.29, 0.0377, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_i3i0w"]
 material = SubResource("StandardMaterial3D_unwjg")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2ua2k"]
-size = Vector2(3, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
-size = Vector3(3, 0.01, 3)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_hnn0c"]
 size = Vector3(3.02, 3.02, 3.02)
 
@@ -69,10 +63,33 @@ size = Vector3(5, 5, 1)
 margin = 0.0
 size = Vector3(5, 5, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
+size = Vector3(0.01, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioydo"]
+transparency = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ua2k"]
+material = SubResource("StandardMaterial3D_ioydo")
+size = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oexqu"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.121569)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0ahfm"]
+material = SubResource("StandardMaterial3D_oexqu")
+size = Vector2(3, 3)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_37grk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_07cse"]
+size = Vector2(200, 200)
+
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 0.622091, 0.782945, 0, -0.782945, 0.622091, 0, 7.18556, 6.29681)
 environment = SubResource("Environment_cxj5b")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -91,7 +108,7 @@ script = ExtResource("2_wjrm5")
 script = ExtResource("2_bwonv")
 
 [node name="PackableThing" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.903949, 10.7228, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87029, -1.04858, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -104,7 +121,7 @@ script = ExtResource("3_lwkrw")
 mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="PackableThing3" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.903949, -0.202721, -1.14628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19322, -1.65253, -1.14628)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing3"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -117,7 +134,7 @@ script = ExtResource("3_lwkrw")
 mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="PackableThing2" type="RigidBody3D" parent="Packables_Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898793, 3.14398, 0.632681)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20214, -1.67335, 0.304609)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Packables_Manager/PackableThing2"]
 shape = SubResource("CylinderShape3D_a4y67")
@@ -131,18 +148,6 @@ mesh_to_highlight = NodePath("../MeshInstance3D")
 
 [node name="Box" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-
-[node name="BoxBotton" type="StaticBody3D" parent="Box"]
-transform = Transform3D(1, -1.19209e-07, 5.48362e-07, 1.19209e-07, 1, -1.66893e-07, -5.48362e-07, 1.66893e-07, 1, 0, -1, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/BoxBotton"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("PlaneMesh_2ua2k")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/BoxBotton"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_ppuxo")
 
 [node name="BoxArea" type="Area3D" parent="Box"]
 editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
@@ -178,6 +183,56 @@ shape = SubResource("BoxShape3D_j800e")
 [node name="z-" type="CollisionShape3D" parent="Box/FenceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01)
 shape = SubResource("BoxShape3D_kj1lh")
+
+[node name="Collision" type="StaticBody3D" parent="Box"]
+
+[node name="x+" type="CollisionShape3D" parent="Box/Collision"]
+transform = Transform3D(1, -1.19209e-07, 5.48362e-07, 1.19209e-07, 1, -1.66893e-07, -5.48362e-07, 1.66893e-07, 1, 1.5, 0, 0)
+shape = SubResource("BoxShape3D_ppuxo")
+
+[node name="x-" type="CollisionShape3D" parent="Box/Collision"]
+transform = Transform3D(1, -1.19209e-07, 5.48362e-07, 1.19209e-07, 1, -1.66893e-07, -5.48362e-07, 1.66893e-07, 1, -1.5, 0, 0)
+shape = SubResource("BoxShape3D_ppuxo")
+
+[node name="z+" type="CollisionShape3D" parent="Box/Collision"]
+transform = Transform3D(-4.37114e-08, 5.21079e-15, 1, 1.19209e-07, 1, 0, -1, 1.19209e-07, -4.37114e-08, 0, 0, 1.5)
+shape = SubResource("BoxShape3D_ppuxo")
+
+[node name="z-" type="CollisionShape3D" parent="Box/Collision"]
+transform = Transform3D(-4.37114e-08, 5.21079e-15, 1, 1.19209e-07, 1, 0, -1, 1.19209e-07, -4.37114e-08, 0, 0, -1.5)
+shape = SubResource("BoxShape3D_ppuxo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5)
+mesh = SubResource("PlaneMesh_2ua2k")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 1.5)
+mesh = SubResource("PlaneMesh_0ahfm")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.5, 0, 0)
+mesh = SubResource("PlaneMesh_2ua2k")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 1.5, 0, 0)
+mesh = SubResource("PlaneMesh_2ua2k")
+skeleton = NodePath("")
+
+[node name="Scene Geometry" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Scene Geometry"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+shape = SubResource("WorldBoundaryShape3D_37grk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene Geometry/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+mesh = SubResource("PlaneMesh_07cse")
 
 [connection signal="input_event" from="Packables_Manager/PackableThing" to="Packables_Manager/PackableThing" method="_on_input_event"]
 [connection signal="input_event" from="Packables_Manager/PackableThing3" to="Packables_Manager/PackableThing3" method="_on_input_event"]
