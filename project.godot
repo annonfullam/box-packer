@@ -21,6 +21,10 @@ EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.g
 Global="*res://_scripts/global.gd"
 RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg", "res://addons/script-ide/plugin.cfg")
@@ -114,4 +118,6 @@ camera_control_toggle={
 
 [rendering]
 
+anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1

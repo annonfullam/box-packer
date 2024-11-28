@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://cpoyyuw6wlaoc"]
+[gd_scene load_steps=38 format=3 uid="uid://cpoyyuw6wlaoc"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_1mahe"]
+[ext_resource type="PackedScene" uid="uid://bcw6kxldgdl5l" path="res://scenes/win_screen.tscn" id="1_ggtmw"]
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="2_bwonv"]
 [ext_resource type="Script" path="res://_scripts/input_handler.gd" id="2_wjrm5"]
 [ext_resource type="Script" path="res://_scripts/packable.gd" id="3_lwkrw"]
@@ -157,6 +158,7 @@ script = ExtResource("1_1mahe")
 box_area = NodePath("../Box/BoxArea")
 fence_area = NodePath("../Box/FenceArea")
 packable_manager = NodePath("../Packables_Manager")
+win_scene = ExtResource("1_ggtmw")
 
 [node name="InputHandler" type="Node" parent="GameManager"]
 script = ExtResource("2_wjrm5")

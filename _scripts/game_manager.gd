@@ -6,6 +6,8 @@ class_name GameManager
 
 @export var packable_manager: Packables_Manager
 
+@export var win_scene: PackedScene
+var curr_win_scene: Node
 
 func check_all_in() -> void:
 	for child: Packable in packable_manager.packables:
@@ -15,4 +17,10 @@ func check_all_in() -> void:
 
 
 func complete_level():
-	print("level won")
+	if curr_win_scene:
+		return
+	
+	var new_node: Node = win_scene.instantiate()
+	owner.add_child(new_node)
+	curr_win_scene = new_node
+	
