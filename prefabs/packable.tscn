@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ydk1kk8wa52"]
-
-[ext_resource type="Script" path="res://_scripts/packable.gd" id="1_gq7vt"]
-
-[node name="Packable" type="Node3D"]
-script = ExtResource("1_gq7vt")

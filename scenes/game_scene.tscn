@@ -11,12 +11,12 @@
 background_mode = 1
 background_color = Color(0.521569, 0.521569, 0.560784, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sof2u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pf43f"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.0392157)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qaila"]
-material = SubResource("StandardMaterial3D_sof2u")
+material = SubResource("StandardMaterial3D_pf43f")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 20.0
@@ -25,34 +25,34 @@ rings = 0
 cap_top = false
 cap_bottom = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prx72"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stxmg"]
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.392157)
 
 [sub_resource type="TorusMesh" id="TorusMesh_us8c4"]
-material = SubResource("StandardMaterial3D_prx72")
+material = SubResource("StandardMaterial3D_stxmg")
 inner_radius = 0.1
 outer_radius = 0.12
 rings = 16
 ring_segments = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imwh6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ivch"]
 transparency = 1
 albedo_color = Color(0, 0, 1, 0.392157)
 
 [sub_resource type="TorusMesh" id="TorusMesh_0iiq7"]
-material = SubResource("StandardMaterial3D_imwh6")
+material = SubResource("StandardMaterial3D_4ivch")
 inner_radius = 0.1
 outer_radius = 0.12
 rings = 16
 ring_segments = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhy3v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo182"]
 transparency = 1
 albedo_color = Color(0, 1, 0, 0.392157)
 
 [sub_resource type="TorusMesh" id="TorusMesh_shd1u"]
-material = SubResource("StandardMaterial3D_lhy3v")
+material = SubResource("StandardMaterial3D_yo182")
 inner_radius = 0.1
 outer_radius = 0.12
 rings = 16
@@ -60,7 +60,7 @@ ring_segments = 8
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a4y67"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07v0r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wi27"]
 albedo_color = Color(0.206125, 0.1785, 0.51, 1)
 metallic = 0.75
 roughness = 0.35
@@ -68,9 +68,9 @@ emission_enabled = true
 emission = Color(0.29, 0.0377, 0.0377, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_egiy0"]
-material = SubResource("StandardMaterial3D_07v0r")
+material = SubResource("StandardMaterial3D_0wi27")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4hnj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuwy1"]
 albedo_color = Color(0.206125, 0.1785, 0.51, 1)
 metallic = 0.75
 roughness = 0.35
@@ -78,9 +78,9 @@ emission_enabled = true
 emission = Color(0.29, 0.0377, 0.0377, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pbf6v"]
-material = SubResource("StandardMaterial3D_c4hnj")
+material = SubResource("StandardMaterial3D_iuwy1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c55jd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4o1r"]
 albedo_color = Color(0.206125, 0.1785, 0.51, 1)
 metallic = 0.75
 roughness = 0.35
@@ -88,9 +88,9 @@ emission_enabled = true
 emission = Color(0.29, 0.0377, 0.0377, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wtujc"]
-material = SubResource("StandardMaterial3D_c55jd")
+material = SubResource("StandardMaterial3D_b4o1r")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orbou"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npulw"]
 albedo_color = Color(0.206125, 0.1785, 0.51, 1)
 metallic = 0.75
 roughness = 0.35
@@ -98,9 +98,9 @@ emission_enabled = true
 emission = Color(0.29, 0.0377, 0.0377, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8yssw"]
-material = SubResource("StandardMaterial3D_orbou")
+material = SubResource("StandardMaterial3D_npulw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unwjg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_recdn"]
 albedo_color = Color(0.206125, 0.1785, 0.51, 1)
 metallic = 0.75
 roughness = 0.35
@@ -108,7 +108,7 @@ emission_enabled = true
 emission = Color(0.04611, 0.29, 0.0377, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i3i0w"]
-material = SubResource("StandardMaterial3D_unwjg")
+material = SubResource("StandardMaterial3D_recdn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_krxvo"]
 size = Vector3(3.02, 3.02, 3.02)

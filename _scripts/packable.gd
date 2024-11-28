@@ -27,13 +27,11 @@ func register_in_scene(manager: GameManager) -> void:
 
 
 func _ready() -> void:
-	assert(mesh_to_highlight.mesh.material != null, "there's a packable mesh without a material :(")
-	# this might break when we add custom meshes
-	selected.connect(func(_unused: Dictionary):
-		mesh_to_highlight.mesh.material.next_pass =\
-		Global.packable_highlight_shader)
-	deselected.connect(func():
-		mesh_to_highlight.mesh.material.next_pass = null)
+	#selected.connect(func(_unused: Dictionary):
+		#mesh_to_highlight.mesh.surface_get_material(0).next_pass =\
+		#Global.packable_highlight_shader)
+	#deselected.connect(func():
+		#mesh_to_highlight.mesh.surface_get_material(0).next_pass = null)
 		
 	orig_pos_and_rot = {
 		"position": collider.position,

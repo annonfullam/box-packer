@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://chokr2k2cwdie"]
+
+[ext_resource type="PackedScene" uid="uid://bnmg2cgsri8yc" path="res://_resources/models/Factory/can-paint.fbx" id="1_744xj"]
+[ext_resource type="Script" path="res://_scripts/packable.gd" id="2_0dohl"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2qibu"]
+radius = 0.8
+
+[node name="PaintCan" type="RigidBody3D"]
+
+[node name="model" parent="." instance=ExtResource("1_744xj")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_2qibu")
+
+[node name="Packable" type="Node3D" parent="." node_paths=PackedStringArray("mesh_to_highlight")]
+script = ExtResource("2_0dohl")
+mesh_to_highlight = NodePath("../model/can-paint")
+
+[editable path="model"]
