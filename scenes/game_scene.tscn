@@ -160,6 +160,7 @@ packable_manager = NodePath("../Packables_Manager")
 
 [node name="InputHandler" type="Node" parent="GameManager"]
 script = ExtResource("2_wjrm5")
+push_pull_sens = 100.0
 
 [node name="DropIndicator" type="MeshInstance3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115585, 0, -0.000808716)

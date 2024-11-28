@@ -23,6 +23,13 @@ func cursor_raycast() -> Dictionary:
 var Input_Handler: InputHandler = null
 
 
+#region Settings
+var Snap_Position: bool = false
+var Snap_Position_Step: float = 1.0
+var Snap_Rotation: bool = true
+var Snap_Rotation_Step: float = 15.0
+#endregion
+
 #endregion
 
 

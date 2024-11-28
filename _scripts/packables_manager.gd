@@ -57,7 +57,6 @@ func start_selection():
 	
 	drop_spot_indicator.show()
 
-
 func end_selection():
 	drop_spot_indicator.hide()
 	
@@ -65,47 +64,69 @@ func end_selection():
 	roll_indicator.hide()
 	yaw_indicator.hide()
 
-
+var did_rotate: bool = false
+var rotation_timer: float = 0.0
 func control_selection(delta: float):
 	if not selection_parent:
 		return
 	
 	var input: InputHandler = Global.Input_Handler
+	handle_indicators(input)
 	
-	# Rotation 
-	var rotation_amount = input.rotation_sens * delta
-	selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
-	selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
-	selection_parent.angular_velocity.z = -input.roll_axis * rotation_amount
+	#region ---------- ROTATION HANDLER ----------
+	if Global.Snap_Rotation:
+		var rotation_amount: float = deg_to_rad(Global.Snap_Rotation_Step)
+		rotation_timer += delta
+		
+		if (not did_rotate or rotation_timer > 0.2) and (input.pitch_axis != 0 or input.roll_axis != 0 or input.yaw_axis != 0):
+			selection_parent.angular_velocity = Vector3.ZERO
+			
+			# HACK: I want to do this with global coords, but I can't figure out how to do it rn
+			selection_parent.rotation.x += -input.pitch_axis * rotation_amount
+			selection_parent.rotation.y += input.yaw_axis * rotation_amount
+			selection_parent.rotation.z += -input.roll_axis * rotation_amount
+			did_rotate = true
+			rotation_timer = 0
+		elif input.pitch_axis == 0 and input.roll_axis == 0 and input.yaw_axis == 0:
+			did_rotate = false
+	else:
+		var rotation_amount: float = input.rotation_sens * delta
+		selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
+		selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
+		selection_parent.angular_velocity.z = -input.roll_axis * rotation_amount
+	#endregion
 	
+	#region ---------- POSITION HANDLER ----------
+	var desired_position: Vector3 = plane_raycast(Vector3.FORWARD)
+	desired_position.z += input.push_pull_axis * -input.push_pull_sens * delta # Push / Pull
+	
+	 # Snap position to grid
+	if Global.Snap_Position: desired_position = round(desired_position * Global.Snap_Position_Step) / Global.Snap_Position_Step
+	
+	# Apply velocity to move to the right position
+	selection_parent.linear_velocity = (desired_position - selection_parent.position) * input.position_sens * delta
+	#endregion
+	
+	#print(desired_position, selection_parent.global_rotation)
+
+
+func handle_indicators(input: InputHandler):
+	drop_spot_indicator.global_position = Vector3(selection_parent.global_position.x, drop_spot_indicator.global_position.y, selection_parent.global_position.z)
 	
 	if input.pitch_axis != 0:
 		pitch_indicator.global_position = selection_parent.global_position
 		pitch_indicator.show()
-	else:
-		pitch_indicator.hide()
-	
-	if input.roll_axis != 0:
+	elif input.roll_axis != 0:
 		roll_indicator.global_position = selection_parent.global_position
 		roll_indicator.show()
-	else:
-		roll_indicator.hide()
-	
-	if input.yaw_axis != 0:
+	elif input.yaw_axis != 0:
 		yaw_indicator.global_position = selection_parent.global_position
 		yaw_indicator.show()
 	else:
+		pitch_indicator.hide()
+		roll_indicator.hide()
 		yaw_indicator.hide()
 	
-	
-	# Position handler
-	var plane_pos: Vector3 = plane_raycast(Vector3.FORWARD)
-	selection_parent.linear_velocity = (plane_pos - selection_parent.position) * input.position_sens * delta
-	
-	# Push / Pull handler
-	selection_parent.linear_velocity.z = input.push_pull_axis * -input.push_pull_sens * delta
-	
-	drop_spot_indicator.global_position = Vector3(selection_parent.global_position.x, drop_spot_indicator.global_position.y, selection_parent.global_position.z)
 
 
 func plane_raycast(axis_up: Vector3) -> Vector3:

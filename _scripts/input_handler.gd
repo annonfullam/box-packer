@@ -20,14 +20,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	
 	if pitch_axis == 0 and yaw_axis == 0:
 		roll_axis = Input.get_axis("rotate_roll_negative", "rotate_roll_positive")
 	if roll_axis == 0 and yaw_axis == 0:
 		pitch_axis = Input.get_axis("rotate_pitch_negative", "rotate_pitch_positive")
 	if pitch_axis == 0 and roll_axis == 0:
 		yaw_axis = Input.get_axis("rotate_yaw_negative", "rotate_yaw_positive")
-	
 	
 	push_pull_axis = Input.get_axis("pull", "push")
 
