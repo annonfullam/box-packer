@@ -1,0 +1,232 @@
+[gd_scene load_steps=29 format=3 uid="uid://drdi3po0qdvqy"]
+
+[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="1_arnns"]
+[ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_jk72a"]
+[ext_resource type="Texture2D" uid="uid://ck8c3p0vn5hu0" path="res://_resources/textures/wood_texture.jpg" id="1_mkw6s"]
+[ext_resource type="PackedScene" uid="uid://bcw6kxldgdl5l" path="res://scenes/win_screen.tscn" id="2_kgy3l"]
+[ext_resource type="Script" path="res://_scripts/input_handler.gd" id="3_gnaex"]
+[ext_resource type="PackedScene" uid="uid://chokr2k2cwdie" path="res://prefabs/packable_objects/paint_can.tscn" id="3_nke7m"]
+[ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="6_cfjw2"]
+
+[sub_resource type="Environment" id="Environment_ymr1x"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 3
+ssao_enabled = true
+ssil_radius = 3.74
+adjustment_brightness = 0.56
+
+[sub_resource type="Environment" id="Environment_rvqbf"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 1.2
+tonemap_mode = 3
+ssao_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sof2u"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0392157)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_of5q3"]
+material = SubResource("StandardMaterial3D_sof2u")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 20.0
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prx72"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.392157)
+
+[sub_resource type="TorusMesh" id="TorusMesh_snvig"]
+material = SubResource("StandardMaterial3D_prx72")
+inner_radius = 0.1
+outer_radius = 0.12
+rings = 16
+ring_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imwh6"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 0.392157)
+
+[sub_resource type="TorusMesh" id="TorusMesh_uwhev"]
+material = SubResource("StandardMaterial3D_imwh6")
+inner_radius = 0.1
+outer_radius = 0.12
+rings = 16
+ring_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhy3v"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.392157)
+
+[sub_resource type="TorusMesh" id="TorusMesh_a64mh"]
+material = SubResource("StandardMaterial3D_lhy3v")
+inner_radius = 0.1
+outer_radius = 0.12
+rings = 16
+ring_segments = 8
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2gcgw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t51hr"]
+albedo_texture = ExtResource("1_mkw6s")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4rqi1"]
+size = Vector2(40, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2gb6"]
+size = Vector3(40, 16.4844, 44.1843)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhqw3"]
+size = Vector3(3.02, 3.02, 3.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a7r8c"]
+size = Vector3(1, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2vo1"]
+size = Vector3(1, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vywpw"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwybl"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpfw6"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxhup"]
+margin = 0.0
+size = Vector3(5, 5, 1)
+
+[node name="FactoryScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.622091, 0.782945, 0, -0.782945, 0.622091, 0, 7.18556, 6.29681)
+environment = SubResource("Environment_ymr1x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.756995, -0.379443, -0.53196, 0, -0.814116, 0.580703, -0.653421, -0.439589, -0.616281, 0, 4.24191, -11.5473)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rvqbf")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("box_area", "fence_area", "packable_manager")]
+script = ExtResource("1_jk72a")
+box_area = NodePath("../Box/BoxArea")
+fence_area = NodePath("../Box/FenceArea")
+packable_manager = NodePath("../Packables_Manager")
+win_scene = ExtResource("2_kgy3l")
+
+[node name="InputHandler" type="Node" parent="GameManager"]
+script = ExtResource("3_gnaex")
+push_pull_sens = 100.0
+
+[node name="DropIndicator" type="MeshInstance3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115585, 0, -0.000808716)
+visible = false
+mesh = SubResource("CylinderMesh_of5q3")
+skeleton = NodePath("../../Packables_Manager")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="GameManager/DropIndicator"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 36.82, 0)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_bias = 0.0
+spot_range = 100.0
+spot_attenuation = 0.0
+spot_angle = 10.0
+spot_angle_attenuation = 0.535886
+
+[node name="RollAxisIndicator" type="MeshInstance3D" parent="GameManager"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 12.7651, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_snvig")
+
+[node name="PitchAxisIndicator" type="MeshInstance3D" parent="GameManager"]
+transform = Transform3D(-4.37114e-07, 10, -4.37114e-07, 0, -4.37114e-07, -10, -10, -4.37114e-07, 1.91069e-14, 12.7651, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_uwhev")
+
+[node name="YawAxisIndicator" type="MeshInstance3D" parent="GameManager"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 12.7651, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_a64mh")
+
+[node name="Scene Geometry" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Scene Geometry"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+shape = SubResource("WorldBoundaryShape3D_2gcgw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene Geometry/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+material_override = SubResource("StandardMaterial3D_t51hr")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_4rqi1")
+
+[node name="In Bounds" type="Area3D" parent="Scene Geometry"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/In Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24219, -14.5922)
+shape = SubResource("BoxShape3D_l2gb6")
+
+[node name="Box" parent="." instance=ExtResource("1_arnns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.37, 0)
+
+[node name="BoxArea" type="Area3D" parent="Box"]
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/BoxArea"]
+shape = SubResource("BoxShape3D_yhqw3")
+
+[node name="FenceArea" type="Area3D" parent="Box"]
+editor_description = "This is meant to surround BoxArea completely and be flush with it; this level is only complete if packables are colliding with BoxArea and not FenceArea."
+
+[node name="x+" type="CollisionShape3D" parent="Box/FenceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01, 0, 0)
+shape = SubResource("BoxShape3D_a7r8c")
+
+[node name="x-" type="CollisionShape3D" parent="Box/FenceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01, 0, 0)
+shape = SubResource("BoxShape3D_x2vo1")
+
+[node name="y+" type="CollisionShape3D" parent="Box/FenceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01, 0)
+shape = SubResource("BoxShape3D_vywpw")
+
+[node name="y-" type="CollisionShape3D" parent="Box/FenceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01, 0)
+shape = SubResource("BoxShape3D_lwybl")
+
+[node name="z+" type="CollisionShape3D" parent="Box/FenceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.01)
+shape = SubResource("BoxShape3D_tpfw6")
+
+[node name="z-" type="CollisionShape3D" parent="Box/FenceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01)
+shape = SubResource("BoxShape3D_vxhup")
+
+[node name="Packables_Manager" type="Node3D" parent="." node_paths=PackedStringArray("in_bounds", "drop_spot_indicator", "pitch_indicator", "roll_indicator", "yaw_indicator")]
+script = ExtResource("6_cfjw2")
+in_bounds = NodePath("../Scene Geometry/In Bounds")
+drop_spot_indicator = NodePath("../GameManager/DropIndicator")
+pitch_indicator = NodePath("../GameManager/PitchAxisIndicator")
+roll_indicator = NodePath("../GameManager/RollAxisIndicator")
+yaw_indicator = NodePath("../GameManager/YawAxisIndicator")
+
+[node name="PaintCan" parent="Packables_Manager" instance=ExtResource("3_nke7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="PaintCan2" parent="Packables_Manager" instance=ExtResource("3_nke7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1082, 0, 1.96785)
+
+[editable path="Packables_Manager/PaintCan2"]
+[editable path="Packables_Manager/PaintCan2/model"]
