@@ -10,6 +10,9 @@ class_name GameManager
 var curr_win_scene: Node
 
 func check_all_in() -> void:
+	if packable_manager.current_selection != null:
+		return
+	
 	for child: Packable in packable_manager.packables:
 		if not child.inside(): return
 	

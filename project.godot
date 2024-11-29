@@ -116,6 +116,13 @@ camera_control_toggle={
 3d_physics/layer_1="Collision (probably want this)"
 3d_physics/layer_2="Raycasting"
 
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+3d/default_gravity=75.0
+jolt_3d/solver/position_iterations=10
+jolt_3d/solver/position_correction=50.0
+
 [rendering]
 
 anti_aliasing/quality/msaa_2d=2
