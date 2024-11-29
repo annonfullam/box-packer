@@ -9,7 +9,7 @@ var roll_axis: float
 var pitch_axis: float
 var yaw_axis: float
 
-var push_pull_axis: float
+var alt_axis_mode: bool
 
 func _ready() -> void:
 	# Sets self as input handler unless there already is one.
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	pitch_axis = Input.get_axis("rotate_pitch_negative", "rotate_pitch_positive")
 	yaw_axis = Input.get_axis("rotate_yaw_negative", "rotate_yaw_positive")
 	
-	push_pull_axis = Input.get_axis("pull", "push")
+	alt_axis_mode = Input.is_action_pressed("alt_axis_mode")
 
 
 #region Actions and Keybinding

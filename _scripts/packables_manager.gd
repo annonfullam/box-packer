@@ -52,6 +52,7 @@ func start_selection():
 	drop_spot_indicator.show()
 
 func end_selection():
+	selection_parent.gravity_scale = 1
 	current_selection = null
 	drop_spot_indicator.hide()
 	
@@ -70,28 +71,17 @@ func control_selection(delta: float):
 	input = Global.Input_Handler
 	handle_indicators()
 	
-	# ---------- ROTATION HANDLER ----------
+
 	if Global.Snap_Rotation: control_snap_rotation(delta)
 	else: control_rotation(delta)
 	
-	#region ---------- POSITION HANDLER ----------
-	var desired_position: Vector3 = plane_raycast(Vector3.FORWARD)
-	desired_position.z += input.push_pull_axis * -input.push_pull_sens * delta # Push / Pull
+
+	var desired_position: Vector3 = plane_raycast(Vector3.FORWARD) if not input.alt_axis_mode else plane_raycast(Vector3.UP)
+	if Global.Snap_Position: desired_position = round(desired_position * Global.Snap_Position_Step) / Global.Snap_Position_Step # Snap position to grid
 	
-	 # Snap position to grid
-	if Global.Snap_Position: desired_position = round(desired_position * Global.Snap_Position_Step) / Global.Snap_Position_Step
-	
-	# Apply velocity to move to the right position
-	selection_parent.linear_velocity = (desired_position - selection_parent.position) * input.position_sens * delta
-	
-	var max_velocity: float = 50
-	# Clamp max velocity
-	selection_parent.linear_velocity.x = clamp(selection_parent.linear_velocity.x, -max_velocity, max_velocity)
-	selection_parent.linear_velocity.y = clamp(selection_parent.linear_velocity.y, -max_velocity, max_velocity)
-	selection_parent.linear_velocity.z = clamp(selection_parent.linear_velocity.z, -max_velocity, max_velocity)
-	
-	#print(desired_position, selection_parent.global_rotation)
-	#endregion
+	selection_parent.gravity_scale = 0 if input.alt_axis_mode else 1 # The object will slowly fall if gravity isn't disabled without changing the y position
+	selection_parent.linear_velocity = (desired_position - selection_parent.position) * input.position_sens * delta # Apply velocity to move to the right position
+	clamp_velocity()
 
 
 func control_rotation(delta: float):
@@ -146,6 +136,14 @@ func handle_indicators():
 	if input.yaw_axis != 0:
 		yaw_indicator.global_position = selection_parent.global_position
 		yaw_indicator.show()
+
+
+func clamp_velocity():
+	var max_velocity: float = 50
+	
+	selection_parent.linear_velocity.x = clamp(selection_parent.linear_velocity.x, -max_velocity, max_velocity)
+	selection_parent.linear_velocity.y = clamp(selection_parent.linear_velocity.y, -max_velocity, max_velocity)
+	selection_parent.linear_velocity.z = clamp(selection_parent.linear_velocity.z, -max_velocity, max_velocity)
 
 
 func plane_raycast(axis_up: Vector3) -> Vector3:
