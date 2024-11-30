@@ -56,6 +56,13 @@
 					"done": true
 				}
 			]
+		},
+		{
+			"uuid": "903e168a-36b1-4390-bcaa-736533fd18d0",
+			"title": "",
+			"description": "",
+			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
+			"steps": []
 		}
 	],
 	"layout": {

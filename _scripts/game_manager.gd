@@ -9,6 +9,11 @@ class_name GameManager
 @export var win_scene: PackedScene
 var curr_win_scene: Node
 
+func _ready():
+	#if Global.Kinematic_Box: box_area.get_parent().get_node("Rigidbody3D").freeze = false
+	pass
+
+
 func check_all_in() -> void:
 	if packable_manager.current_selection != null:
 		return
