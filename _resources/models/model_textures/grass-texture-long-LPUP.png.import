@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ewrpkom5vajy"
-path.s3tc="res://.godot/imported/atlas-gradient-LPUP.png-75f945547e73596cc4d11f1386b35b76.s3tc.ctex"
+uid="uid://ds7q17smyoyf5"
+path.s3tc="res://.godot/imported/grass-texture-long-LPUP.png-b60e4cc2bb1f9305bfa065b0d44f36a0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_resources/textures/model_textures/atlas-gradient-LPUP.png"
-dest_files=["res://.godot/imported/atlas-gradient-LPUP.png-75f945547e73596cc4d11f1386b35b76.s3tc.ctex"]
+source_file="res://_resources/models/model_textures/grass-texture-long-LPUP.png"
+dest_files=["res://.godot/imported/grass-texture-long-LPUP.png-b60e4cc2bb1f9305bfa065b0d44f36a0.s3tc.ctex"]
 
 [params]
 

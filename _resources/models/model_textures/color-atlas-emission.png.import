@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdjepydr7q1j"
-path.s3tc="res://.godot/imported/color-atlas-new2.png-ede5ae0d885225ec7d7bb61bf9555365.s3tc.ctex"
+uid="uid://eyrofmhd5w2f"
+path.s3tc="res://.godot/imported/color-atlas-emission.png-49a1639dc496fd0f4950fe15a1c2940b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_resources/textures/model_textures/color-atlas-new2.png"
-dest_files=["res://.godot/imported/color-atlas-new2.png-ede5ae0d885225ec7d7bb61bf9555365.s3tc.ctex"]
+source_file="res://_resources/models/model_textures/color-atlas-emission.png"
+dest_files=["res://.godot/imported/color-atlas-emission.png-49a1639dc496fd0f4950fe15a1c2940b.s3tc.ctex"]
 
 [params]
 

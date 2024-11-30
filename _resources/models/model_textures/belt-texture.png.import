@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuj8ynnpk5dd1"
-path.s3tc="res://.godot/imported/belt-texture.png-3da7ed2a26dc54df7217d2f86ed1d256.s3tc.ctex"
+path.s3tc="res://.godot/imported/belt-texture.png-f5d68da6d1b9acfadda9485ef006a89a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_resources/textures/model_textures/belt-texture.png"
-dest_files=["res://.godot/imported/belt-texture.png-3da7ed2a26dc54df7217d2f86ed1d256.s3tc.ctex"]
+source_file="res://_resources/models/model_textures/belt-texture.png"
+dest_files=["res://.godot/imported/belt-texture.png-f5d68da6d1b9acfadda9485ef006a89a.s3tc.ctex"]
 
 [params]
 

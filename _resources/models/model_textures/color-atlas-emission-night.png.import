@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2j5yc5rirsvr"
-path.s3tc="res://.godot/imported/lightrays-LPUP.png-4c8cd4672125ef733bca787c18530a19.s3tc.ctex"
+uid="uid://b2b38xerehf"
+path.s3tc="res://.godot/imported/color-atlas-emission-night.png-cb95818ad9237340b55a4d513278b6e0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_resources/textures/model_textures/lightrays-LPUP.png"
-dest_files=["res://.godot/imported/lightrays-LPUP.png-4c8cd4672125ef733bca787c18530a19.s3tc.ctex"]
+source_file="res://_resources/models/model_textures/color-atlas-emission-night.png"
+dest_files=["res://.godot/imported/color-atlas-emission-night.png-cb95818ad9237340b55a4d513278b6e0.s3tc.ctex"]
 
 [params]
 

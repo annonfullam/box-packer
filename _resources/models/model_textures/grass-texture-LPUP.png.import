@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2b38xerehf"
-path.s3tc="res://.godot/imported/color-atlas-emission-night.png-ca84523b4b43cf8857210e0d688cf1ac.s3tc.ctex"
+uid="uid://bsek0kc8ekdoo"
+path.s3tc="res://.godot/imported/grass-texture-LPUP.png-d336d93150f505054c0d5e7f2e762945.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_resources/textures/model_textures/color-atlas-emission-night.png"
-dest_files=["res://.godot/imported/color-atlas-emission-night.png-ca84523b4b43cf8857210e0d688cf1ac.s3tc.ctex"]
+source_file="res://_resources/models/model_textures/grass-texture-LPUP.png"
+dest_files=["res://.godot/imported/grass-texture-LPUP.png-d336d93150f505054c0d5e7f2e762945.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccjydp46dix4y"
-path.s3tc="res://.godot/imported/color-atlas-specular.png-5a14c90f578c1db3680a1f222f20cb97.s3tc.ctex"
+uid="uid://c2j5yc5rirsvr"
+path.s3tc="res://.godot/imported/lightrays-LPUP.png-d99fdf99aeea63e6fc65a75f7a60212a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_resources/textures/model_textures/color-atlas-specular.png"
-dest_files=["res://.godot/imported/color-atlas-specular.png-5a14c90f578c1db3680a1f222f20cb97.s3tc.ctex"]
+source_file="res://_resources/models/model_textures/lightrays-LPUP.png"
+dest_files=["res://.godot/imported/lightrays-LPUP.png-d99fdf99aeea63e6fc65a75f7a60212a.s3tc.ctex"]
 
 [params]
 
