@@ -1,6 +1,5 @@
-[gd_scene load_steps=65 format=4 uid="uid://drdi3po0qdvqy"]
+[gd_scene load_steps=59 format=4 uid="uid://drdi3po0qdvqy"]
 
-[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="1_arnns"]
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_jk72a"]
 [ext_resource type="Texture2D" uid="uid://ck8c3p0vn5hu0" path="res://_resources/textures/wood_texture.jpg" id="1_mkw6s"]
 [ext_resource type="PackedScene" uid="uid://bcw6kxldgdl5l" path="res://scenes/win_screen.tscn" id="2_kgy3l"]
@@ -10,9 +9,9 @@
 [ext_resource type="Script" path="res://_scripts/packables_manager.gd" id="6_cfjw2"]
 [ext_resource type="PackedScene" uid="uid://e54gqt0qmlbv" path="res://_resources/models/Factory/helmet-construction.fbx" id="7_mw4qh"]
 [ext_resource type="PackedScene" uid="uid://k3edrwv5ishw" path="res://_resources/models/Factory/caulking-gun.fbx" id="8_yi6i2"]
-[ext_resource type="Texture2D" uid="uid://bdjepydr7q1j" path="res://_resources/textures/model_textures/color-atlas-new2.png" id="9_cevcu"]
+[ext_resource type="Texture2D" uid="uid://bdjepydr7q1j" path="res://_resources/models/model_textures/color-atlas-new2.png" id="9_cevcu"]
 [ext_resource type="Texture2D" uid="uid://njd13puxyenr" path="res://_resources/textures/concrete_texture.jpg" id="10_0xdsq"]
-[ext_resource type="Texture2D" uid="uid://eyrofmhd5w2f" path="res://_resources/textures/model_textures/color-atlas-emission.png" id="10_dhkm0"]
+[ext_resource type="Texture2D" uid="uid://eyrofmhd5w2f" path="res://_resources/models/model_textures/color-atlas-emission.png" id="10_dhkm0"]
 [ext_resource type="Texture2D" uid="uid://cxkag6crqi440" path="res://_resources/textures/metal_plate_texture.jpg" id="11_6bxjk"]
 [ext_resource type="Texture2D" uid="uid://c6pihan2orcor" path="res://_resources/textures/plywood_texture.jpg" id="11_x50gb"]
 
@@ -90,7 +89,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bt8rt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2gb6"]
-size = Vector3(40, 18.731, 48.2967)
+size = Vector3(35.6924, 18.731, 48.2967)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic35l"]
 resource_name = "LOWPOLY-COLORS"
@@ -225,6 +224,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_spq1v")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_isl3b"]
+size = Vector3(0.528809, 0.361002, 0.62793)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uydpe"]
+size = Vector3(1.47955, 0.0561523, 0.551147)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6paj"]
 albedo_texture = ExtResource("11_x50gb")
 uv1_scale = Vector3(2, 2, 2)
@@ -250,7 +255,7 @@ albedo_texture = ExtResource("10_0xdsq")
 uv1_scale = Vector3(16, 16, 16)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2u84t"]
-size = Vector2(400, 400)
+size = Vector2(80, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhav8"]
 resource_name = "LOWPOLY-COLORS"
@@ -296,12 +301,12 @@ shadow_mesh = SubResource("ArrayMesh_7807g")
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvxbh"]
 size = Vector3(102, 50.6123, 2.771)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sof2u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pf43f"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.0392157)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_of5q3"]
-material = SubResource("StandardMaterial3D_sof2u")
+[sub_resource type="CylinderMesh" id="CylinderMesh_4o4g2"]
+material = SubResource("StandardMaterial3D_pf43f")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 20.0
@@ -310,60 +315,38 @@ rings = 0
 cap_top = false
 cap_bottom = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prx72"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stxmg"]
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.392157)
 
-[sub_resource type="TorusMesh" id="TorusMesh_snvig"]
-material = SubResource("StandardMaterial3D_prx72")
+[sub_resource type="TorusMesh" id="TorusMesh_nmtio"]
+material = SubResource("StandardMaterial3D_stxmg")
 inner_radius = 0.1
 outer_radius = 0.12
 rings = 16
 ring_segments = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imwh6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ivch"]
 transparency = 1
 albedo_color = Color(0, 0, 1, 0.392157)
 
-[sub_resource type="TorusMesh" id="TorusMesh_uwhev"]
-material = SubResource("StandardMaterial3D_imwh6")
+[sub_resource type="TorusMesh" id="TorusMesh_15jif"]
+material = SubResource("StandardMaterial3D_4ivch")
 inner_radius = 0.1
 outer_radius = 0.12
 rings = 16
 ring_segments = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhy3v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo182"]
 transparency = 1
 albedo_color = Color(0, 1, 0, 0.392157)
 
-[sub_resource type="TorusMesh" id="TorusMesh_a64mh"]
-material = SubResource("StandardMaterial3D_lhy3v")
+[sub_resource type="TorusMesh" id="TorusMesh_8jh0e"]
+material = SubResource("StandardMaterial3D_yo182")
 inner_radius = 0.1
 outer_radius = 0.12
 rings = 16
 ring_segments = 8
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yhqw3"]
-size = Vector3(2.01, 2.01, 2.01)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_a7r8c"]
-size = Vector3(1, 5, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x2vo1"]
-size = Vector3(1, 5, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vywpw"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lwybl"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tpfw6"]
-size = Vector3(5, 5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vxhup"]
-margin = 0.0
-size = Vector3(5, 5, 1)
 
 [node name="FactoryScene" type="Node3D"]
 
@@ -405,7 +388,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/In Bounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.11891, -12.536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742676, 4.11891, -12.536)
 shape = SubResource("BoxShape3D_l2gb6")
 
 [node name="Props" type="Node3D" parent="Scene Geometry"]
@@ -478,8 +461,27 @@ skeleton = NodePath("")
 [node name="cement-bag" parent="Scene Geometry/Props/storage-rack" instance=ExtResource("5_ilmux")]
 transform = Transform3D(-0.330881, 0, 0.578758, 0, 0.666667, 0, -0.578758, 0, -0.330881, -0.358629, 0.382555, 0.0414817)
 
-[node name="cement-bag2" parent="Scene Geometry/Props/storage-rack" instance=ExtResource("5_ilmux")]
-transform = Transform3D(0.104485, 0, 0.658427, 0, 0.666667, 0, -0.658427, 0, 0.104485, -0.358629, 0.50433, 0.0414817)
+[node name="StaticBody3D" type="StaticBody3D" parent="Scene Geometry/Props/storage-rack/cement-bag"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/Props/storage-rack/cement-bag/StaticBody3D"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1.00004, 0, 5.96046e-08, 0, 1, 0.0437009, 0.199179, -0.00537121)
+shape = SubResource("BoxShape3D_isl3b")
+
+[node name="cement-bag2" parent="Scene Geometry/Props/storage-rack/cement-bag" instance=ExtResource("5_ilmux")]
+transform = Transform3D(0.779622, 0, -0.62625, 0, 1, 0, 0.62625, 0, 0.779622, 0, 0.182662, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Scene Geometry/Props/storage-rack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/Props/storage-rack/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.00820921, 0.38079, 0.00116014)
+shape = SubResource("BoxShape3D_uydpe")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Scene Geometry/Props/storage-rack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.521762, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/Props/storage-rack/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.00820921, 0.38079, 0.00116014)
+shape = SubResource("BoxShape3D_uydpe")
 
 [node name="ToolBoard" type="MeshInstance3D" parent="Scene Geometry/Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.022, -11.5032)
@@ -523,7 +525,7 @@ mesh = SubResource("CylinderMesh_vb6kr")
 skeleton = NodePath("../../helmets")
 
 [node name="Floor" type="MeshInstance3D" parent="Scene Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.7408, -109.894)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.7408, 9.41268)
 material_override = SubResource("StandardMaterial3D_0tvco")
 mesh = SubResource("PlaneMesh_2u84t")
 
@@ -539,74 +541,35 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.6938, 0.13724)
 shape = SubResource("BoxShape3D_yvxbh")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("box_area", "fence_area", "packable_manager")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("packable_manager")]
 script = ExtResource("1_jk72a")
-box_area = NodePath("../Box/BoxArea")
-fence_area = NodePath("../Box/FenceArea")
 packable_manager = NodePath("../Packables_Manager")
 win_scene = ExtResource("2_kgy3l")
 
 [node name="InputHandler" type="Node" parent="GameManager"]
 script = ExtResource("3_gnaex")
-push_pull_sens = 70.0
+push_pull_sens = 100.0
 
 [node name="DropIndicator" type="MeshInstance3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115585, 0, -0.000808716)
 visible = false
-mesh = SubResource("CylinderMesh_of5q3")
+mesh = SubResource("CylinderMesh_4o4g2")
 skeleton = NodePath("../../Packables_Manager")
 
 [node name="RollAxisIndicator" type="MeshInstance3D" parent="GameManager"]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 12.7651, 0, 0)
 visible = false
-mesh = SubResource("TorusMesh_snvig")
+mesh = SubResource("TorusMesh_nmtio")
 
 [node name="PitchAxisIndicator" type="MeshInstance3D" parent="GameManager"]
 transform = Transform3D(-4.37114e-07, 10, -4.37114e-07, 0, -4.37114e-07, -10, -10, -4.37114e-07, 1.91069e-14, 12.7651, 0, 0)
 visible = false
-mesh = SubResource("TorusMesh_uwhev")
+mesh = SubResource("TorusMesh_15jif")
 
 [node name="YawAxisIndicator" type="MeshInstance3D" parent="GameManager"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 12.7651, 0, 0)
 visible = false
-mesh = SubResource("TorusMesh_a64mh")
-
-[node name="Box" parent="." instance=ExtResource("1_arnns")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.18613, 0)
-
-[node name="BoxArea" type="Area3D" parent="Box"]
-editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/BoxArea"]
-shape = SubResource("BoxShape3D_yhqw3")
-
-[node name="FenceArea" type="Area3D" parent="Box"]
-editor_description = "This is meant to surround BoxArea completely and be flush with it; this level is only complete if packables are colliding with BoxArea and not FenceArea."
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.110696, 0)
-
-[node name="x+" type="CollisionShape3D" parent="Box/FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01, 0, 0)
-shape = SubResource("BoxShape3D_a7r8c")
-
-[node name="x-" type="CollisionShape3D" parent="Box/FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01, 0, 0)
-shape = SubResource("BoxShape3D_x2vo1")
-
-[node name="y+" type="CollisionShape3D" parent="Box/FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01, 0)
-shape = SubResource("BoxShape3D_vywpw")
-
-[node name="y-" type="CollisionShape3D" parent="Box/FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01, 0)
-shape = SubResource("BoxShape3D_lwybl")
-
-[node name="z+" type="CollisionShape3D" parent="Box/FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.01)
-shape = SubResource("BoxShape3D_tpfw6")
-
-[node name="z-" type="CollisionShape3D" parent="Box/FenceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01)
-shape = SubResource("BoxShape3D_vxhup")
+mesh = SubResource("TorusMesh_8jh0e")
 
 [node name="Packables_Manager" type="Node3D" parent="." node_paths=PackedStringArray("in_bounds", "drop_spot_indicator", "pitch_indicator", "roll_indicator", "yaw_indicator")]
 script = ExtResource("6_cfjw2")

@@ -5,9 +5,8 @@ signal selected
 signal deselected
 
 @onready var collider: RigidBody3D = $".."
-@export var mesh_to_highlight: MeshInstance3D
 
-var orig_pos_and_rot: Dictionary
+var start_pos_and_rot: Dictionary
 
 func register_in_scene(manager: GameManager) -> void:
 	manager.box_area.body_entered.connect(func(body: Node3D):
@@ -27,25 +26,16 @@ func register_in_scene(manager: GameManager) -> void:
 
 
 func _ready() -> void:
-	#selected.connect(func(_unused: Dictionary):
-		#mesh_to_highlight.mesh.surface_get_material(0).next_pass =\
-		#Global.packable_highlight_shader)
-	#deselected.connect(func():
-		#mesh_to_highlight.mesh.surface_get_material(0).next_pass = null)
-		
-	orig_pos_and_rot = {
-		"position": collider.position,
-		"rotation": collider.rotation
-	}
 	collider.set_collision_layer_value(2, true) # raycasting
 
 
 func respawn() -> void:
+	# Why does it disable the collider's process?
 	var prev_process_type = collider.process_mode
 	collider.process_mode = Node.PROCESS_MODE_DISABLED
 	
-	collider.position = orig_pos_and_rot.position
-	collider.rotation = orig_pos_and_rot.rotation
+	collider.global_position = start_pos_and_rot.position
+	collider.global_rotation_degrees = start_pos_and_rot.rotation
 	collider.linear_velocity = Vector3(0,0,0)
 	collider.angular_velocity = Vector3(0,0,0)
 	

@@ -1,17 +1,23 @@
 extends Node
 class_name GameManager
 
-@export var box_area: Area3D
-@export var fence_area: Area3D
+@export var level: Level
 
 @export var packable_manager: Packables_Manager
 
 @export var win_scene: PackedScene
 var curr_win_scene: Node
 
+var box_area: Area3D
+var fence_area: Area3D
+
 func _ready():
-	#if Global.Kinematic_Box: box_area.get_parent().get_node("Rigidbody3D").freeze = false
-	pass
+	if level:
+		var area_array: Array[Area3D] = level.create_box(packable_manager)
+		box_area = area_array[0]
+		fence_area = area_array[1]
+	
+		level.populate_level(packable_manager)
 
 
 func check_all_in() -> void:

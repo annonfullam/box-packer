@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://sasgxyma4a7m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhqw3"]
+size = Vector3(2, 2, 2)
+
+[node name="BoxArea" type="Area3D"]
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yhqw3")

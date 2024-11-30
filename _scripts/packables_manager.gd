@@ -8,7 +8,6 @@ var packables: Array[Packable] = []
 
 @onready var game_manager: GameManager = $"../GameManager"
 
-
 func _ready() -> void:
 	for child in get_children():
 		var packable_component: Packable = child.get_node("Packable")

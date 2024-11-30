@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1j8evlwxutpp"]
+
+[ext_resource type="PackedScene" uid="uid://bq01wg8nbbeju" path="res://_resources/models/Factory/brick-concrete.fbx" id="1_i2sbb"]
+[ext_resource type="Script" path="res://_scripts/packable.gd" id="2_5fi7c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gb7h"]
+size = Vector3(2, 2, 4)
+
+[node name="GrayBrick" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_7gb7h")
+
+[node name="model" parent="." instance=ExtResource("1_i2sbb")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Packable" type="Node3D" parent="." node_paths=PackedStringArray("mesh_to_highlight")]
+script = ExtResource("2_5fi7c")
+mesh_to_highlight = NodePath("")

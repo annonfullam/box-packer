@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://d2rfivq27jwt2"]
+
+[ext_resource type="Script" path="res://_scripts/level.gd" id="1_hws5g"]
+
+[resource]
+script = ExtResource("1_hws5g")
+packables = {}
