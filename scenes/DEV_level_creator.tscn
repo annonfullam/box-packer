@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dopf284wn6wc5"]
+
+[ext_resource type="Script" path="res://_scripts/dev_level_creator.gd" id="1_dsrvq"]
+[ext_resource type="PackedScene" uid="uid://drdi3po0qdvqy" path="res://scenes/factory_scene.tscn" id="2_f2ndk"]
+
+[node name="DevLevelCreator" type="Node3D"]
+script = ExtResource("1_dsrvq")
+background_scene = ExtResource("2_f2ndk")
