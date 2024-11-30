@@ -11,6 +11,9 @@ var curr_win_scene: Node
 var box_area: Area3D
 var fence_area: Area3D
 
+signal level_won
+var count_time: bool = true
+
 func _ready():
 	if level:
 		var area_array: Array[Area3D] = level.create_box(packable_manager)
@@ -18,6 +21,10 @@ func _ready():
 		fence_area = area_array[1]
 	
 		level.populate_level(packable_manager)
+
+
+func _process(delta: float) -> void:
+	if count_time: Global.Level_Time += delta
 
 
 func check_all_in() -> void:
@@ -38,3 +45,5 @@ func complete_level():
 	owner.add_child(new_node)
 	curr_win_scene = new_node
 	
+	count_time = false
+	level_won.emit()

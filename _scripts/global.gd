@@ -21,7 +21,7 @@ func cursor_raycast() -> Dictionary:
 
 #region Global References
 var Input_Handler: InputHandler = null
-
+var Level_Time: float = 0
 
 #region Settings
 var Snap_Position: bool = false

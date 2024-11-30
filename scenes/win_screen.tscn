@@ -1,9 +1,243 @@
-[gd_scene format=3 uid="uid://bcw6kxldgdl5l"]
+[gd_scene load_steps=13 format=3 uid="uid://bcw6kxldgdl5l"]
 
-[node name="WinScreen" type="Node2D"]
+[ext_resource type="FontFile" uid="uid://dxegnalud4uec" path="res://_resources/fonts/commando_[allfont.net].ttf" id="1_sukgy"]
+[ext_resource type="Theme" uid="uid://dcdqp18uxr5af" path="res://_resources/fonts/button_theme.tres" id="2_chdpn"]
 
-[node name="Label" type="Label" parent="."]
-offset_right = 440.0
-offset_bottom = 235.0
-theme_override_font_sizes/font_size = 150
-text = "Level Won!!!"
+[sub_resource type="Animation" id="Animation_oobi7"]
+resource_name = "come_in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.6, 0.966667),
+"transitions": PackedFloat32Array(0.450625, 1.68179, 0.15932, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.1, 1), Vector2(0.9, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.766667, 1.16667),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/TimeLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9, 1.3),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.13333, 1.53333),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_80eal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4l7w"]
+_data = {
+"RESET": SubResource("Animation_80eal"),
+"come_in": SubResource("Animation_oobi7")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxrtu"]
+font = ExtResource("1_sukgy")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1835"]
+font = ExtResource("1_sukgy")
+font_size = 25
+
+[sub_resource type="GDScript" id="GDScript_ampee"]
+resource_name = "assign_time"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	text += \" \" + str(round(Global.Level_Time * 10) / 10) + \" seconds\"
+"
+
+[sub_resource type="GDScript" id="GDScript_oi2rd"]
+resource_name = "reply_func"
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	# Reload level
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_q708o"]
+resource_name = "main_menu_func"
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	# Main menu
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_nxy5r"]
+resource_name = "next_level_func"
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	# Next Level
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq7ha"]
+bg_color = Color(0.345098, 0.345098, 0.376471, 0.752941)
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h4l7w")
+}
+autoplay = "come_in"
+
+[node name="TitleLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -174.5
+offset_top = -275.0
+offset_right = 174.5
+offset_bottom = -231.0
+grow_horizontal = 2
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_vxrtu")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -195.0
+offset_right = 143.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Elapsed Time:"
+label_settings = SubResource("LabelSettings_c1835")
+script = SubResource("GDScript_ampee")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -244.49
+offset_top = 188.0
+offset_right = 244.49
+offset_bottom = 262.83
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_chdpn")
+text = "Retry Level"
+script = SubResource("GDScript_oi2rd")
+
+[node name="MainMenuButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_chdpn")
+text = "Main Menu"
+script = SubResource("GDScript_q708o")
+
+[node name="NextLevelButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_chdpn")
+text = "Next Level"
+script = SubResource("GDScript_nxy5r")
+
+[node name="Background" type="Panel" parent="."]
+z_index = -10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_uq7ha")
+
+[connection signal="pressed" from="HBoxContainer/RetryButton" to="HBoxContainer/RetryButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/MainMenuButton" to="HBoxContainer/MainMenuButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/NextLevelButton" to="HBoxContainer/NextLevelButton" method="_on_pressed"]

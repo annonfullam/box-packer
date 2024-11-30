@@ -1,6 +1,8 @@
 extends Resource
 class_name Level
 
+@export var box_size: Vector3 = Vector3.ONE
+@export var box_position: Vector3 = Vector3.ZERO
 
 @export var box_scene: PackedScene
 @export var box_area: PackedScene
@@ -21,12 +23,20 @@ func populate_level(parent: Node3D):
 
 
 func create_box(parent: Node3D) -> Array[Area3D]:
-	parent.owner.add_child(box_scene.instantiate())
-	var _box_area: Area3D = box_area.instantiate()
-	parent.owner.add_child(_box_area)
-	var _fence_area: Area3D = fence_area.instantiate()
+	var _box_scene: Node3D = box_scene.instantiate()
+	parent.owner.add_child.call_deferred(_box_scene)
+	_box_scene.global_scale(box_size)
+	_box_scene.position = box_position
 	
-	parent.owner.add_child(_fence_area)
+	var _box_area: Area3D = box_area.instantiate()
+	parent.owner.add_child.call_deferred(_box_area)
+	_box_area.global_scale(box_size + (Vector3.ONE * 0.05))
+	_box_area.position = box_position
+	
+	var _fence_area: Area3D = fence_area.instantiate()
+	parent.owner.add_child.call_deferred(_fence_area)
+	_fence_area.global_scale(box_size + (Vector3.ONE * 0.15))
+	_fence_area.position = box_position
 	
 	var result: Array[Area3D] = [_box_area, _fence_area]
 	return result

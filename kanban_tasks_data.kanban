@@ -10,7 +10,9 @@
 		{
 			"uuid": "55001b9f-948b-48f7-af44-bf5e736afb42",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"38514c62-21f6-4a12-a2e0-cd9c8e194d68"
+			]
 		},
 		{
 			"uuid": "b44d4bdc-6807-4d54-bfd7-96edec9605c1",
@@ -60,6 +62,13 @@
 		{
 			"uuid": "903e168a-36b1-4390-bcaa-736533fd18d0",
 			"title": "",
+			"description": "",
+			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
+			"steps": []
+		},
+		{
+			"uuid": "38514c62-21f6-4a12-a2e0-cd9c8e194d68",
+			"title": "Level manager",
 			"description": "",
 			"category": "9fce0b0c-67fa-4341-b90d-d9488f33355d",
 			"steps": []
