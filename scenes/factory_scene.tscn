@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://drdi3po0qdvqy"]
+[gd_scene load_steps=58 format=4 uid="uid://drdi3po0qdvqy"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_jk72a"]
 [ext_resource type="Texture2D" uid="uid://ck8c3p0vn5hu0" path="res://_resources/textures/wood_texture.jpg" id="1_mkw6s"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://eyrofmhd5w2f" path="res://_resources/models/model_textures/color-atlas-emission.png" id="10_dhkm0"]
 [ext_resource type="Texture2D" uid="uid://cxkag6crqi440" path="res://_resources/textures/metal_plate_texture.jpg" id="11_6bxjk"]
 [ext_resource type="Texture2D" uid="uid://c6pihan2orcor" path="res://_resources/textures/plywood_texture.jpg" id="11_x50gb"]
-[ext_resource type="Resource" uid="uid://cd08dl6m0w74n" path="res://scenes/levels/0-0.tres" id="12_ax15a"]
 
 [sub_resource type="Environment" id="Environment_dkdjr"]
 ambient_light_source = 2
@@ -40,6 +39,7 @@ size = Vector3(20, 1, 15)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t51hr"]
 albedo_color = Color(0.886262, 0.886261, 0.886262, 1)
 albedo_texture = ExtResource("1_mkw6s")
+uv1_scale = Vector3(1, 2.25, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_flpdu"]
 size = Vector3(20, 1, 15)
@@ -181,9 +181,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_upqui")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_n6o6n"]
-size = Vector3(1.1, 0.275391, 1.32849)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkbmc"]
 albedo_texture = ExtResource("9_cevcu")
@@ -395,7 +392,7 @@ shape = SubResource("BoxShape3D_l2gb6")
 [node name="Props" type="Node3D" parent="Scene Geometry"]
 
 [node name="case-tool" type="StaticBody3D" parent="Scene Geometry/Props"]
-transform = Transform3D(9.89848, 0, -1.42128, 0, 10, 0, 1.42128, 0, 9.89848, 0.801861, -3.21495, -9.76487)
+transform = Transform3D(9.89848, 0, -1.42128, 0, 10, 0, 1.42128, 0, 9.89848, 5.0371, -3.21495, -8.53768)
 
 [node name="case-tool" type="MeshInstance3D" parent="Scene Geometry/Props/case-tool"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0313431, 0)
@@ -414,7 +411,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31554, 0.219123, 0.0154777
 shape = SubResource("BoxShape3D_72aue")
 
 [node name="palette_stack" type="MeshInstance3D" parent="Scene Geometry/Props"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.3043, -10.8037, -1.9657)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.3043, -10.8037, -2.22067)
 material_override = SubResource("StandardMaterial3D_jnq8j")
 mesh = SubResource("ArrayMesh_86foj")
 skeleton = NodePath("")
@@ -425,21 +422,8 @@ material_override = SubResource("StandardMaterial3D_jnq8j")
 mesh = SubResource("ArrayMesh_86foj")
 skeleton = NodePath("")
 
-[node name="SidePalette" type="StaticBody3D" parent="Scene Geometry/Props"]
-transform = Transform3D(-3.62738, 9.31861, 0.0749631, 9.31888, 3.62746, 0.00356533, -0.0238702, 0.0711505, -9.99972, -13.9192, -5.63377, -2.69617)
-
-[node name="palette" type="MeshInstance3D" parent="Scene Geometry/Props/SidePalette"]
-transform = Transform3D(1, 3.33985e-08, 2.32831e-10, 3.34003e-08, 1, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_jnq8j")
-mesh = SubResource("ArrayMesh_86foj")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/Props/SidePalette"]
-transform = Transform3D(1, 6.32008e-08, 4.65661e-10, 3.34021e-08, 1, 0, 0, -9.31323e-10, 1, -2.04891e-08, 0.112304, 0.00311276)
-shape = SubResource("BoxShape3D_n6o6n")
-
 [node name="Table2" type="StaticBody3D" parent="Scene Geometry/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5372, -3.71495, -4.28565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9984, -4.00099, -4.28565)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Scene Geometry/Props/Table2"]
 shape = SubResource("BoxShape3D_dgso5")
@@ -486,7 +470,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.00820921, 0.38079, 
 shape = SubResource("BoxShape3D_uydpe")
 
 [node name="ToolBoard" type="MeshInstance3D" parent="Scene Geometry/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.022, -11.5032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3522, 4.022, -11.5032)
 material_override = SubResource("StandardMaterial3D_e6paj")
 mesh = SubResource("PlaneMesh_qvgfc")
 skeleton = NodePath("../../Wall")
@@ -545,7 +529,6 @@ shape = SubResource("BoxShape3D_yvxbh")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("packable_manager")]
 script = ExtResource("1_jk72a")
-level = ExtResource("12_ax15a")
 packable_manager = NodePath("../Packables_Manager")
 win_scene = ExtResource("2_kgy3l")
 

@@ -18,8 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
-Global="*res://_scripts/global.gd"
 RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
+SceneManager="*res://_scripts/globals/scene_manager.gd"
+GlobalReferences="*res://_scripts/globals/global_references.gd"
+Helpers="*res://_scripts/globals/helpers.gd"
 
 [display]
 

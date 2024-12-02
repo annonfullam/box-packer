@@ -13,8 +13,8 @@ var alt_axis_mode: bool
 
 func _ready() -> void:
 	# Sets self as input handler unless there already is one.
-	if Global.Input_Handler == null:
-		Global.Input_Handler = self
+	if GlobalReferences.Input_Handler == null:
+		GlobalReferences.Input_Handler = self
 	else:
 		queue_free()
 

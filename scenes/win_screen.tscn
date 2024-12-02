@@ -1,7 +1,80 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcw6kxldgdl5l"]
+[gd_scene load_steps=24 format=3 uid="uid://bcw6kxldgdl5l"]
 
 [ext_resource type="FontFile" uid="uid://dxegnalud4uec" path="res://_resources/fonts/commando_[allfont.net].ttf" id="1_sukgy"]
 [ext_resource type="Theme" uid="uid://dcdqp18uxr5af" path="res://_resources/fonts/button_theme.tres" id="2_chdpn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq7ha"]
+bg_color = Color(0.345098, 0.345098, 0.376471, 0.752941)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxrtu"]
+font = ExtResource("1_sukgy")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1835"]
+font = ExtResource("1_sukgy")
+font_size = 25
+
+[sub_resource type="GDScript" id="GDScript_ampee"]
+resource_name = "assign_time"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	text += \" \" + str(round(GlobalReferences.Level_Time * 10) / 10) + \" seconds\"
+"
+
+[sub_resource type="GDScript" id="GDScript_oi2rd"]
+resource_name = "reply_func"
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	# Reload level
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_nxy5r"]
+resource_name = "next_level_func"
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	# Next Level
+	pass
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x55pt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wudi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub35o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mjxwx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndcef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kv6nb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2etmv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yir6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3emn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13g63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knxfl"]
+
+[sub_resource type="GDScript" id="GDScript_q708o"]
+resource_name = "main_menu_func"
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	print(\"pressd\")
+	SceneManager.change_scene(\"main_menu\", true)
+"
 
 [sub_resource type="Animation" id="Animation_80eal"]
 length = 0.001
@@ -20,14 +93,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleLabel:modulate")
+tracks/1/path = NodePath("TitleLabel:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RetryButton:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NextLevelButton:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_oobi7"]
@@ -48,7 +145,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleLabel:modulate")
+tracks/1/path = NodePath("TitleLabel:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -60,7 +157,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/TimeLabel:modulate")
+tracks/2/path = NodePath("VBoxContainer/TimeLabel:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -72,12 +169,36 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HBoxContainer:modulate")
+tracks/3/path = NodePath("MainMenuButton:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.13333, 1.53333),
+"times": PackedFloat32Array(1.53333, 1.93333),
 "transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RetryButton:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.16667, 1.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NextLevelButton:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.33333, 1.73333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
@@ -87,57 +208,6 @@ _data = {
 "RESET": SubResource("Animation_80eal"),
 "come_in": SubResource("Animation_oobi7")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_vxrtu"]
-font = ExtResource("1_sukgy")
-font_size = 50
-
-[sub_resource type="LabelSettings" id="LabelSettings_c1835"]
-font = ExtResource("1_sukgy")
-font_size = 25
-
-[sub_resource type="GDScript" id="GDScript_ampee"]
-resource_name = "assign_time"
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	text += \" \" + str(round(Global.Level_Time * 10) / 10) + \" seconds\"
-"
-
-[sub_resource type="GDScript" id="GDScript_oi2rd"]
-resource_name = "reply_func"
-script/source = "extends Button
-
-
-func _on_pressed() -> void:
-	# Reload level
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_q708o"]
-resource_name = "main_menu_func"
-script/source = "extends Button
-
-
-func _on_pressed() -> void:
-	# Main menu
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_nxy5r"]
-resource_name = "next_level_func"
-script/source = "extends Button
-
-
-func _on_pressed() -> void:
-	# Next Level
-	pass
-"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq7ha"]
-bg_color = Color(0.345098, 0.345098, 0.376471, 0.752941)
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -149,14 +219,24 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_h4l7w")
-}
-autoplay = "come_in"
+[node name="Background" type="Panel" parent="."]
+z_index = -10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_uq7ha")
 
 [node name="TitleLabel" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = -174.5
 offset_top = -275.0
@@ -187,57 +267,80 @@ text = "Elapsed Time:"
 label_settings = SubResource("LabelSettings_c1835")
 script = SubResource("GDScript_ampee")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = -234.0
+offset_top = 148.0
+offset_right = -84.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_chdpn")
+text = "Retry"
+script = SubResource("GDScript_oi2rd")
+
+[node name="LevelSelectButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = -75.0
+offset_top = 148.0
+offset_right = 75.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_chdpn")
+text = "Level Select"
+script = SubResource("GDScript_nxy5r")
+
+[node name="NextLevelButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 84.0
+offset_top = 148.0
+offset_right = 234.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_chdpn")
+text = "Next Level"
+script = SubResource("GDScript_nxy5r")
+
+[node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -244.49
-offset_top = 188.0
-offset_right = 244.49
-offset_bottom = 262.83
+offset_left = -147.0
+offset_top = 216.0
+offset_right = 153.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="RetryButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
 theme = ExtResource("2_chdpn")
-text = "Retry Level"
-script = SubResource("GDScript_oi2rd")
-
-[node name="MainMenuButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_chdpn")
-text = "Main Menu"
+theme_override_colors/font_hover_color = Color(0.281187, 0.281187, 0.281187, 1)
+theme_override_colors/font_color = Color(0.18359, 0.183591, 0.18359, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x55pt")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7wudi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub35o")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mjxwx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ndcef")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_kv6nb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2etmv")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_yir6a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k3emn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_13g63")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_knxfl")
+text = "Return to main menu"
 script = SubResource("GDScript_q708o")
 
-[node name="NextLevelButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_chdpn")
-text = "Next Level"
-script = SubResource("GDScript_nxy5r")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h4l7w")
+}
+autoplay = "come_in"
 
-[node name="Background" type="Panel" parent="."]
-z_index = -10
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -300.0
-offset_right = 250.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(250, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_uq7ha")
-
-[connection signal="pressed" from="HBoxContainer/RetryButton" to="HBoxContainer/RetryButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/MainMenuButton" to="HBoxContainer/MainMenuButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/NextLevelButton" to="HBoxContainer/NextLevelButton" method="_on_pressed"]
+[connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelectButton" to="LevelSelectButton" method="_on_pressed"]
+[connection signal="pressed" from="NextLevelButton" to="NextLevelButton" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]

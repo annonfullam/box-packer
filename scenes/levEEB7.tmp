@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7paribay8guo"]
 
-[ext_resource type="Script" path="res://_scripts/level_select.gd" id="1_1k8qr"]
+[ext_resource type="Script" path="res://scenes/level_select.gd" id="1_1k8qr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sb4sj"]
 
@@ -53,46 +53,55 @@ layout_mode = 2
 text = "1-0"
 
 [node name="Button 1-1" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-1"
 
 [node name="Button 1-2" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-2"
 
 [node name="Button 1-3" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-3"
 
 [node name="Button 1-4" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-4"
 
 [node name="Button 1-5" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-5"
 
 [node name="Button 1-6" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-6"
 
 [node name="Button 1-7" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-7"
 
 [node name="Button 1-8" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-8"
 
 [node name="Button 1-9" type="Button" parent="VBoxContainer/World1"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "1-9"
