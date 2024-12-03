@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcw6kxldgdl5l"]
+[gd_scene load_steps=25 format=3 uid="uid://bcw6kxldgdl5l"]
 
 [ext_resource type="FontFile" uid="uid://dxegnalud4uec" path="res://_resources/fonts/commando_[allfont.net].ttf" id="1_sukgy"]
 [ext_resource type="Theme" uid="uid://dcdqp18uxr5af" path="res://_resources/fonts/button_theme.tres" id="2_chdpn"]
@@ -32,6 +32,16 @@ script/source = "extends Button
 func _on_pressed() -> void:
 	# Reload level
 	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_3b1t4"]
+resource_name = "level_select_func"
+script/source = "extends Button
+
+
+
+func _on_pressed() -> void:
+	SceneManager.change_scene(\"level_select\")
 "
 
 [sub_resource type="GDScript" id="GDScript_nxy5r"]
@@ -202,6 +212,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LevelSelectButton:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.26667, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4l7w"]
 _data = {
@@ -289,7 +311,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_chdpn")
 text = "Level Select"
-script = SubResource("GDScript_nxy5r")
+script = SubResource("GDScript_3b1t4")
 
 [node name="NextLevelButton" type="Button" parent="."]
 layout_mode = 2

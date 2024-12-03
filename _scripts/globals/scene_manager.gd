@@ -8,12 +8,10 @@ signal scene_change
 
 var current_scene: Node = null
 func _ready() -> void:
-	current_scene = get_tree().root.get_child(5)
-	
-	print(current_scene)
+	current_scene = get_tree().root.get_child(5) # This has to be the same number as the autoload scripts
 
 
-func change_scene(path: String, default_path: bool = false) -> Node:
+func change_scene(path: String, default_path: bool = true) -> Node:
 	load_start.emit()
 	
 	if default_path: path = "res://scenes/" + path + ".tscn"
