@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dxegnalud4uec"
-path="res://.godot/imported/commando_[allfont.net].ttf-fe54bd09a4d6ab8560541aa0fce5ed32.fontdata"
+uid="uid://dseoifk7fcmkk"
+path="res://.godot/imported/Roboto-Black.ttf-34e91d6f97f9d0d4470de0745ff1fbb9.fontdata"
 
 [deps]
 
-source_file="res://_resources/fonts/commando_[allfont.net].ttf"
-dest_files=["res://.godot/imported/commando_[allfont.net].ttf-fe54bd09a4d6ab8560541aa0fce5ed32.fontdata"]
+source_file="res://_resources/fonts/Roboto-Black.ttf"
+dest_files=["res://.godot/imported/Roboto-Black.ttf-34e91d6f97f9d0d4470de0745ff1fbb9.fontdata"]
 
 [params]
 

@@ -2,7 +2,7 @@ extends Node
 
 
 var Input_Handler: InputHandler = null
-var Level_Time: float = 0
+var Current_Level: Level = null
 
 
 #region Settings

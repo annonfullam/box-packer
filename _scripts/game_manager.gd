@@ -11,21 +11,33 @@ var fence_area: Area3D
 
 signal level_initialized
 signal level_won
-var count_time: bool = true
+var level: Level
+var count_time: bool = false
 
 
 func init_level(lvl: Level):
+	level = lvl
+	
 	var area_array: Array[Area3D] = lvl.create_box(packable_manager)
 	box_area = area_array[0]
 	fence_area = area_array[1]
 
-	lvl.populate_level(packable_manager)
+	GlobalReferences.Current_Level = level
+	level.populate_level(packable_manager)
 	
+
 	level_initialized.emit()
 
 
+func restart_level():
+	var new_scene: Node = SceneManager.change_scene(level.background_scene_name)
+	var game_manager: GameManager = new_scene.get_node("GameManager")
+	
+	game_manager.init_level(level)
+
+
 func _process(delta: float) -> void:
-	if count_time: GlobalReferences.Level_Time += delta
+	if count_time: level.time_to_beat += delta
 
 
 func check_all_in() -> void:
@@ -37,7 +49,7 @@ func check_all_in() -> void:
 	
 	complete_level()
 
-
+# This function might be better off in the actual level resource
 func complete_level():
 	if curr_win_scene:
 		return

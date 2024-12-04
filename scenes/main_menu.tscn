@@ -1,16 +1,122 @@
-[gd_scene format=3 uid="uid://xpk5qb8kc2lj"]
+[gd_scene load_steps=12 format=3 uid="uid://xpk5qb8kc2lj"]
 
-[node name="MainMenu" type="Control"]
+[ext_resource type="Script" path="res://_scripts/scene_functionality/main_menu.gd" id="1_ae5c4"]
+[ext_resource type="FontFile" uid="uid://dseoifk7fcmkk" path="res://_resources/fonts/Roboto-Black.ttf" id="2_yok51"]
+[ext_resource type="Theme" uid="uid://jq8h648bmy23" path="res://_resources/fonts/blank_button.tres" id="3_4lcxb"]
+[ext_resource type="Texture2D" uid="uid://cit6a6ynfge78" path="res://_resources/box_sprite.png" id="4_5iwax"]
+[ext_resource type="FontFile" uid="uid://dintgdp6unnqh" path="res://_resources/fonts/Roboto-Medium.ttf" id="4_bv2dp"]
+[ext_resource type="FontFile" uid="uid://nnxy0li7slof" path="res://_resources/fonts/Roboto-Regular.ttf" id="5_cmg8d"]
+[ext_resource type="Texture2D" uid="uid://i4to201ts2ku" path="res://_resources/red_arrow.png" id="5_hfoqy"]
+
+[sub_resource type="Gradient" id="Gradient_ktcak"]
+colors = PackedColorArray(0.544974, 0.544974, 0.544974, 1, 0.856067, 0.856067, 0.856067, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xcfkh"]
+gradient = SubResource("Gradient_ktcak")
+fill_from = Vector2(0, 0.115385)
+fill_to = Vector2(0.777778, 0.82906)
+
+[sub_resource type="LabelSettings" id="LabelSettings_edwsq"]
+font = ExtResource("2_yok51")
+font_size = 100
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_offset = Vector2(8, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbpdj"]
+line_spacing = 0.0
+font = ExtResource("5_cmg8d")
+font_size = 20
+font_color = Color(0.751978, 0.832618, 0.877704, 1)
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("credit_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ae5c4")
+credit_node = NodePath("Credits")
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.275488, 0.565305, 0.944591, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.009
+offset_left = -1.632
+offset_top = -8.0
+offset_right = 1162.0
+offset_bottom = 662.0
+texture = SubResource("GradientTexture2D_xcfkh")
+flip_h = true
+
+[node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(12.03, 12.03)
-text = "Main menu"
+offset_left = 204.0
+offset_top = 31.0
+offset_right = 1110.0
+offset_bottom = 184.0
+text = "POLY-PACKING"
+label_settings = SubResource("LabelSettings_edwsq")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BoxSprite" type="Sprite2D" parent="."]
+position = Vector2(818, 394)
+texture = ExtResource("4_5iwax")
+
+[node name="RedArrow" type="Sprite2D" parent="."]
+position = Vector2(521, 298)
+rotation = 0.239496
+scale = Vector2(0.123056, 0.123056)
+texture = ExtResource("5_hfoqy")
+
+[node name="Credits" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 585.0
+offset_top = 300.0
+offset_right = 1063.0
+offset_bottom = 557.0
+text = "A game by:
+Hyperrr!!! and Kyfex
+
+
+
+Special thanks to-
+
+PolyPerfect - Low Poly Ultimate Pack
+Quixel
+Giles Hodges - https://seamless-pixels.blogspot.com/"
+label_settings = SubResource("LabelSettings_kbpdj")
+horizontal_alignment = 2
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 289.0
+offset_right = 348.0
+offset_bottom = 624.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Play" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
+[node name="Credits" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "CREDITS"
+
+[node name="Exit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "EXIT"

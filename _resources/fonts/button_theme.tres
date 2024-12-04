@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dcdqp18uxr5af"]
 
-[ext_resource type="FontFile" uid="uid://dxegnalud4uec" path="res://_resources/fonts/commando_[allfont.net].ttf" id="1_67tv6"]
+[ext_resource type="FontFile" uid="uid://dseoifk7fcmkk" path="res://_resources/fonts/Roboto-Black.ttf" id="1_lqiu7"]
 
 [resource]
-default_font = ExtResource("1_67tv6")
+default_font = ExtResource("1_lqiu7")
 default_font_size = 24

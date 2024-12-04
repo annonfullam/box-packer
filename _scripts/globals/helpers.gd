@@ -14,3 +14,21 @@ func cursor_raycast() -> Dictionary:
 	ray.to = ray.from + camera.project_ray_normal(mouse_pos) * raycast_length
 	
 	return space_state.intersect_ray(ray)
+
+
+# I did not write this code. Copy+paste ftw
+func get_files_in_dir(path: String) -> Array:
+	var files: Array = []
+	var dir := DirAccess.open(path)
+	dir.list_dir_begin()
+
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif not file.begins_with("."):
+			files.append(file)
+
+	dir.list_dir_end()
+
+	return files

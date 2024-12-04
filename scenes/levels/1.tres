@@ -17,6 +17,7 @@ object_scene = ExtResource("5_byu04")
 script = ExtResource("2_hngr8")
 box_size = Vector3(1, 2, 1)
 box_position = Vector3(0, -1.5, 0)
+background_scene_name = "factory_scene"
 box_scene = ExtResource("2_d2df3")
 box_area = ExtResource("1_263lb")
 fence_area = ExtResource("3_v8mnk")

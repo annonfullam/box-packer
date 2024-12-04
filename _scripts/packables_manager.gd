@@ -71,6 +71,8 @@ func control_selection(delta: float):
 	if not current_selection or not selection_parent: # If there is no selection, just ignore all of this code.
 		return
 	
+	game_manager.count_time = true # Don't start the timer until the first selection is made
+	
 	input = GlobalReferences.Input_Handler
 	handle_indicators()
 	

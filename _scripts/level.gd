@@ -4,14 +4,18 @@ class_name Level
 @export var box_size: Vector3 = Vector3.ONE
 @export var box_position: Vector3 = Vector3.ZERO
 
+@export var background_scene_name: String
 @export var box_scene: PackedScene
 @export var box_area: PackedScene
 @export var fence_area: PackedScene
 
 @export var packables: Array[PackableContainer]
 
+var time_to_beat: float
 
-func populate_level(parent: Node3D):	
+func populate_level(parent: Node3D):
+	time_to_beat = 0
+	
 	for p in packables:
 		var node: Node3D = p.object_scene.instantiate()
 		var packable_node: Packable = node.find_child("Packable")

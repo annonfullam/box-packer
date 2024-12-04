@@ -1,58 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcw6kxldgdl5l"]
+[gd_scene load_steps=20 format=3 uid="uid://bcw6kxldgdl5l"]
 
-[ext_resource type="FontFile" uid="uid://dxegnalud4uec" path="res://_resources/fonts/commando_[allfont.net].ttf" id="1_sukgy"]
+[ext_resource type="Script" path="res://_scripts/scene_functionality/win_screen.gd" id="1_jtv10"]
 [ext_resource type="Theme" uid="uid://dcdqp18uxr5af" path="res://_resources/fonts/button_theme.tres" id="2_chdpn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq7ha"]
 bg_color = Color(0.345098, 0.345098, 0.376471, 0.752941)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vxrtu"]
-font = ExtResource("1_sukgy")
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1835"]
-font = ExtResource("1_sukgy")
 font_size = 25
-
-[sub_resource type="GDScript" id="GDScript_ampee"]
-resource_name = "assign_time"
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	text += \" \" + str(round(GlobalReferences.Level_Time * 10) / 10) + \" seconds\"
-"
-
-[sub_resource type="GDScript" id="GDScript_oi2rd"]
-resource_name = "reply_func"
-script/source = "extends Button
-
-
-func _on_pressed() -> void:
-	# Reload level
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_3b1t4"]
-resource_name = "level_select_func"
-script/source = "extends Button
-
-
-
-func _on_pressed() -> void:
-	SceneManager.change_scene(\"level_select\")
-"
-
-[sub_resource type="GDScript" id="GDScript_nxy5r"]
-resource_name = "next_level_func"
-script/source = "extends Button
-
-
-func _on_pressed() -> void:
-	# Next Level
-	pass
-"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x55pt"]
 
@@ -75,16 +33,6 @@ func _on_pressed() -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13g63"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knxfl"]
-
-[sub_resource type="GDScript" id="GDScript_q708o"]
-resource_name = "main_menu_func"
-script/source = "extends Button
-
-
-func _on_pressed() -> void:
-	print(\"pressd\")
-	SceneManager.change_scene(\"main_menu\", true)
-"
 
 [sub_resource type="Animation" id="Animation_80eal"]
 length = 0.001
@@ -167,7 +115,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/TimeLabel:self_modulate")
+tracks/2/path = NodePath("TimeLabel:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -240,6 +188,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jtv10")
 
 [node name="Background" type="Panel" parent="."]
 z_index = -10
@@ -269,25 +218,14 @@ text = "Level Complete"
 label_settings = SubResource("LabelSettings_vxrtu")
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 2
 offset_left = -206.0
 offset_top = -195.0
 offset_right = 143.0
-offset_bottom = -49.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TimeLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
+offset_bottom = -160.0
 text = "Elapsed Time:"
 label_settings = SubResource("LabelSettings_c1835")
-script = SubResource("GDScript_ampee")
 
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 2
@@ -299,7 +237,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_chdpn")
 text = "Retry"
-script = SubResource("GDScript_oi2rd")
 
 [node name="LevelSelectButton" type="Button" parent="."]
 layout_mode = 2
@@ -311,7 +248,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_chdpn")
 text = "Level Select"
-script = SubResource("GDScript_3b1t4")
 
 [node name="NextLevelButton" type="Button" parent="."]
 layout_mode = 2
@@ -323,7 +259,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_chdpn")
 text = "Next Level"
-script = SubResource("GDScript_nxy5r")
 
 [node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 1
@@ -354,15 +289,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_k3emn")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_13g63")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_knxfl")
 text = "Return to main menu"
-script = SubResource("GDScript_q708o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_h4l7w")
 }
 autoplay = "come_in"
-
-[connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]
-[connection signal="pressed" from="LevelSelectButton" to="LevelSelectButton" method="_on_pressed"]
-[connection signal="pressed" from="NextLevelButton" to="NextLevelButton" method="_on_pressed"]
-[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]
