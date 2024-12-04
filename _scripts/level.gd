@@ -1,9 +1,13 @@
 extends Resource
 class_name Level
 
+ ## MUST BE UNIQUE. Just make it the same as the file name
+@export var level_id: int
+
 @export var box_size: Vector3 = Vector3.ONE
 @export var box_position: Vector3 = Vector3.ZERO
 
+## This is the environment, or world, the level is in.
 @export var background_scene_name: String
 @export var box_scene: PackedScene
 @export var box_area: PackedScene

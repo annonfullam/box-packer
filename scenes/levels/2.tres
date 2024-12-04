@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Level" load_steps=10 format=3 uid="uid://bt81wudgnvohs"]
+
+[ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="1_6oj5t"]
+[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_665sy"]
+[ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="3_gwwvb"]
+[ext_resource type="Script" path="res://_scripts/packable_config.gd" id="4_fnyhh"]
+[ext_resource type="PackedScene" uid="uid://b8jw8icbwbgdv" path="res://prefabs/packable_objects/red_brick.tscn" id="5_4mmlp"]
+[ext_resource type="Script" path="res://_scripts/level.gd" id="6_kuop5"]
+[ext_resource type="PackedScene" uid="uid://chokr2k2cwdie" path="res://prefabs/packable_objects/paint_can.tscn" id="6_u34uw"]
+
+[sub_resource type="Resource" id="Resource_umod8"]
+script = ExtResource("4_fnyhh")
+start_position = Vector3(6.5, -2.5, 1.1)
+start_rotation = Vector3(90, 0, 0)
+object_scene = ExtResource("5_4mmlp")
+
+[sub_resource type="Resource" id="Resource_s1v74"]
+script = ExtResource("4_fnyhh")
+start_position = Vector3(0, 10, 0)
+start_rotation = Vector3(0, 0, 0)
+object_scene = ExtResource("6_u34uw")
+
+[resource]
+script = ExtResource("6_kuop5")
+level_id = 2
+box_size = Vector3(2, 2, 2)
+box_position = Vector3(0, -1.5, 0)
+background_scene_name = "factory_scene"
+box_scene = ExtResource("2_665sy")
+box_area = ExtResource("1_6oj5t")
+fence_area = ExtResource("3_gwwvb")
+packables = Array[ExtResource("4_fnyhh")]([SubResource("Resource_umod8"), SubResource("Resource_s1v74")])

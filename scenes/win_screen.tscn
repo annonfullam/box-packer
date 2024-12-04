@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bcw6kxldgdl5l"]
+[gd_scene load_steps=21 format=3 uid="uid://bcw6kxldgdl5l"]
 
 [ext_resource type="Script" path="res://_scripts/scene_functionality/win_screen.gd" id="1_jtv10"]
 [ext_resource type="Theme" uid="uid://dcdqp18uxr5af" path="res://_resources/fonts/button_theme.tres" id="2_chdpn"]
@@ -11,6 +11,9 @@ font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_c1835"]
 font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbnag"]
+bg_color = Color(0, 0, 0, 0.407843)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x55pt"]
 
@@ -258,6 +261,8 @@ offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_chdpn")
+theme_override_colors/font_disabled_color = Color(0.306923, 0.306923, 0.306923, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wbnag")
 text = "Next Level"
 
 [node name="MainMenuButton" type="Button" parent="."]

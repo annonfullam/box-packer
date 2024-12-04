@@ -16,3 +16,8 @@ var Snap_Rotation_Step: float = 15.0
 var Kinematic_Box: bool = true
 
 #endregion
+
+
+var LEVEL_COUNT: int
+func _ready() -> void:
+	LEVEL_COUNT = Helpers.get_files_in_dir("res://scenes/levels/").size()
