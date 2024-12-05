@@ -1,7 +1,6 @@
 extends Control
 class_name LevelSelect
 
-@onready var level_button: Button = $LevelButton
 @onready var right_button: Button = $RightButton
 @onready var left_button: Button = $LeftButton
 
@@ -13,7 +12,11 @@ var current_level_selection: int = 1
 func _ready() -> void:
 	right_button.connect("pressed", func(): change_level_selection(1))
 	left_button.connect("pressed", func(): change_level_selection(-1))
-	level_button.connect("pressed", go_to_level)
+	
+	$LevelButton.connect("pressed", go_to_level)
+	$MainMenuButton.connect("pressed", func(): 
+		hide()
+		get_parent().get_node("MainMenuUI").show())
 	
 	populate_tiles()
 	update_tiles()
@@ -31,8 +34,8 @@ func go_to_level():
 
 
 func change_level_selection(amt: int):
-	#if Input.is_action_pressed("shift"):
-		#amt *= 5
+	if Input.is_action_pressed("shift"):
+		amt *= 5
 	
 	current_level_selection += amt
 	current_level_selection = clamp(current_level_selection, 1, GlobalReferences.LEVEL_COUNT)
@@ -52,8 +55,12 @@ func hide_edge_arrows():
 	else:
 		right_button.show()
 
-# This is where an animation would be coded
-func update_tiles(): level_tiles.position.x = -400 * (current_level_selection - 1)
+
+func update_tiles(): 
+	var tween: Tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUINT)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(level_tiles, "position:x", -400 * (current_level_selection - 1), 0.2)
 
 
 func populate_tiles():

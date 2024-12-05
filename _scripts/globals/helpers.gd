@@ -32,3 +32,9 @@ func get_files_in_dir(path: String) -> Array:
 	dir.list_dir_end()
 
 	return files
+
+
+func add_scene_to_parent(parent: Node, child: PackedScene) -> Node:
+	var new_child: Node = child.instantiate()
+	parent.add_child(new_child)
+	return new_child

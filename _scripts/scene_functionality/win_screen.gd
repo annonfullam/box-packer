@@ -17,8 +17,13 @@ func _ready() -> void:
 	if game_manager.level.level_id + 1 > GlobalReferences.LEVEL_COUNT: next_level_button.disabled = true
 	
 	retry_button.connect("pressed", func(): if game_manager: game_manager.restart_level())
-	level_select_button.connect("pressed", func(): SceneManager.change_scene("level_select"))
+	
+	level_select_button.connect("pressed", func(): 
+		var main_menu: MainMenu = SceneManager.change_scene("main_menu").get_node("MainMenuUI")
+		main_menu.open_level_select())
+		
 	next_level_button.connect("pressed", func(): 
 		var new_scene: Node = SceneManager.change_scene(next_level.background_scene_name)
 		new_scene.get_node("GameManager").init_level(next_level))
+		
 	main_menu_button.connect("pressed", func(): SceneManager.change_scene("main_menu"))

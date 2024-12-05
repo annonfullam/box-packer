@@ -1,23 +1,40 @@
-[gd_scene load_steps=12 format=3 uid="uid://crh5t25n41rt8"]
+[gd_scene load_steps=14 format=3 uid="uid://crh5t25n41rt8"]
 
-[ext_resource type="Texture2D" uid="uid://bgq3t5d0ys1f3" path="res://_resources/textures/cardboard_texture.jpg" id="1_jgpji"]
+[ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/textures/cardboard/cardboard.tres" id="1_1e008"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
 size = Vector3(0.1, 2, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj70p"]
-albedo_texture = ExtResource("1_jgpji")
-
 [sub_resource type="BoxMesh" id="BoxMesh_gkqi3"]
 size = Vector3(0.05, 2, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bai5"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ssi1"]
+load_path = "res://.godot/imported/cardboard_albedo.jpg-bd9e1ab9db3b018fac36068a27fcd9c3.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_62uji"]
+load_path = "res://.godot/imported/cardboard_displacement.jpg-2a29f8192430d4f2f6d92137bae9a898.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw746"]
+load_path = "res://.godot/imported/cardboard_normal.jpg-4f08bec01349243609af2b4dc3647a4c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m536m"]
+load_path = "res://.godot/imported/cardboard_roughness.jpg-fd167be24aca80d793b3ee46ce62a8ff.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8xmd"]
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.392157)
-albedo_texture = ExtResource("1_jgpji")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.576471, 0.576471, 0.576471, 0.470588)
+albedo_texture = SubResource("CompressedTexture2D_7ssi1")
+roughness_texture = SubResource("CompressedTexture2D_m536m")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_iw746")
+heightmap_enabled = true
+heightmap_texture = SubResource("CompressedTexture2D_62uji")
+subsurf_scatter_strength = 0.77
 
 [sub_resource type="BoxMesh" id="BoxMesh_jxkdj"]
-material = SubResource("StandardMaterial3D_7bai5")
+material = SubResource("StandardMaterial3D_f8xmd")
 size = Vector3(0.05, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7i3m"]
@@ -25,9 +42,6 @@ size = Vector3(0.05, 2, 2)
 [sub_resource type="PlaneMesh" id="PlaneMesh_on26i"]
 material = SubResource("StandardMaterial3D_b7i3m")
 flip_faces = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrtcq"]
-albedo_texture = ExtResource("1_jgpji")
 
 [sub_resource type="BoxMesh" id="BoxMesh_8f2oc"]
 size = Vector3(0.04, 2, 2.05)
@@ -63,7 +77,7 @@ shape = SubResource("BoxShape3D_ppuxo")
 
 [node name="BackMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1)
-material_override = SubResource("StandardMaterial3D_dj70p")
+material_override = ExtResource("1_1e008")
 cast_shadow = 2
 mesh = SubResource("BoxMesh_gkqi3")
 skeleton = NodePath("")
@@ -82,18 +96,18 @@ skeleton = NodePath("")
 
 [node name="LeftMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 0)
-material_override = SubResource("StandardMaterial3D_lrtcq")
+material_override = ExtResource("1_1e008")
 mesh = SubResource("BoxMesh_8f2oc")
 skeleton = NodePath("")
 
 [node name="RightMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 0, 0)
-material_override = SubResource("StandardMaterial3D_lrtcq")
+material_override = ExtResource("1_1e008")
 mesh = SubResource("BoxMesh_8f2oc")
 skeleton = NodePath("")
 
 [node name="BottomMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1, 0)
-material_override = SubResource("StandardMaterial3D_lrtcq")
+material_override = ExtResource("1_1e008")
 mesh = SubResource("BoxMesh_7eqro")
 skeleton = NodePath("")

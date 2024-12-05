@@ -10,10 +10,11 @@ class_name MainMenu
 
 
 func _ready() -> void:
-	play.connect("pressed", play_button_pressed)
+	play.connect("pressed", open_level_select)
 	credits.connect("pressed", func(): if not credit_node.visible: credit_node.show() else: credit_node.hide())
 	exit.connect("pressed", func(): get_tree().quit())
 
 
-func play_button_pressed():
-	SceneManager.change_scene("level_select")
+func open_level_select():
+	Helpers.add_scene_to_parent(get_parent(), load("res://scenes/level_select.tscn"))
+	hide()

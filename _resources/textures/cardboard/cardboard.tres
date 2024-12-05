@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bn8pa67nnx5ee"]
+
+[ext_resource type="Texture2D" uid="uid://b5s07fa2yck0c" path="res://_resources/textures/cardboard/cardboard_albedo.jpg" id="1_oednl"]
+[ext_resource type="Texture2D" uid="uid://c6bcpxps5isvc" path="res://_resources/textures/cardboard/cardboard_displacement.jpg" id="2_oea4b"]
+[ext_resource type="Texture2D" uid="uid://diox8m1q1m5ta" path="res://_resources/textures/cardboard/cardboard_normal.jpg" id="3_isk3t"]
+[ext_resource type="Texture2D" uid="uid://doyr7tkff88pl" path="res://_resources/textures/cardboard/cardboard_roughness.jpg" id="4_2s1tl"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.796243, 0.796243, 0.796243, 1)
+albedo_texture = ExtResource("1_oednl")
+roughness_texture = ExtResource("4_2s1tl")
+normal_enabled = true
+normal_texture = ExtResource("3_isk3t")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_oea4b")
+subsurf_scatter_strength = 0.77
