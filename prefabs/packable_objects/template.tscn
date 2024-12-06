@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bql2vlnf8pi3j"]
+
+[ext_resource type="Script" path="res://_scripts/packable.gd" id="1_nw0mh"]
+
+[node name="PackableObject" type="RigidBody3D"]
+continuous_cd = true
+
+[node name="Packable" type="Node3D" parent="."]
+script = ExtResource("1_nw0mh")

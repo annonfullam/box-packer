@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://crh5t25n41rt8"]
 
-[ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/textures/cardboard/cardboard.tres" id="1_1e008"]
+[ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/materials and shaders/cardboard.tres" id="1_1e008"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppuxo"]
 size = Vector3(0.1, 2, 2)

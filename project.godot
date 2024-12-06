@@ -30,12 +30,13 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/runtime_debug_tools/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://_resources/": "orange",
+"res://_resources/models/": "red",
 "res://_scripts/": "green",
 "res://addons/": "gray",
 "res://prefabs/": "blue",

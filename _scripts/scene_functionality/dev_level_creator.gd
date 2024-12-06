@@ -31,7 +31,7 @@ var prev_vals: Dictionary = {
 	"box_area": box_area,
 	"box_fence": box_fence
 }
-func _process(delta):
+func _process(delta): 
 	if Engine.is_editor_hint():
 		# setting up signals
 		if prev_vals.background_scene_name != background_scene_name:
@@ -106,7 +106,8 @@ func _ready() -> void:
 		box.add_child(to_add)
 		to_add.owner = self
 		pass)
-		
+
+
 func export():
 	var to_return = '[gd_resource type="Resource" script_class="Level" format=3 uid="$SET_UID"]'
 	
@@ -114,4 +115,3 @@ func export():
 		func(v): v+ResourceUID.create_id()).reduce(
 		func(a,str): a+str, "")
 	return to_return
-		

@@ -9,7 +9,7 @@
 
 [node name="DevLevelCreator" type="Node3D"]
 script = ExtResource("1_dsrvq")
-level_id = 1
+level_id = 3
 box_model = ExtResource("2_ceo4m")
 box_area = ExtResource("3_d02nq")
 box_fence = ExtResource("4_23m2c")
