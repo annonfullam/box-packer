@@ -1,8 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dopf284wn6wc5"]
+[gd_scene load_steps=7 format=3 uid="uid://dopf284wn6wc5"]
 
 [ext_resource type="Script" path="res://_scripts/scene_functionality/dev_level_creator.gd" id="1_dsrvq"]
+[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_ceo4m"]
 [ext_resource type="PackedScene" uid="uid://drdi3po0qdvqy" path="res://scenes/factory_scene.tscn" id="2_f2ndk"]
+[ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="3_d02nq"]
+[ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="4_23m2c"]
+[ext_resource type="PackedScene" uid="uid://dd4haanth8is7" path="res://_resources/null_scene.tscn" id="5_2djad"]
 
 [node name="DevLevelCreator" type="Node3D"]
 script = ExtResource("1_dsrvq")
-background_scene = ExtResource("2_f2ndk")
+level_id = 1
+box_model = ExtResource("2_ceo4m")
+box_area = ExtResource("3_d02nq")
+box_fence = ExtResource("4_23m2c")
+metadata/_edit_lock_ = true
+
+[node name="BackgroundHolder" type="Node" parent="."]
+
+[node name="Factory" parent="BackgroundHolder" instance=ExtResource("2_f2ndk")]
+metadata/_edit_lock_ = true
+
+[node name="BoxModel" parent="." instance=ExtResource("5_2djad")]
+
+[node name="BoxArea" parent="BoxModel" instance=ExtResource("5_2djad")]
+metadata/_edit_lock_ = true
+
+[node name="BoxFence" parent="BoxModel" instance=ExtResource("5_2djad")]
+metadata/_edit_lock_ = true
+
+[node name="Packables" type="Node" parent="."]
