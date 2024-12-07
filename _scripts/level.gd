@@ -32,17 +32,19 @@ func populate_level(parent: Node3D):
 
 func create_box(parent: Node3D) -> Array[Area3D]:
 	var _box_scene: Node3D = box_scene.instantiate()
-	parent.owner.add_child.call_deferred(_box_scene)
-	_box_scene.global_scale(box_size)
-	_box_scene.position = box_position
+	parent.owner.add_child(_box_scene)
+	_box_scene.scale = box_size
+	_box_scene.global_position = box_position
+	
+	print(_box_scene.scale)
 	
 	var _box_area: Area3D = box_area.instantiate()
-	parent.owner.add_child.call_deferred(_box_area)
+	parent.owner.add_child(_box_area)
 	_box_area.global_scale(box_size + (Vector3.ONE * 0.05))
 	_box_area.position = box_position
 	
 	var _fence_area: Area3D = fence_area.instantiate()
-	parent.owner.add_child.call_deferred(_fence_area)
+	parent.owner.add_child(_fence_area)
 	_fence_area.global_scale(box_size + (Vector3.ONE * 0.15))
 	_fence_area.position = box_position
 	

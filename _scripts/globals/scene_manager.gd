@@ -16,6 +16,10 @@ func change_scene(path: String, default_path: bool = true) -> Node:
 	
 	if default_path: path = "res://scenes/" + path + ".tscn"
 	
+	if not FileAccess.file_exists(path):
+		print("Screw you, this scene does not exist in the file system")
+		return
+	
 	var new_scene: Node = load(path).instantiate()
 	get_tree().root.add_child(new_scene)
 	

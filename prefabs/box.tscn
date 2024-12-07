@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://crh5t25n41rt8"]
+[gd_scene load_steps=13 format=3 uid="uid://crh5t25n41rt8"]
 
 [ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/materials and shaders/cardboard.tres" id="1_1e008"]
 
@@ -8,33 +8,27 @@ size = Vector3(0.1, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_gkqi3"]
 size = Vector3(0.05, 2, 2)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ssi1"]
-load_path = "res://.godot/imported/cardboard_albedo.jpg-bd9e1ab9db3b018fac36068a27fcd9c3.s3tc.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5wqtx"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_62uji"]
-load_path = "res://.godot/imported/cardboard_displacement.jpg-2a29f8192430d4f2f6d92137bae9a898.s3tc.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33q85"]
+load_path = "res://.godot/imported/cardboard_normal.jpg-255c1c0caef690e7d6abb7e6d6ef6710.s3tc.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iw746"]
-load_path = "res://.godot/imported/cardboard_normal.jpg-4f08bec01349243609af2b4dc3647a4c.s3tc.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dyq02"]
+load_path = "res://.godot/imported/cardboard_roughness.jpg-896a34fda39e099518950879cca20cd2.s3tc.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m536m"]
-load_path = "res://.godot/imported/cardboard_roughness.jpg-fd167be24aca80d793b3ee46ce62a8ff.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8xmd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kq08m"]
 transparency = 1
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.576471, 0.576471, 0.576471, 0.470588)
-albedo_texture = SubResource("CompressedTexture2D_7ssi1")
-roughness_texture = SubResource("CompressedTexture2D_m536m")
+albedo_color = Color(0.54, 0.40068, 0.3078, 0.588235)
+roughness_texture = SubResource("CompressedTexture2D_dyq02")
 normal_enabled = true
-normal_texture = SubResource("CompressedTexture2D_iw746")
-heightmap_enabled = true
-heightmap_texture = SubResource("CompressedTexture2D_62uji")
+normal_texture = SubResource("CompressedTexture2D_33q85")
+heightmap_texture = SubResource("CompressedTexture2D_5wqtx")
 subsurf_scatter_strength = 0.77
 
-[sub_resource type="BoxMesh" id="BoxMesh_jxkdj"]
-material = SubResource("StandardMaterial3D_f8xmd")
+[sub_resource type="BoxMesh" id="BoxMesh_07jnp"]
+material = SubResource("StandardMaterial3D_kq08m")
 size = Vector3(0.05, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7i3m"]
@@ -85,7 +79,7 @@ skeleton = NodePath("")
 [node name="FrontMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1)
 cast_shadow = 2
-mesh = SubResource("BoxMesh_jxkdj")
+mesh = SubResource("BoxMesh_07jnp")
 skeleton = NodePath("")
 
 [node name="ShadowCaster" type="MeshInstance3D" parent="FrontMesh"]

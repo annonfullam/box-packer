@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj1266xbc8pdp"]
+
+[ext_resource type="Script" path="res://_scripts/scene_functionality/pause_menu.gd" id="1_q6uda"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uuyab"]
+font_size = 306
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q6uda")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1076.0
+offset_bottom = 418.0
+text = "Paused
+"
+label_settings = SubResource("LabelSettings_uuyab")
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 411.0
+offset_right = 870.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 91
+text = "Main Menu
+"
