@@ -14,11 +14,13 @@ class_name Level
 @export var fence_area: PackedScene
 
 @export var packables: Array[PackableContainer]
+ 
+var time: float = 0
+var best_time: float
 
-var time_to_beat: float
 
 func populate_level(parent: Node3D):
-	time_to_beat = 0
+	best_time = 0
 	
 	for p in packables:
 		var node: Node3D = p.object_scene.instantiate()
@@ -35,8 +37,6 @@ func create_box(parent: Node3D) -> Array[Area3D]:
 	parent.owner.add_child(_box_scene)
 	_box_scene.scale = box_size
 	_box_scene.global_position = box_position
-	
-	print(_box_scene.scale)
 	
 	var _box_area: Area3D = box_area.instantiate()
 	parent.owner.add_child(_box_area)

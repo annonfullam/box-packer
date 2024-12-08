@@ -45,11 +45,13 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	control_selection(delta)
 
+
 var hit_position: Vector3
 func start_selection():
 	selection_parent = current_selection.get_parent() # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
 	
 	drop_spot_indicator.show()
+
 
 func end_selection():
 	selection_parent.gravity_scale = 1

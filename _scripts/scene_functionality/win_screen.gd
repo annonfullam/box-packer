@@ -7,9 +7,8 @@ extends Control
 @onready var next_level_button: Button = $NextLevelButton
 @onready var main_menu_button: Button = $MainMenuButton
 
-
 func _ready() -> void:
-	time_label.text += " " + str(round(GlobalReferences.Current_Level.time_to_beat * 100) / 100) + " seconds"
+	time_label.text += " " + str(round(GlobalReferences.Current_Level.time * 100) / 100) + " seconds"
 	
 	var game_manager: GameManager = get_parent().find_child("GameManager")
 	var next_level: Level = load("res://scenes/levels/" + str(game_manager.level.level_id + 1) + ".tres")

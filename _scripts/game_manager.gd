@@ -6,7 +6,6 @@ class_name GameManager
 @export var win_scene: PackedScene
 var curr_win_scene: Node
 
-const pause_menu: PackedScene = preload("res://scenes/pause_menu.tscn")
 
 var box_area: Area3D
 var fence_area: Area3D
@@ -15,7 +14,6 @@ signal level_initialized
 signal level_won
 
 var level: Level
-var count_time: bool = false
 
 
 func init_level(lvl: Level):
@@ -28,8 +26,11 @@ func init_level(lvl: Level):
 	GlobalReferences.Current_Level = level
 	level.populate_level(packable_manager)
 	
-
 	level_initialized.emit()
+
+var count_time: bool = false
+func _process(delta: float) -> void:
+	if count_time: level.time += delta
 
 
 func restart_level():
@@ -37,22 +38,6 @@ func restart_level():
 	var game_manager: GameManager = new_scene.get_node("GameManager")
 	
 	game_manager.init_level(level)
-
-var current_pause_menu: Control
-func _process(delta: float) -> void:
-	if count_time: level.time_to_beat += delta
-	
-	# Pause menu but jerry rigged
-	if Input.is_action_just_pressed("escape"):
-		if current_pause_menu and current_pause_menu.visible: 
-			queue_free()
-			return
-		var npause_menu: Control = pause_menu.instantiate()
-		add_child(npause_menu)
-		
-		current_pause_menu = npause_menu
-		npause_menu.show()
-
 
 
 func check_all_in() -> void:
