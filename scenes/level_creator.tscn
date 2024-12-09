@@ -1,31 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://dopf284wn6wc5"]
+[gd_scene load_steps=5 format=3 uid="uid://dopf284wn6wc5"]
 
 [ext_resource type="Script" path="res://_scripts/scene_functionality/level_creator.gd" id="1_wmdul"]
 [ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_j7prs"]
 [ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="3_70oqw"]
 [ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="4_ekfrf"]
-[ext_resource type="PackedScene" uid="uid://drdi3po0qdvqy" path="res://scenes/factory_scene.tscn" id="5_qtu7u"]
-[ext_resource type="PackedScene" uid="uid://cgmw1kqt07lgu" path="res://prefabs/packable_objects/hotdog.tscn" id="6_nqjm3"]
 
 [node name="LevelCreator" type="Node3D"]
 script = ExtResource("1_wmdul")
-level_id = 3
-background_scene_name = "factory_scene"
+level_id = 4
+btn_info_refresh_background = null
 box_model = ExtResource("2_j7prs")
 box_area = ExtResource("3_70oqw")
-fence_area = ExtResource("4_ekfrf")
-btn_info_export = null
+box_fence = ExtResource("4_ekfrf")
+btn_import = null
+btn_export = null
+btn_start_new_level = null
+btn_refresh_box = null
+btn_clear_packables = null
 metadata/_edit_lock_ = true
 
-[node name="FactoryScene" parent="." instance=ExtResource("5_qtu7u")]
+[node name="BackgroundContainer" type="Node" parent="."]
 
 [node name="Packables" type="Node" parent="."]
 
-[node name="Hotdog" parent="Packables" instance=ExtResource("6_nqjm3")]
-transform = Transform3D(0.786935, 0, -0.617036, 0, 1, 0, 0.617036, 0, 0.786935, 3.06161, -3.11989, -0.51613)
-
 [node name="BoxModel" type="Node3D" parent="." instance=ExtResource("2_j7prs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47968, 0)
 
 [node name="BoxArea" type="Area3D" parent="BoxModel" instance=ExtResource("3_70oqw")]
 editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
