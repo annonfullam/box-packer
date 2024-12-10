@@ -6,6 +6,7 @@ class_name Level
 
 @export var box_size: Vector3 = Vector3.ONE
 @export var box_position: Vector3 = Vector3.ZERO
+@export var box_rotation: Vector3 = Vector3.ZERO
 
 ## This is the environment, or world, the level is in.
 @export var background_scene_name: String
@@ -36,7 +37,6 @@ func create_box(parent: Node3D) -> Array[Area3D]:
 	var _box_scene: Node3D = box_scene.instantiate()
 	parent.owner.add_child(_box_scene)
 	_box_scene.scale = box_size
-	_box_scene.global_position = box_position
 	
 	var _box_area: Area3D = box_area.instantiate()
 	parent.owner.add_child(_box_area)
@@ -47,6 +47,9 @@ func create_box(parent: Node3D) -> Array[Area3D]:
 	parent.owner.add_child(_fence_area)
 	_fence_area.global_scale(box_size + (Vector3.ONE * 0.15))
 	_fence_area.position = box_position
+	
+	_box_scene.global_position = box_position
+	_box_scene.global_rotation = box_rotation
 	
 	var result: Array[Area3D] = [_box_area, _fence_area]
 	return result

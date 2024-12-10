@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crh5t25n41rt8"]
+[gd_scene load_steps=11 format=3 uid="uid://crh5t25n41rt8"]
 
 [ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/materials and shaders/cardboard.tres" id="1_1e008"]
 
@@ -17,7 +17,7 @@ load_path = "res://.godot/imported/cardboard_normal.jpg-255c1c0caef690e7d6abb7e6
 load_path = "res://.godot/imported/cardboard_roughness.jpg-896a34fda39e099518950879cca20cd2.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kq08m"]
-transparency = 1
+transparency = 4
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.54, 0.40068, 0.3078, 0.588235)
@@ -26,16 +26,11 @@ normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_33q85")
 heightmap_texture = SubResource("CompressedTexture2D_5wqtx")
 subsurf_scatter_strength = 0.77
+grow_amount = 0.19
 
 [sub_resource type="BoxMesh" id="BoxMesh_07jnp"]
 material = SubResource("StandardMaterial3D_kq08m")
 size = Vector3(0.05, 2, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7i3m"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_on26i"]
-material = SubResource("StandardMaterial3D_b7i3m")
-flip_faces = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_8f2oc"]
 size = Vector3(0.04, 2, 2.05)
@@ -78,14 +73,7 @@ skeleton = NodePath("")
 
 [node name="FrontMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1)
-cast_shadow = 2
 mesh = SubResource("BoxMesh_07jnp")
-skeleton = NodePath("")
-
-[node name="ShadowCaster" type="MeshInstance3D" parent="FrontMesh"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
-cast_shadow = 3
-mesh = SubResource("PlaneMesh_on26i")
 skeleton = NodePath("")
 
 [node name="LeftMesh" type="MeshInstance3D" parent="."]

@@ -12,7 +12,7 @@ var yaw_axis: float
 var alt_axis_mode: bool
 
 func _ready() -> void:
-	GlobalReferences.Input_Handler = self
+	GlobalReferences.input_handler = self
 
 
 func _process(delta: float) -> void:

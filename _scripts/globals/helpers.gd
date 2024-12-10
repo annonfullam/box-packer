@@ -38,3 +38,13 @@ func add_scene_to_parent(parent: Node, child: PackedScene) -> Node:
 	var new_child: Node = child.instantiate()
 	parent.add_child(new_child)
 	return new_child
+
+func get_autoload_count() -> int:
+	var count: int = 0
+	for autoload in get_tree().root.get_children():
+		count += 1
+		if autoload.name == "DummyAutoload":
+			return count
+	
+	print("There is no dummy autoload. This will create issues!")
+	return -1 # if it gets to here there is an error

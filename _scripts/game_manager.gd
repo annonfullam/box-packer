@@ -3,10 +3,6 @@ class_name GameManager
 
 @export var packable_manager: Packables_Manager
 
-@export var win_scene: PackedScene
-var curr_win_scene: Node
-
-
 var box_area: Area3D
 var fence_area: Area3D
 
@@ -15,6 +11,9 @@ signal level_won
 
 var level: Level
 
+const win_scene: PackedScene = preload("res://scenes/win_screen.tscn")
+var curr_win_scene: Node = null
+const pause_menu: PackedScene = preload("res://scenes/pause_menu.tscn")
 
 func init_level(lvl: Level):
 	level = lvl
@@ -23,7 +22,7 @@ func init_level(lvl: Level):
 	box_area = area_array[0]
 	fence_area = area_array[1]
 
-	GlobalReferences.Current_Level = level
+	GlobalReferences.current_level = level
 	level.populate_level(packable_manager)
 	
 	level_initialized.emit()
@@ -31,6 +30,10 @@ func init_level(lvl: Level):
 var count_time: bool = false
 func _process(delta: float) -> void:
 	if count_time: level.time += delta
+	
+	if Input.is_action_just_pressed("pause"): 
+		Helpers.add_scene_to_parent(self, pause_menu)
+		get_tree().paused = true
 
 
 func restart_level():

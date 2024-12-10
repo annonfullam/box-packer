@@ -75,16 +75,16 @@ func control_selection(delta: float):
 	
 	game_manager.count_time = true # Don't start the timer until the first selection is made
 	
-	input = GlobalReferences.Input_Handler
+	input = GlobalReferences.input_handler
 	handle_indicators()
 	
 
-	if GlobalReferences.Snap_Rotation: control_snap_rotation(delta)
+	if Settings.snap_rotation: control_snap_rotation(delta)
 	else: control_rotation(delta)
 	
 
 	var desired_position: Vector3 = plane_raycast(Vector3.FORWARD) if not input.alt_axis_mode else plane_raycast(Vector3.UP)
-	if GlobalReferences.Snap_Position: desired_position = round(desired_position * GlobalReferences.Snap_Position_Step) / GlobalReferences.Snap_Position_Step # Snap position to grid
+	if Settings.snap_position: desired_position = round(desired_position * Settings.snap_position_step) / Settings.snap_position_step # Snap position to grid
 	
 	selection_parent.gravity_scale = 0 if input.alt_axis_mode else 1 # The object will slowly fall if gravity isn't disabled without changing the y position
 	selection_parent.linear_velocity = (desired_position - selection_parent.position) * input.position_sens * delta # Apply velocity to move to the right position
@@ -108,7 +108,7 @@ func control_snap_rotation(delta: float):
 		if input_vector.length() != 0:
 			rotate_request = true
 			if desired_rotation == Vector3.INF: # If desired_rotation hasn't been already set
-				desired_rotation = selection_parent.rotation + input_vector * deg_to_rad(GlobalReferences.Snap_Rotation_Step)
+				desired_rotation = selection_parent.rotation + input_vector * deg_to_rad(Settings.snap_rotation_step)
 				desired_rotation = round(desired_rotation * 100) / 100
 	else:
 		

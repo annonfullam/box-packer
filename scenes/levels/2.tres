@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=53 format=4 uid="uid://bhrxko6e0redf"]
+[gd_resource type="Resource" script_class="Level" load_steps=33 format=4 uid="uid://b6v78qbq8bsc2"]
 
 [ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="1_8mrxu"]
 [ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_dsh6j"]
@@ -54,393 +54,204 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uug5a")
 
-[sub_resource type="PackedScene" id="PackedScene_tvd41"]
+[sub_resource type="PackedScene" id="PackedScene_gc325"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "script"),
 "node_count": 5,
 "node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 5.12947, -3.1229, -0.566909), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 0, -1, 1, 12, 7, 0),
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 3.57155, -3.1229, -0.338376), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_scghg"]
+[sub_resource type="Resource" id="Resource_iq0ev"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(5.12947, -3.1229, -0.566909)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_tvd41")
+start_position = Vector3(3.57155, -3.1229, -0.338376)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_gc325")
 
-[sub_resource type="PackedScene" id="PackedScene_d2jtv"]
+[sub_resource type="PackedScene" id="PackedScene_cj2yk"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick2", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable1", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 6.39191, -3.1229, -0.417377), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 4.83682, -3.1229, -0.215072), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_nfa2n"]
+[sub_resource type="Resource" id="Resource_u2okh"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(6.39191, -3.1229, -0.417377)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_d2jtv")
+start_position = Vector3(4.83682, -3.1229, -0.215072)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_cj2yk")
 
-[sub_resource type="PackedScene" id="PackedScene_nuxra"]
+[sub_resource type="PackedScene" id="PackedScene_upvxi"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick3", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable2", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 7.6442, -3.1229, -0.269048), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 6.09192, -3.1229, -0.092761), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_6ood6"]
+[sub_resource type="Resource" id="Resource_55vej"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(7.6442, -3.1229, -0.269048)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_nuxra")
+start_position = Vector3(6.09192, -3.1229, -0.092761)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_upvxi")
 
-[sub_resource type="PackedScene" id="PackedScene_2dj6s"]
+[sub_resource type="PackedScene" id="PackedScene_ws77k"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick4", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable3", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 8.89003, -3.1229, -0.121484), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 7.34055, -3.1229, 0.0289196), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_20yp3"]
+[sub_resource type="Resource" id="Resource_3wrsr"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(8.89003, -3.1229, -0.121484)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_2dj6s")
+start_position = Vector3(7.34055, -3.1229, 0.0289196)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_ws77k")
 
-[sub_resource type="PackedScene" id="PackedScene_jaese"]
+[sub_resource type="PackedScene" id="PackedScene_tatdl"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick5", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable4", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 8.16386, -2.4129, -0.207496), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 6.61275, -2.4129, -0.0420055), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_xxbby"]
+[sub_resource type="Resource" id="Resource_fe8fc"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(8.16386, -2.4129, -0.207496)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_jaese")
+start_position = Vector3(6.61275, -2.4129, -0.0420055)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_tatdl")
 
-[sub_resource type="PackedScene" id="PackedScene_pk67p"]
+[sub_resource type="PackedScene" id="PackedScene_6flb5"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick6", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable5", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 6.95493, -2.4129, -0.350689), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 5.40111, -2.4129, -0.160082), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_btavk"]
+[sub_resource type="Resource" id="Resource_kbplb"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(6.95493, -2.4129, -0.350689)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_pk67p")
+start_position = Vector3(5.40111, -2.4129, -0.160082)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_6flb5")
 
-[sub_resource type="PackedScene" id="PackedScene_4e17g"]
+[sub_resource type="PackedScene" id="PackedScene_pti3b"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick7", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable6", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 5.69922, -2.4129, -0.499423), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 4.14258, -2.4129, -0.282727), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_ojs2e"]
+[sub_resource type="Resource" id="Resource_ggoba"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(5.69922, -2.4129, -0.499423)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_4e17g")
+start_position = Vector3(4.14258, -2.4129, -0.282727)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_pti3b")
 
-[sub_resource type="PackedScene" id="PackedScene_edvoj"]
+[sub_resource type="PackedScene" id="PackedScene_7el3h"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick8", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable7", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 6.39379, -1.7029, -0.417154), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 4.83871, -1.7029, -0.214889), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_4lntc"]
+[sub_resource type="Resource" id="Resource_c5y87"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(6.39379, -1.7029, -0.417154)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_edvoj")
+start_position = Vector3(4.83871, -1.7029, -0.214889)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_7el3h")
 
-[sub_resource type="PackedScene" id="PackedScene_730ja"]
+[sub_resource type="PackedScene" id="PackedScene_3bdul"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick9", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable8", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 7.5916, -1.7029, -0.275278), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 6.0392, -1.7029, -0.0978982), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_qwlsb"]
+[sub_resource type="Resource" id="Resource_rmgvq"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(7.5916, -1.7029, -0.275278)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_730ja")
+start_position = Vector3(6.0392, -1.7029, -0.0978982)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_3bdul")
 
-[sub_resource type="PackedScene" id="PackedScene_bmay3"]
+[sub_resource type="PackedScene" id="PackedScene_c6317"]
 _bundled = {
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"names": PackedStringArray("RedBrick10", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
+"names": PackedStringArray("Packable9", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
 "node_count": 5,
 "node_paths": [],
 "nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.993058, 0, -0.117624, 0, 1, 0, 0.117624, 0, 0.993058, 6.98547, -0.9929, -0.347073), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
+"variants": [Transform3D(0.995285, 0, -0.0969923, 0, 1, 0, 0.0969923, 0, 0.995285, 5.43172, -0.9929, -0.1571), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_nu1dm"]
+[sub_resource type="Resource" id="Resource_0bm3h"]
 script = ExtResource("4_pkslb")
-start_position = Vector3(6.98547, -0.9929, -0.347073)
-start_rotation = Vector3(0, -0.117897, 0)
-object_scene = SubResource("PackedScene_bmay3")
-
-[sub_resource type="PackedScene" id="PackedScene_t6tji"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick11", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.86783, -3.1229, 1.47857), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_1bulw"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.86783, -3.1229, 1.47857)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_t6tji")
-
-[sub_resource type="PackedScene" id="PackedScene_k5rx2"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick12", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.59917, -3.1229, 0.236009), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_jodff"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.59917, -3.1229, 0.236009)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_k5rx2")
-
-[sub_resource type="PackedScene" id="PackedScene_vfy6t"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick13", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.33268, -3.1229, -0.99655), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_vkaf6"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.33268, -3.1229, -0.99655)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_vfy6t")
-
-[sub_resource type="PackedScene" id="PackedScene_5g6es"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick14", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.06757, -3.1229, -2.22276), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_yfx52"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.06757, -3.1229, -2.22276)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_5g6es")
-
-[sub_resource type="PackedScene" id="PackedScene_etyat"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick15", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.2221, -2.4129, -1.50803), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_tbklb"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.2221, -2.4129, -1.50803)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_etyat")
-
-[sub_resource type="PackedScene" id="PackedScene_gviks"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick16", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.47936, -2.4129, -0.318143), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_tycnq"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.47936, -2.4129, -0.318143)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_gviks")
-
-[sub_resource type="PackedScene" id="PackedScene_yoqpw"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick17", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.74658, -2.4129, 0.917789), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_twkid"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.74658, -2.4129, 0.917789)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_yoqpw")
-
-[sub_resource type="PackedScene" id="PackedScene_bc0sn"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick18", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.59877, -1.7029, 0.23416), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_etf08"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.59877, -1.7029, 0.23416)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_bc0sn")
-
-[sub_resource type="PackedScene" id="PackedScene_ebhbq"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick19", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.34388, -1.7029, -0.944785), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_ed5vr"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.34388, -1.7029, -0.944785)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_ebhbq")
-
-[sub_resource type="PackedScene" id="PackedScene_fn5hj"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("RedBrick20", "transform", "continuous_cd", "RigidBody3D", "CollisionShape3D", "shape", "model", "Node3D", "brick-holes", "mesh", "skeleton", "MeshInstance3D", "Packable", "script"),
-"node_count": 5,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 2, 1, 2, 5, 3, 0, 0, 0, 7, 6, -1, 1, 1, 4, 0, 2, 0, 11, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 7, 12, -1, 1, 13, 7, 0),
-"variants": [Transform3D(0.211325, 0, 0.977416, 0, 1, 0, -0.977416, 0, 0.211325, -6.47286, -0.9929, -0.348194), true, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0221032, 0), SubResource("BoxShape3D_7gb7h"), Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.370103, 0), SubResource("ArrayMesh_1ihe5"), NodePath(""), ExtResource("7_7rh4q")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_umwak"]
-script = ExtResource("4_pkslb")
-start_position = Vector3(-6.47286, -0.9929, -0.348194)
-start_rotation = Vector3(0, 1.35787, 0)
-object_scene = SubResource("PackedScene_fn5hj")
+start_position = Vector3(5.43172, -0.9929, -0.1571)
+start_rotation = Vector3(0, -0.097145, 0)
+object_scene = SubResource("PackedScene_c6317")
 
 [resource]
 script = ExtResource("8_gnqhk")
 level_id = 2
 box_size = Vector3(2.2, 2.2, 2.2)
-box_position = Vector3(0, -0.995785, -2.51373)
+box_position = Vector3(-3.86692, -1.16885, -2.51373)
+box_rotation = Vector3(0, 0.174533, 0)
 background_scene_name = "factory_scene"
 box_scene = ExtResource("2_dsh6j")
 box_area = ExtResource("1_8mrxu")
 fence_area = ExtResource("3_3db70")
-packables = Array[ExtResource("4_pkslb")]([SubResource("Resource_scghg"), SubResource("Resource_nfa2n"), SubResource("Resource_6ood6"), SubResource("Resource_20yp3"), SubResource("Resource_xxbby"), SubResource("Resource_btavk"), SubResource("Resource_ojs2e"), SubResource("Resource_4lntc"), SubResource("Resource_qwlsb"), SubResource("Resource_nu1dm"), SubResource("Resource_1bulw"), SubResource("Resource_jodff"), SubResource("Resource_vkaf6"), SubResource("Resource_yfx52"), SubResource("Resource_tbklb"), SubResource("Resource_tycnq"), SubResource("Resource_twkid"), SubResource("Resource_etf08"), SubResource("Resource_ed5vr"), SubResource("Resource_umwak")])
+packables = Array[ExtResource("4_pkslb")]([SubResource("Resource_iq0ev"), SubResource("Resource_u2okh"), SubResource("Resource_55vej"), SubResource("Resource_3wrsr"), SubResource("Resource_fe8fc"), SubResource("Resource_kbplb"), SubResource("Resource_ggoba"), SubResource("Resource_c5y87"), SubResource("Resource_rmgvq"), SubResource("Resource_0bm3h")])

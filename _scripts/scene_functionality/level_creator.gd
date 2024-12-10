@@ -105,6 +105,7 @@ func export():
 	
 	var box_node: Node3D = get_node("BoxModel")
 	export_level.box_position = box_node.global_position
+	export_level.box_rotation = box_node.global_rotation
 	export_level.box_size = box_node.scale
 	
 	

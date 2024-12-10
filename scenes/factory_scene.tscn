@@ -1,8 +1,7 @@
-[gd_scene load_steps=58 format=4 uid="uid://drdi3po0qdvqy"]
+[gd_scene load_steps=57 format=4 uid="uid://drdi3po0qdvqy"]
 
 [ext_resource type="Script" path="res://_scripts/game_manager.gd" id="1_jk72a"]
 [ext_resource type="Texture2D" uid="uid://ck8c3p0vn5hu0" path="res://_resources/textures/wood_texture.jpg" id="1_mkw6s"]
-[ext_resource type="PackedScene" uid="uid://bcw6kxldgdl5l" path="res://scenes/win_screen.tscn" id="2_kgy3l"]
 [ext_resource type="Script" path="res://_scripts/input_handler.gd" id="3_gnaex"]
 [ext_resource type="PackedScene" uid="uid://cdsqu1u7qtsi4" path="res://_resources/models/cement-bag.fbx" id="5_ilmux"]
 [ext_resource type="PackedScene" uid="uid://6l7shx2ng6yl" path="res://_resources/models/saw-circular.fbx" id="6_264u2"]
@@ -530,7 +529,6 @@ shape = SubResource("BoxShape3D_yvxbh")
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("packable_manager")]
 script = ExtResource("1_jk72a")
 packable_manager = NodePath("../Packables_Manager")
-win_scene = ExtResource("2_kgy3l")
 
 [node name="InputHandler" type="Node" parent="GameManager"]
 script = ExtResource("3_gnaex")

@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://_scripts/scene_functionality/pause_menu.gd" id="1_q6uda"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uuyab"]
-font_size = 306
+font_size = 100
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,20 +15,80 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q6uda")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -311.5
+offset_right = 327.0
+offset_bottom = 311.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.35, 0.35, 0.35, 0.588235)
+
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 1076.0
-offset_bottom = 418.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
 text = "Paused
 "
 label_settings = SubResource("LabelSettings_uuyab")
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -480.0
+offset_right = 140.0
+offset_bottom = -417.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -372.0
+offset_right = 140.0
+offset_bottom = -309.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Settings"
 
 [node name="MainMenuButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 484.0
-offset_top = 411.0
-offset_right = 870.0
-offset_bottom = 602.0
-theme_override_font_sizes/font_size = 91
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -138.0
+offset_right = 140.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
 text = "Main Menu
 "
