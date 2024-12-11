@@ -8,7 +8,7 @@ signal scene_change
 
 var current_scene: Node = null
 func _ready() -> void:
-	current_scene = get_tree().root.get_child(Helpers.get_autoload_count())
+	current_scene = get_tree().current_scene
 
 
 func change_scene(path: String, default_path: bool = true) -> Node:
