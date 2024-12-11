@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crh5t25n41rt8"]
+[gd_scene load_steps=10 format=3 uid="uid://crh5t25n41rt8"]
 
 [ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/materials and shaders/cardboard.tres" id="1_1e008"]
 
@@ -13,16 +13,10 @@ size = Vector3(0.05, 2, 2)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33q85"]
 load_path = "res://.godot/imported/cardboard_normal.jpg-255c1c0caef690e7d6abb7e6d6ef6710.s3tc.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dyq02"]
-load_path = "res://.godot/imported/cardboard_roughness.jpg-896a34fda39e099518950879cca20cd2.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kq08m"]
+render_priority = 1
 transparency = 4
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.54, 0.40068, 0.3078, 0.588235)
-roughness_texture = SubResource("CompressedTexture2D_dyq02")
-normal_enabled = true
+albedo_color = Color(0.54, 0.40068, 0.3078, 0.470588)
 normal_texture = SubResource("CompressedTexture2D_33q85")
 heightmap_texture = SubResource("CompressedTexture2D_5wqtx")
 subsurf_scatter_strength = 0.77

@@ -10,6 +10,7 @@ var packables: Array[Packable] = []
 
 func _ready() -> void:
 	await game_manager.level_initialized
+	
 	for child in get_children():
 		var packable_component: Packable = child.get_node("Packable")
 		if not packable_component:
@@ -27,7 +28,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:	
+	if can_select and event is InputEventMouseButton:	
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				var hit: Dictionary = Helpers.cursor_raycast()
@@ -40,10 +41,11 @@ func _input(event: InputEvent) -> void:
 				current_selection.deselected.emit()
 				end_selection()
 
-
+var can_select: bool= true
 #region Interaction manager
 func _physics_process(delta: float) -> void:
-	control_selection(delta)
+	if can_select:
+		control_selection(delta)
 
 
 var hit_position: Vector3

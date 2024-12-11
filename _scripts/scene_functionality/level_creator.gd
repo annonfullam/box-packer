@@ -22,24 +22,29 @@ extends Node3D
 	set(value): export()
 @export_subgroup("Danger Zone | Can't Undo")
 @export var btn_refresh_box: bool:
-	set(value): refresh_box(Vector3.ZERO, Vector3.ONE)
+	set(value): refresh_box(Vector3.ZERO, Vector3.ZERO, Vector3.ONE)
 @export var btn_clear_packables: bool:
 	set(value): clear_packables()
 @export var btn_warning_start_new_level: bool:
 	set(value):
 		if background_scene_name == "none":
-			print("Please set a background scene name.")
+			$ResponseLabel.text = "Please set a background scene name."
+			await get_tree().create_timer(text_visible_duration).timeout
+			$ResponseLabel.text = ""
 			return
 		
 		if not box_model or not box_area or not box_fence:
-			print("You haven't set either a box model, or area, or fence.")
+			$ResponseLabel.text = "You haven't set either a box model, or area, or fence."
+			await get_tree().create_timer(text_visible_duration).timeout
+			$ResponseLabel.text = ""
 			return
 		
 		set_level_id()
-		refresh_box(Vector3.ZERO, Vector3.ONE)
+		refresh_box(Vector3.ZERO, Vector3.ZERO, Vector3.ONE)
 		clear_packables()
 #endregion
 
+const text_visible_duration: float = 2
 
 func set_level_id():
 	# sets id to first available id
@@ -56,7 +61,7 @@ func set_level_id():
 	level_id = index
 
 
-func refresh_box(position: Vector3, scale: Vector3):
+func refresh_box(position: Vector3, rotation: Vector3, scale: Vector3):
 	var box: Node3D = self.find_child("BoxModel", false)
 	if box: 
 		box.name = "removing"
@@ -80,8 +85,8 @@ func refresh_box(position: Vector3, scale: Vector3):
 	
 	
 	new_box.global_position = position
+	new_box.global_rotation = rotation
 	new_box.scale = scale
-
 
 func clear_packables():
 	for child in self.get_node("Packables").get_children():
@@ -91,7 +96,9 @@ func clear_packables():
 
 func export():
 	if not can_export:
-		print("You have not enabled exporting!")
+		$ResponseLabel.text = "You have not enabled exporting!"
+		await get_tree().create_timer(text_visible_duration).timeout
+		$ResponseLabel.text = ""
 		return
 	
 	can_export = false
@@ -122,8 +129,14 @@ func export():
 		export_level.packables.append(new_packable)
 	
 	var check_error: Error = ResourceSaver.save(export_level, "res://scenes/levels/" + str(export_level.level_id) + ".tres")
-	if check_error: print("Something went wrong!")
-	else: print("Successfully exported level!")
+	if check_error: 
+		$ResponseLabel.text = "Something went wrong!"
+		await get_tree().create_timer(text_visible_duration).timeout
+		$ResponseLabel.text = ""
+	else:
+		$ResponseLabel.text = "Successfully exported level!"
+		await get_tree().create_timer(text_visible_duration).timeout
+		$ResponseLabel.text = ""
 
 func import():
 	# Gets level count based on files in levels folder
@@ -139,7 +152,9 @@ func import():
 	dir.list_dir_end()
 	
 	if level_id > level_count:
-		print("There is no level with id: ", str(level_id), ". Maybe you want to export?")
+		$ResponseLabel.text = "There is no level with id: " + str(level_id) + ". Maybe you want to export?"
+		await get_tree().create_timer(text_visible_duration).timeout
+		$ResponseLabel.text = ""
 		return
 	
 	var level: Level = ResourceLoader.load("res://scenes/levels/" + str(level_id) + ".tres")
@@ -147,7 +162,7 @@ func import():
 	box_model = level.box_scene
 	box_area = level.box_area
 	box_fence = level.fence_area
-	refresh_box(level.box_position, level.box_size)
+	refresh_box(level.box_position, level.box_rotation, level.box_size)
 	
 	background_scene_name = level.background_scene_name
 	refresh_background(level.background_scene_name)
@@ -179,7 +194,9 @@ func refresh_background(background_name: String):
 	
 	# Abort if file doesn't exist
 	if not FileAccess.file_exists(path):
-		print("File doesn't exist. Is the background scene name correct?")
+		$ResponseLabel.text = "File doesn't exist. Is the background scene name correct?"
+		await get_tree().create_timer(text_visible_duration).timeout
+		$ResponseLabel.text = ""
 		return
 	
 	# Add new background

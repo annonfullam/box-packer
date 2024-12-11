@@ -23,8 +23,6 @@ SceneManager="*res://_scripts/globals/scene_manager.gd"
 GlobalReferences="*res://_scripts/globals/global_references.gd"
 Helpers="*res://_scripts/globals/helpers.gd"
 Settings="*res://_scripts/globals/settings.gd"
-SignalBus="*res://_scripts/globals/signal_bus.gd"
-DummyAutoload="*res://_scripts/globals/dummy_autoload.gd"
 
 [display]
 

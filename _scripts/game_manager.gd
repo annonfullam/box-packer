@@ -62,4 +62,5 @@ func complete_level():
 	curr_win_scene = new_node
 	
 	count_time = false
+	packable_manager.can_select = false
 	level_won.emit()
