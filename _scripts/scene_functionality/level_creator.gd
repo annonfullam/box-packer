@@ -1,6 +1,6 @@
 @tool
 extends Node3D
-
+# TODO: Add a way to "insert" a level at a certain id and move all of the following ones up.
 #region Inspector Stuff
 @export_range(0, 0, 1, "or_greater") var level_id: int = -1
 @export_enum("none","factory_scene","test") var background_scene_name: String = "none"
