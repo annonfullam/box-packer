@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dopf284wn6wc5"]
+
+[ext_resource type="Script" path="res://_scripts/scene_functionality/__level_creator.gd" id="1_wmdul"]
+[ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_j7prs"]
+[ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="3_70oqw"]
+[ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="4_ekfrf"]
+
+[node name="LevelCreator" type="Node3D"]
+script = ExtResource("1_wmdul")
+box_model = ExtResource("2_j7prs")
+box_area = ExtResource("3_70oqw")
+box_fence = ExtResource("4_ekfrf")
+btn_danger_reset_editor = null
+metadata/_edit_lock_ = true
+
+[node name="ResponseLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.942868, 0.333165, 0, -0.333165, 0.942868, 0, -0.164516, 3.18636)
+font_size = 200
+
+[node name="BackgroundContainer" type="Node" parent="."]
+
+[node name="Packables" type="Node" parent="."]
+
+[node name="BoxModel" type="Node3D" parent="." instance=ExtResource("2_j7prs")]
+
+[node name="BoxArea" type="Area3D" parent="BoxModel" instance=ExtResource("3_70oqw")]
+editor_description = "This is the Area3D that all the packables have to be in for the level to be complete. Note that because collision cannot be exact, this should actually be a tiny bit bigger than the area everything should fit in."
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="FenceArea" type="Area3D" parent="BoxModel" instance=ExtResource("4_ekfrf")]
+editor_description = "This is meant to surround BoxArea completely and be flush with it; this level is only complete if packables are colliding with BoxArea and not FenceArea."
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, -0.110696, 0)
+metadata/_edit_lock_ = true

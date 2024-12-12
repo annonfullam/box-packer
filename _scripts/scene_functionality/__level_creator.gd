@@ -1,10 +1,9 @@
 @tool
 extends Node3D
-# TODO: Add a way to "insert" a level at a certain id and move all of the following ones up.
-#region Inspector Stuff
-@export_range(0, 0, 1, "or_greater") var level_id: int = -1
-@export_enum("none","factory_scene","test") var background_scene_name: String = "none"
-@export var btn_info_refresh_background: bool:
+
+@export_range(1, 1, 1, "or_greater") var level_id: int = 1
+@export_enum("none","factory_scene") var background_scene_name: String = "none"
+@export var btn_refresh_background: bool:
 	set(value): refresh_background(background_scene_name)
 
 @export_subgroup("Box Scenes", "box_")
@@ -15,7 +14,7 @@ extends Node3D
 
 @export_category("Action Buttons")
 @export var can_export: bool
-## Be careful pressing this because this will clear the box model's position!
+@export var overwrite: bool
 @export var btn_import: bool:
 	set(value): import()
 @export var btn_export: bool:
@@ -25,26 +24,64 @@ extends Node3D
 	set(value): refresh_box(Vector3.ZERO, Vector3.ZERO, Vector3.ONE)
 @export var btn_clear_packables: bool:
 	set(value): clear_packables()
-@export var btn_warning_start_new_level: bool:
+@export var btn_danger_reset_editor: bool:
+	set(value):
+		level_id = 1
+		can_export = false
+		overwrite = false
+		background_scene_name = "none"
+		refresh_background(background_scene_name)
+		refresh_box(Vector3.ZERO, Vector3.ZERO, Vector3.ONE)
+		clear_packables()
+@export var btn_success_start_new_level: bool:
 	set(value):
 		if background_scene_name == "none":
-			$ResponseLabel.text = "Please set a background scene name."
-			await get_tree().create_timer(text_visible_duration).timeout
-			$ResponseLabel.text = ""
-			return
+			set_response_text("Please set a background scene name.")
 		
 		if not box_model or not box_area or not box_fence:
-			$ResponseLabel.text = "You haven't set either a box model, or area, or fence."
-			await get_tree().create_timer(text_visible_duration).timeout
-			$ResponseLabel.text = ""
+			set_response_text("You haven't set either a box model, or area, or fence.")
 			return
 		
 		set_level_id()
 		refresh_box(Vector3.ZERO, Vector3.ZERO, Vector3.ONE)
 		clear_packables()
-#endregion
+@export var btn_info_open_space_at_id: bool:
+	set(value):
+		var path: String = "res://scenes/levels/"
+		var dir: DirAccess = DirAccess.open(path)
+		
+		if not dir.file_exists(path + str(level_id) +".tres"):
+			set_response_text("You can't open a spot that's already open...")
+			return
+		
+		var filenames: PackedStringArray = dir.get_files()
+		filenames.reverse()
+		for filename: String in filenames:
+			if int(filename.replace(".tres", "")) < level_id: continue
+			else:
+				var new_name: String = str(int(filename.replace(".tres", "")) + 1) + ".tres"
+				dir.rename(filename, new_name)
+@export var btn_danger_collapse_space_at_id: bool:
+	set(value):
+		var path: String = "res://scenes/levels/"
+		var dir: DirAccess = DirAccess.open(path)
+		
+		if dir.file_exists(path + str(level_id) + ".tres"):
+			set_response_text("Cannot collapse when there is a file at that level id.")
+			return
+		
+		if not dir.file_exists(path + str(level_id + 1) + ".tres"):
+			set_response_text("Theres nothing to collapse.")
+			return
+		
+		var filenames: PackedStringArray = dir.get_files()
+		for filename: String in filenames:
+			if int(filename.replace(".tres", "")) < level_id: continue
+			else:
+				var new_name: String = str(int(filename.replace(".tres", "")) - 1) + ".tres"
+				dir.rename(filename, new_name)
 
-const text_visible_duration: float = 2
+
 
 func set_level_id():
 	# sets id to first available id
@@ -88,6 +125,7 @@ func refresh_box(position: Vector3, rotation: Vector3, scale: Vector3):
 	new_box.global_rotation = rotation
 	new_box.scale = scale
 
+
 func clear_packables():
 	for child in self.get_node("Packables").get_children():
 		child.name = "_"
@@ -96,15 +134,25 @@ func clear_packables():
 
 func export():
 	if not can_export:
-		$ResponseLabel.text = "You have not enabled exporting!"
-		await get_tree().create_timer(text_visible_duration).timeout
-		$ResponseLabel.text = ""
+		set_response_text("You have not enabled exporting!")
+		return
+	
+	if background_scene_name == "none":
+		set_response_text("You must select a background before exporting!")
+		return
+	
+	if not overwrite and FileAccess.file_exists("res://scenes/levels/" + str(level_id) + ".tres"):
+		set_response_text("There is already a level at this location!")
+		await get_tree().create_timer(2.1).timeout
+		set_response_text("If you want to overwrite enable overwriting.")
 		return
 	
 	can_export = false
+	overwrite = false
 	
 	var export_level: Level = Level.new()
 	export_level.level_id = level_id
+	
 	export_level.background_scene_name = background_scene_name
 	export_level.box_scene = box_model
 	export_level.box_area = box_area
@@ -130,13 +178,10 @@ func export():
 	
 	var check_error: Error = ResourceSaver.save(export_level, "res://scenes/levels/" + str(export_level.level_id) + ".tres")
 	if check_error: 
-		$ResponseLabel.text = "Something went wrong!"
-		await get_tree().create_timer(text_visible_duration).timeout
-		$ResponseLabel.text = ""
+		set_response_text("Something went wrong!")
 	else:
-		$ResponseLabel.text = "Successfully exported level!"
-		await get_tree().create_timer(text_visible_duration).timeout
-		$ResponseLabel.text = ""
+		set_response_text("Successfully exported level!")
+
 
 func import():
 	# Gets level count based on files in levels folder
@@ -152,9 +197,7 @@ func import():
 	dir.list_dir_end()
 	
 	if level_id > level_count:
-		$ResponseLabel.text = "There is no level with id: " + str(level_id) + ". Maybe you want to export?"
-		await get_tree().create_timer(text_visible_duration).timeout
-		$ResponseLabel.text = ""
+		set_response_text("There is no level with id: " + str(level_id) + ". Maybe you want to export?")
 		return
 	
 	var level: Level = ResourceLoader.load("res://scenes/levels/" + str(level_id) + ".tres")
@@ -194,9 +237,7 @@ func refresh_background(background_name: String):
 	
 	# Abort if file doesn't exist
 	if not FileAccess.file_exists(path):
-		$ResponseLabel.text = "File doesn't exist. Is the background scene name correct?"
-		await get_tree().create_timer(text_visible_duration).timeout
-		$ResponseLabel.text = ""
+		set_response_text("File doesn't exist. Is the background scene name correct?")
 		return
 	
 	# Add new background
@@ -205,3 +246,9 @@ func refresh_background(background_name: String):
 	new_background.owner = self
 	
 	new_background.reparent(container, true)
+
+const text_visible_duration: float = 2
+func set_response_text(text: String):
+	$ResponseLabel.text = text
+	await get_tree().create_timer(text_visible_duration).timeout
+	$ResponseLabel.text = ""
