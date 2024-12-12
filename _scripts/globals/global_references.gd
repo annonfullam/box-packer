@@ -1,7 +1,7 @@
 extends Node
 
-var input_handler: InputHandler = null
-var current_level: Level = null
+var INPUT: InputHandler = null
+var LEVEL: Level = null
 
 
 var LEVEL_COUNT: int

@@ -8,12 +8,13 @@ extends Control
 @onready var main_menu_button: Button = $MainMenuButton
 
 func _ready() -> void:
-	time_label.text += " " + str(round(GlobalReferences.current_level.time * 100) / 100) + " seconds"
+	time_label.text += " " + str(round(GlobalReferences.LEVEL.time * 100) / 100) + " seconds"
+	$BestTimeLabel.text += " " + str(round(GlobalReferences.LEVEL.best_time * 100) / 100) + " seconds"
 	
 	var game_manager: GameManager = get_parent().find_child("GameManager")
-	var next_level: Level = load("res://scenes/levels/" + str(game_manager.level.level_id + 1) + ".tres")
+	var next_level: Level = load("res://scenes/levels/" + str(game_manager.LEVEL.level_id + 1) + ".tres")
 	
-	if game_manager.level.level_id + 1 > GlobalReferences.LEVEL_COUNT: next_level_button.disabled = true
+	if game_manager.LEVEL.level_id + 1 > GlobalReferences.LEVEL_COUNT: next_level_button.disabled = true
 	
 	retry_button.connect("pressed", func(): if game_manager: game_manager.restart_level())
 	
@@ -23,6 +24,6 @@ func _ready() -> void:
 		
 	next_level_button.connect("pressed", func(): 
 		var new_scene: Node = SceneManager.change_scene(next_level.background_scene_name)
-		new_scene.get_node("GameManager").init_level(next_level))
+		new_scene.get_node("GameManager").start_level(next_level))
 		
 	main_menu_button.connect("pressed", func(): SceneManager.change_scene("main_menu"))

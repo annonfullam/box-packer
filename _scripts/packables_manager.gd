@@ -1,30 +1,52 @@
 extends Node3D
-class_name Packables_Manager
+class_name PackablesManager
 
 var current_selection: Packable
 var packables: Array[Packable] = []
 
 @export var in_bounds: Area3D
+var box_area: Area3D
+var fence_area: Area3D
 
-@onready var game_manager: GameManager = $"../GameManager"
+#@onready var game_manager: GameManager = $"../GameManager"
 
-func _ready() -> void:
-	await game_manager.level_initialized
-	
+# Called by the level script
+func initialize_packables():
 	for child in get_children():
 		var packable_component: Packable = child.get_node("Packable")
 		if not packable_component:
+			print("Something went wrong... There is a child to the packables_manager that is not a Packable!!!")
 			return
-	
+		
 		packables.append(packable_component)
-		packable_component.register_in_scene(game_manager)
-		packable_component.selected.connect(func(hit: Dictionary):
-			current_selection = hit.collider.find_child("Packable"))
+		packable_component.initialize(self)
+		
+		packable_component.selected.connect(func(hit: Dictionary): current_selection = hit.collider.get_node("Packable"))
+
+# Called by the level script
+func initialize_bounds():
 	in_bounds.body_exited.connect(func(node: Node3D):
-		var child = node.find_child("Packable")
+		var child = node.get_node("Packable")
 		if child: 
 			child.respawn()
 			if child == current_selection: end_selection())
+
+
+func check_all_packed():
+	if current_selection != null: return
+	
+	for child: Packable in packables:
+		if not child.is_inside(): return
+	
+	GlobalReferences.LEVEL.ended.emit()
+
+
+#region Interaction manager
+var can_select: bool= true
+
+func _physics_process(delta: float) -> void:
+	if can_select:
+		control_selection(delta)
 
 
 func _input(event: InputEvent) -> void:
@@ -41,18 +63,15 @@ func _input(event: InputEvent) -> void:
 				current_selection.deselected.emit()
 				end_selection()
 
-var can_select: bool= true
-#region Interaction manager
-func _physics_process(delta: float) -> void:
-	if can_select:
-		control_selection(delta)
 
 
-var hit_position: Vector3
 func start_selection():
 	selection_parent = current_selection.get_parent() # Stores this for rotation manipulation so it doesn't have to fetch it every frame.
 	
 	drop_spot_indicator.show()
+	
+	# Start the level when the first object is selected
+	if not GlobalReferences.LEVEL.has_started: GlobalReferences.LEVEL.started.emit()
 
 
 func end_selection():
@@ -65,7 +84,7 @@ func end_selection():
 	roll_indicator.hide()
 	yaw_indicator.hide()
 	
-	game_manager.check_all_in()
+	check_all_packed()
 
 
 var selection_parent: RigidBody3D = null
@@ -75,11 +94,8 @@ func control_selection(delta: float):
 	if not current_selection or not selection_parent: # If there is no selection, just ignore all of this code.
 		return
 	
-	game_manager.count_time = true # Don't start the timer until the first selection is made
-	
-	input = GlobalReferences.input_handler
+	input = GlobalReferences.INPUT
 	handle_indicators()
-	
 
 	if Settings.snap_rotation: control_snap_rotation(delta)
 	else: control_rotation(delta)
@@ -146,10 +162,8 @@ func handle_indicators():
 		yaw_indicator.global_position = selection_parent.global_position
 		yaw_indicator.show()
 
-
+@export var max_velocity: float = 50
 func clamp_velocity():
-	var max_velocity: float = 50
-	
 	selection_parent.linear_velocity.x = clamp(selection_parent.linear_velocity.x, -max_velocity, max_velocity)
 	selection_parent.linear_velocity.y = clamp(selection_parent.linear_velocity.y, -max_velocity, max_velocity)
 	selection_parent.linear_velocity.z = clamp(selection_parent.linear_velocity.z, -max_velocity, max_velocity)

@@ -12,10 +12,10 @@ var yaw_axis: float
 var alt_axis_mode: bool
 
 func _ready() -> void:
-	GlobalReferences.input_handler = self
+	GlobalReferences.INPUT = self
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	roll_axis = Input.get_axis("rotate_roll_negative", "rotate_roll_positive")
 	pitch_axis = Input.get_axis("rotate_pitch_negative", "rotate_pitch_positive")
 	yaw_axis = Input.get_axis("rotate_yaw_negative", "rotate_yaw_positive")
@@ -24,21 +24,21 @@ func _process(delta: float) -> void:
 
 
 #region Actions and Keybinding
-func add_action(name: String, key: Key = KEY_NONE, deadzone: float = 0.0):
-	InputMap.add_action(name, deadzone)
+func add_action(action_name: String, key: Key = KEY_NONE, deadzone: float = 0.0):
+	InputMap.add_action(action_name, deadzone)
 	
 	if key != KEY_NONE:
 		var input_event: InputEventKey = InputEventKey.new()
 		input_event.keycode = key
 	
-		InputMap.action_add_event(name, input_event)
+		InputMap.action_add_event(action_name, input_event)
 	
-	print("Created ", name, " with keybind: ", str(key))
+	print("Created ", action_name, " with keybind: ", str(key))
 
 
-func remove_action(name: String):
-	InputMap.erase_action(name)
-	print("Removed action: ", name)
+func remove_action(action_name: String):
+	InputMap.erase_action(action_name)
+	print("Removed action: ", action_name)
 
 
 func change_action_keybind(action_name: String, new_key: Key):

@@ -30,7 +30,7 @@ func go_to_level():
 	var new_scene: Node = SceneManager.change_scene(level_data.background_scene_name)
 	var game_manager: GameManager = new_scene.get_node("GameManager")
 	
-	game_manager.init_level(level_data)
+	game_manager.start_level(level_data)
 
 
 func change_level_selection(amt: int):

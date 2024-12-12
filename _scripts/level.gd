@@ -16,13 +16,47 @@ class_name Level
 
 @export var packables: Array[PackableContainer]
  
+var count_time: bool = false
 var time: float = 0
-var best_time: float
+# TODO: Best time will not persist through sessions of the game
+var best_time: float = -1
+
+var has_started: bool = false
+signal initialized
+signal started
+signal ended
 
 
-func populate_level(parent: Node3D):
-	best_time = 0
+func _init() -> void:
+	started.connect(func():
+		count_time = true
+		has_started = true)
+	ended.connect(func():
+		count_time = false
+		if time < best_time or best_time == -1: best_time = time)
+
+
+# Called by game manager
+func initialize(pm: PackablesManager):
+	time = 0
+	has_started = false
 	
+	create_box(pm)
+	create_packables(pm)
+	
+	pm.initialize_packables()
+	pm.initialize_bounds()
+	
+	GlobalReferences.LEVEL = self
+	initialized.emit()
+
+
+# Must be called by the game manager in _process
+func update(delta: float):
+	if count_time: time += delta
+
+
+func create_packables(parent: Node3D):
 	for p in packables:
 		var node: Node3D = p.object_scene.instantiate()
 		var packable_node: Packable = node.find_child("Packable")
@@ -33,7 +67,7 @@ func populate_level(parent: Node3D):
 		node.global_rotation = p.start_rotation
 
 
-func create_box(parent: Node3D) -> Array[Area3D]:
+func create_box(parent: PackablesManager):
 	var _box_scene: Node3D = box_scene.instantiate()
 	parent.owner.add_child(_box_scene)
 	_box_scene.scale = box_size
@@ -51,5 +85,6 @@ func create_box(parent: Node3D) -> Array[Area3D]:
 	_box_scene.global_position = box_position
 	_box_scene.global_rotation = box_rotation
 	
-	var result: Array[Area3D] = [_box_area, _fence_area]
-	return result
+	# Assign areas to packables manager
+	parent.box_area = _box_area
+	parent.fence_area = _fence_area

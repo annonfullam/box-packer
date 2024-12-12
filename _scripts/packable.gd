@@ -1,22 +1,22 @@
 extends Node3D
 class_name Packable
 
-signal selected
-signal deselected
+@warning_ignore("unused_signal") signal selected
+@warning_ignore("unused_signal") signal deselected
 
 @onready var collider: RigidBody3D = $".."
 
 var start_pos_and_rot: Dictionary
 
-func register_in_scene(manager: GameManager) -> void:
+func initialize(manager: PackablesManager) -> void:
 	manager.box_area.body_entered.connect(func(body: Node3D):
 		if body != collider: return
 		_in_box = true
-		manager.check_all_in())
+		manager.check_all_packed())
 	manager.fence_area.body_exited.connect(func(body: Node3D):
 		if body != collider: return
 		_in_fence = false
-		manager.check_all_in())
+		manager.check_all_packed())
 	manager.box_area.body_exited.connect(func(body: Node3D):
 		if body != collider: return
 		_in_box = false)
@@ -30,7 +30,6 @@ func _ready() -> void:
 
 
 func respawn() -> void:
-	# Why does it disable the collider's process?
 	var prev_process_type = collider.process_mode
 	collider.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -44,4 +43,4 @@ func respawn() -> void:
 
 var _in_box: bool = false
 var _in_fence: bool = false
-func inside() -> bool: return not _in_fence && _in_box
+func is_inside() -> bool: return not _in_fence && _in_box

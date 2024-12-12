@@ -175,6 +175,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BestTimeLabel:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.03333, 1.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4l7w"]
 _data = {
@@ -230,6 +242,15 @@ offset_bottom = -160.0
 text = "Elapsed Time:"
 label_settings = SubResource("LabelSettings_c1835")
 
+[node name="BestTimeLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = -206.0
+offset_top = -158.0
+offset_right = 143.0
+offset_bottom = -123.0
+text = "Best Time:"
+label_settings = SubResource("LabelSettings_c1835")
+
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = -234.0
@@ -242,6 +263,7 @@ theme = ExtResource("2_chdpn")
 text = "Retry"
 
 [node name="LevelSelectButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0.0833252)
 layout_mode = 2
 offset_left = -75.0
 offset_top = 148.0
@@ -266,6 +288,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_wbnag")
 text = "Next Level"
 
 [node name="MainMenuButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
