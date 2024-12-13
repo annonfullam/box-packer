@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://gbh28cy2k5h7"]
+[gd_scene load_steps=16 format=3 uid="uid://gbh28cy2k5h7"]
 
 [ext_resource type="Script" path="res://_scripts/scene_functionality/main_menu.gd" id="1_ae5c4"]
 [ext_resource type="FontFile" uid="uid://dseoifk7fcmkk" path="res://_resources/fonts/Roboto-Black.ttf" id="2_yok51"]
 [ext_resource type="Theme" uid="uid://jq8h648bmy23" path="res://_resources/fonts/blank_button.tres" id="3_4lcxb"]
 [ext_resource type="FontFile" uid="uid://dintgdp6unnqh" path="res://_resources/fonts/Roboto-Medium.ttf" id="4_bv2dp"]
+[ext_resource type="PackedScene" uid="uid://biwb3djc486cw" path="res://scenes/settings_menu.tscn" id="4_plaxj"]
 [ext_resource type="FontFile" uid="uid://nnxy0li7slof" path="res://_resources/fonts/Roboto-Regular.ttf" id="5_cmg8d"]
 [ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/materials and shaders/cardboard.tres" id="6_cmj0k"]
 
@@ -60,7 +61,10 @@ size = Vector3(19.91, 19.77, 1)
 
 [node name="MainMenu" type="Node"]
 
-[node name="MainMenuUI" type="Control" parent="." node_paths=PackedStringArray("credit_node")]
+[node name="SettingsMenu" parent="." instance=ExtResource("4_plaxj")]
+visible = false
+
+[node name="MainMenuUI" type="Control" parent="." node_paths=PackedStringArray("credit_node", "settings_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,6 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ae5c4")
 credit_node = NodePath("Credits")
+settings_menu = NodePath("../SettingsMenu")
 
 [node name="Title" type="Label" parent="MainMenuUI"]
 layout_mode = 0
@@ -130,6 +135,13 @@ theme = ExtResource("3_4lcxb")
 theme_override_fonts/font = ExtResource("4_bv2dp")
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
+
+[node name="Settings" type="Button" parent="MainMenuUI/Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
 
 [node name="Credits" type="Button" parent="MainMenuUI/Buttons"]
 layout_mode = 2

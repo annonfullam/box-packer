@@ -30,3 +30,16 @@ func change_scene(path: String, default_path: bool = true) -> Node:
 	
 	scene_change.emit()
 	return current_scene
+
+
+func add_scene(path: String, parent: Node, default_path: bool = true) -> Node:
+	if default_path: path = "res://scenes/" + path + ".tscn"
+	
+	if not FileAccess.file_exists(path):
+		print("That file does not exist")
+		return
+	
+	var new_scene: Node = load(path).instantiate()
+	parent.add_child(new_scene)
+	
+	return new_scene

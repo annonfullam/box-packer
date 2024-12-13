@@ -105,12 +105,12 @@ func control_selection(delta: float):
 	if Settings.snap_position: desired_position = round(desired_position * Settings.snap_position_step) / Settings.snap_position_step # Snap position to grid
 	
 	selection_parent.gravity_scale = 0 if input.alt_axis_mode else 1 # The object will slowly fall if gravity isn't disabled without changing the y position
-	selection_parent.linear_velocity = (desired_position - selection_parent.position) * input.position_sens * delta # Apply velocity to move to the right position
+	selection_parent.linear_velocity = (desired_position - selection_parent.position) * Settings.position_sens * delta # Apply velocity to move to the right position
 	clamp_velocity()
 
 
 func control_rotation(delta: float):
-	var rotation_amount: float = input.rotation_sens * delta
+	var rotation_amount: float = Settings.rotation_sens * delta
 	selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
 	selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
 	selection_parent.angular_velocity.z = -input.roll_axis * rotation_amount
