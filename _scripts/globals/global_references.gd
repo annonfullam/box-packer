@@ -3,6 +3,7 @@ extends Node
 var INPUT: InputHandler = null
 var LEVEL: Level = null
 
+var PLAYER_DATA: PlayerData = PlayerData.new()
 
 var LEVEL_COUNT: int
 func _ready() -> void:

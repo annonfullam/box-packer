@@ -21,7 +21,7 @@ func _ready() -> void:
 			new_scene.queue_free()
 			show())
 		hide())
-	exit.connect("pressed", func(): get_tree().quit())
+	exit.connect("pressed", func(): SceneManager.quit())
 
 
 func open_level_select():

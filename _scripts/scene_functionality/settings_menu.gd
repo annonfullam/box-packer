@@ -10,29 +10,29 @@ class_name SettingsMenu
 
 
 func _ready() -> void:
-	rotation_slider.value = Settings.rotation_sens
-	rotation_value.value = Settings.rotation_sens
+	rotation_slider.value = GlobalReferences.PLAYER_DATA.rotation_sens
+	rotation_value.value = GlobalReferences.PLAYER_DATA.rotation_sens
 	
 	rotation_value.value_changed.connect(func(value: float):
 		rotation_slider.value = value
-		Settings.rotation_sens = value
+		GlobalReferences.PLAYER_DATA.rotation_sens = value
 		)
 	
 	rotation_slider.value_changed.connect(func(value: float):
 		rotation_value.value = value
-		Settings.rotation_sens = value
+		GlobalReferences.PLAYER_DATA.rotation_sens = value
 		)
 	
 	
-	position_slider.value = Settings.position_sens
-	position_value.value = Settings.position_sens
+	position_slider.value = GlobalReferences.PLAYER_DATA.position_sens
+	position_value.value = GlobalReferences.PLAYER_DATA.position_sens
 	
 	position_value.value_changed.connect(func(value: float):
 		position_slider.value = value
-		Settings.position_sens = value
+		GlobalReferences.PLAYER_DATA.position_sens = value
 		)
 	
 	position_slider.value_changed.connect(func(value: float):
 		position_value.value = value
-		Settings.position_sens = value
+		GlobalReferences.PLAYER_DATA.position_sens = value
 		)

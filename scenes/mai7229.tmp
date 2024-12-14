@@ -1,0 +1,223 @@
+[gd_scene load_steps=16 format=3 uid="uid://gbh28cy2k5h7"]
+
+[ext_resource type="Script" path="res://_scripts/scene_functionality/main_menu.gd" id="1_ae5c4"]
+[ext_resource type="FontFile" uid="uid://dseoifk7fcmkk" path="res://_resources/fonts/Roboto-Black.ttf" id="2_yok51"]
+[ext_resource type="Theme" uid="uid://jq8h648bmy23" path="res://_resources/fonts/blank_button.tres" id="3_4lcxb"]
+[ext_resource type="FontFile" uid="uid://dintgdp6unnqh" path="res://_resources/fonts/Roboto-Medium.ttf" id="4_bv2dp"]
+[ext_resource type="PackedScene" uid="uid://biwb3djc486cw" path="res://scenes/settings_menu.tscn" id="4_plaxj"]
+[ext_resource type="FontFile" uid="uid://nnxy0li7slof" path="res://_resources/fonts/Roboto-Regular.ttf" id="5_cmg8d"]
+[ext_resource type="Material" uid="uid://bn8pa67nnx5ee" path="res://_resources/materials and shaders/cardboard.tres" id="6_cmj0k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_edwsq"]
+font = ExtResource("2_yok51")
+font_size = 100
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_offset = Vector2(8, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbpdj"]
+line_spacing = 0.0
+font = ExtResource("5_cmg8d")
+font_size = 20
+font_color = Color(0.751978, 0.832618, 0.877704, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbb81"]
+bg_color = Color(0.0572032, 0.0904122, 0.184947, 0.54902)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 2
+
+[sub_resource type="Environment" id="Environment_dkdjr"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.8
+tonemap_mode = 3
+tonemap_exposure = 0.8
+tonemap_white = 3.0
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_cascades = 8
+sdfgi_max_distance = 3276.8
+glow_intensity = 2.16
+fog_mode = 1
+fog_light_energy = 0.0
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_saturation = 1.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgso5"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flpdu"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ficmr"]
+size = Vector2(20, 20)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cr42c"]
+size = Vector3(19.91, 19.77, 1)
+
+[node name="MainMenu" type="Node"]
+
+[node name="SettingsMenu" parent="." instance=ExtResource("4_plaxj")]
+visible = false
+
+[node name="MainMenuUI" type="Control" parent="." node_paths=PackedStringArray("credit_node", "settings_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ae5c4")
+credit_node = NodePath("Credits")
+settings_menu = NodePath("../SettingsMenu")
+
+[node name="Title" type="Label" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 31.0
+offset_right = 1110.0
+offset_bottom = 184.0
+text = "POLY-PACKING"
+label_settings = SubResource("LabelSettings_edwsq")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="MainMenuUI"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 585.0
+offset_top = 300.0
+offset_right = 1063.0
+offset_bottom = 557.0
+text = "A game by:
+Hyperrr!!! and Kyfex
+
+
+
+Special thanks to-
+
+PolyPerfect - Low Poly Ultimate Pack"
+label_settings = SubResource("LabelSettings_kbpdj")
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="MainMenuUI/Credits"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.53
+offset_top = -11.23
+offset_right = 7.47
+offset_bottom = 11.77
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 125)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bbb81")
+
+[node name="Buttons" type="VBoxContainer" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 289.0
+offset_right = 348.0
+offset_bottom = 624.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Play" type="Button" parent="MainMenuUI/Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="MainMenuUI/Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+
+[node name="Credits" type="Button" parent="MainMenuUI/Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "CREDITS"
+
+[node name="Exit" type="Button" parent="MainMenuUI/Buttons"]
+layout_mode = 2
+theme = ExtResource("3_4lcxb")
+theme_override_fonts/font = ExtResource("4_bv2dp")
+theme_override_font_sizes/font_size = 50
+text = "EXIT"
+
+[node name="3DEnvironment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47033, 0, 2.35364)
+
+[node name="Camera3D" type="Camera3D" parent="3DEnvironment"]
+transform = Transform3D(0.922599, -0.223859, 0.314163, 0, 0.814399, 0.580305, -0.385761, -0.535389, 0.751364, 4.94809, 0.329623, 4.05802)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3DEnvironment"]
+environment = SubResource("Environment_dkdjr")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.524432, 0.851453, 0, -0.851453, 0.524432, 1.33759, 13.8256, 7.04299)
+light_energy = 15.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+spot_range = 52.9067
+spot_angle = 38.83
+spot_angle_attenuation = 0.189465
+
+[node name="TableTop" type="StaticBody3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.910195, -4, -4.27077)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3DEnvironment/TableTop"]
+shape = SubResource("BoxShape3D_dgso5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3DEnvironment/TableTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04428, 0, 0)
+material_override = ExtResource("6_cmj0k")
+mesh = SubResource("BoxMesh_flpdu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3DEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+material_override = ExtResource("6_cmj0k")
+mesh = SubResource("PlaneMesh_ficmr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="3DEnvironment/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3DEnvironment/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.322969)
+shape = SubResource("BoxShape3D_cr42c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="3DEnvironment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 2.19549, -4)
+material_override = ExtResource("6_cmj0k")
+mesh = SubResource("PlaneMesh_ficmr")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="3DEnvironment/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457811, 0, -2.38419e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3DEnvironment/MeshInstance3D2/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.322969)
+shape = SubResource("BoxShape3D_cr42c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="3DEnvironment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.80585, -3.25613, -4)
+material_override = ExtResource("6_cmj0k")
+mesh = SubResource("PlaneMesh_ficmr")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="3DEnvironment/MeshInstance3D3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.457811, 0, -0.557261)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3DEnvironment/MeshInstance3D3/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.322969)
+shape = SubResource("BoxShape3D_cr42c")

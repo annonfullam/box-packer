@@ -13,7 +13,6 @@ config_version=5
 config/name="box-packer"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -22,7 +21,6 @@ RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tsc
 SceneManager="*res://_scripts/globals/scene_manager.gd"
 GlobalReferences="*res://_scripts/globals/global_references.gd"
 Helpers="*res://_scripts/globals/helpers.gd"
-Settings="*res://_scripts/globals/settings.gd"
 
 [display]
 

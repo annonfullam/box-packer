@@ -97,20 +97,20 @@ func control_selection(delta: float):
 	input = GlobalReferences.INPUT
 	handle_indicators()
 
-	if Settings.snap_rotation: control_snap_rotation(delta)
+	if GlobalReferences.PLAYER_DATA.snap_rotation: control_snap_rotation(delta)
 	else: control_rotation(delta)
 	
 
 	var desired_position: Vector3 = plane_raycast(Vector3.FORWARD) if not input.alt_axis_mode else plane_raycast(Vector3.UP)
-	if Settings.snap_position: desired_position = round(desired_position * Settings.snap_position_step) / Settings.snap_position_step # Snap position to grid
+	if GlobalReferences.PLAYER_DATA.snap_position: desired_position = round(desired_position * GlobalReferences.PLAYER_DATA.snap_position_step) / GlobalReferences.PLAYER_DATA.snap_position_step # Snap position to grid
 	
 	selection_parent.gravity_scale = 0 if input.alt_axis_mode else 1 # The object will slowly fall if gravity isn't disabled without changing the y position
-	selection_parent.linear_velocity = (desired_position - selection_parent.position) * Settings.position_sens * delta # Apply velocity to move to the right position
+	selection_parent.linear_velocity = (desired_position - selection_parent.position) * GlobalReferences.PLAYER_DATA.position_sens * delta # Apply velocity to move to the right position
 	clamp_velocity()
 
 
 func control_rotation(delta: float):
-	var rotation_amount: float = Settings.rotation_sens * delta
+	var rotation_amount: float = GlobalReferences.PLAYER_DATA.rotation_sens * delta
 	selection_parent.angular_velocity.x = -input.pitch_axis * rotation_amount
 	selection_parent.angular_velocity.y = input.yaw_axis * rotation_amount
 	selection_parent.angular_velocity.z = -input.roll_axis * rotation_amount
@@ -126,7 +126,7 @@ func control_snap_rotation(delta: float):
 		if input_vector.length() != 0:
 			rotate_request = true
 			if desired_rotation == Vector3.INF: # If desired_rotation hasn't been already set
-				desired_rotation = selection_parent.rotation + input_vector * deg_to_rad(Settings.snap_rotation_step)
+				desired_rotation = selection_parent.rotation + input_vector * deg_to_rad(GlobalReferences.PLAYER_DATA.snap_rotation_step)
 				desired_rotation = round(desired_rotation * 100) / 100
 	else:
 		
