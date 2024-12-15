@@ -57,7 +57,6 @@ func _notification(what: int) -> void:
 	match(what):
 		NOTIFICATION_WM_CLOSE_REQUEST: # When the game closes
 			export(GlobalReferences.PLAYER_DATA, "reta")
-			current_scene.queue_free()
 		NOTIFICATION_ENTER_TREE: # When the game starts
 			import("reta")
 
@@ -69,10 +68,8 @@ func export(data: PlayerData, save_name: String):
 		return
 
 	var path: String = OS.get_executable_path().get_base_dir() + "/data/" + save_name + ".tres"
-	var output:=ResourceSaver.save(data, path)
-	print(output)
+	ResourceSaver.save(data, path)
 	
-	await get_tree().create_timer(2).timeout
 	get_tree().quit()
 
 

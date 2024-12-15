@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dopf284wn6wc5"]
+[gd_scene load_steps=6 format=3 uid="uid://dopf284wn6wc5"]
 
 [ext_resource type="Script" path="res://_scripts/scene_functionality/__level_creator.gd" id="1_wmdul"]
 [ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_j7prs"]
 [ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="3_70oqw"]
 [ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="4_ekfrf"]
+[ext_resource type="PackedScene" uid="uid://drdi3po0qdvqy" path="res://scenes/factory_scene.tscn" id="5_22ej0"]
 
 [node name="LevelCreator" type="Node3D"]
 script = ExtResource("1_wmdul")
-level_id = 2
+level_id = 4
+background_scene_name = "factory_scene"
 box_model = ExtResource("2_j7prs")
 box_area = ExtResource("3_70oqw")
 box_fence = ExtResource("4_ekfrf")
@@ -18,6 +20,8 @@ transform = Transform3D(1, 0, 0, 0, 0.942868, 0.333165, 0, -0.333165, 0.942868, 
 font_size = 200
 
 [node name="BackgroundContainer" type="Node" parent="."]
+
+[node name="FactoryScene" parent="BackgroundContainer" instance=ExtResource("5_22ej0")]
 
 [node name="Packables" type="Node" parent="."]
 

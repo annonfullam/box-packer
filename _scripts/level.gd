@@ -18,8 +18,6 @@ class_name Level
  
 var count_time: bool = false
 var time: float = 0
-# TODO: Best time will not persist through sessions of the game
-var best_time: float = -1
 
 var has_started: bool = false
 signal initialized
@@ -33,7 +31,7 @@ func _init() -> void:
 		has_started = true)
 	ended.connect(func():
 		count_time = false
-		if time < best_time or best_time == -1: best_time = time)
+		if time < GlobalReferences.PLAYER_DATA.best_times[level_id - 1] or GlobalReferences.PLAYER_DATA.best_times[level_id - 1] == 0: GlobalReferences.PLAYER_DATA.best_times[level_id - 1] = time)
 
 
 # Called by game manager

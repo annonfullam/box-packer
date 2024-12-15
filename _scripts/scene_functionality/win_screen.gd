@@ -1,6 +1,5 @@
 extends Control
 
-@onready var time_label: Label = $TimeLabel
 
 @onready var retry_button: Button = $RetryButton
 @onready var level_select_button: Button = $LevelSelectButton
@@ -8,8 +7,8 @@ extends Control
 @onready var main_menu_button: Button = $MainMenuButton
 
 func _ready() -> void:
-	time_label.text += " " + str(round(GlobalReferences.LEVEL.time * 100) / 100) + " seconds"
-	$BestTimeLabel.text += " " + str(round(GlobalReferences.LEVEL.best_time * 100) / 100) + " seconds"
+	$TimeLabel.text += " " + str(round(GlobalReferences.LEVEL.time * 100) / 100) + " seconds"
+	$BestTimeLabel.text += " " + str(round(GlobalReferences.PLAYER_DATA.best_times[GlobalReferences.LEVEL.level_id - 1] * 100) / 100) + " seconds"
 	
 	var game_manager: GameManager = get_parent().find_child("GameManager")
 	var next_level: Level = load("res://scenes/levels/" + str(game_manager.LEVEL.level_id + 1) + ".tres")
