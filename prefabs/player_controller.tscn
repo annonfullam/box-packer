@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsvbvxgix0evc"]
+
+[ext_resource type="Script" path="res://_scripts/FPS/interaction_handler.gd" id="1_hn8sk"]
+[ext_resource type="Script" path="res://_scripts/FPS/first_person_controller.gd" id="2_odt7i"]
+[ext_resource type="Script" path="res://_scripts/FPS/first_person_input_handler.gd" id="3_wb6u7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvb67"]
+size = Vector3(1.5, 1, 3)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_48bmk"]
+
+[node name="PlayerController" type="CharacterBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30103, -0.25)
+
+[node name="InteractionHandler" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.25)
+collision_mask = 4
+script = ExtResource("1_hn8sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/InteractionHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0345459, 0.424222, -2.13214)
+shape = SubResource("BoxShape3D_qvb67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_48bmk")
+
+[node name="FirstPersonController" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("2_odt7i")
+camera = NodePath("../Camera3D")
+speed = 5.5
+sprint_speed_multiplier = 1.3
+jump_velocity = 5.5
+gravity = 20.0
+
+[node name="InputHandler" type="Node" parent="FirstPersonController"]
+script = ExtResource("3_wb6u7")
