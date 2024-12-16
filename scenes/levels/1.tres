@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Level" load_steps=16 format=4 uid="uid://cbfryar4modw3"]
 
 [ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="1_263lb"]
-[ext_resource type="Script" path="res://_scripts/packable_container.gd" id="1_wvbhl"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable_container.gd" id="1_wvbhl"]
 [ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_d2df3"]
-[ext_resource type="Script" path="res://_scripts/level.gd" id="2_hngr8"]
+[ext_resource type="Script" path="res://_scripts/Packing/level.gd" id="2_hngr8"]
 [ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="3_v8mnk"]
 [ext_resource type="PackedScene" uid="uid://bnmg2cgsri8yc" path="res://_resources/models/can-paint.fbx" id="5_08lyi"]
 [ext_resource type="Shape3D" uid="uid://cbtx5ia6su1y2" path="res://_resources/low_poly_cylinder.tres" id="6_hgoxb"]
 [ext_resource type="Texture2D" uid="uid://cdup4b7k55ogf" path="res://_resources/models/color-atlas-new2.png" id="6_wtnau"]
-[ext_resource type="Script" path="res://_scripts/packable.gd" id="7_o755v"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable.gd" id="7_o755v"]
 [ext_resource type="Texture2D" uid="uid://eyrofmhd5w2f" path="res://_resources/models/color-atlas-emission.png" id="7_qpgh8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1hob"]

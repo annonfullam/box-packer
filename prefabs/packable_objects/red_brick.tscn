@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cdup4b7k55ogf" path="res://_resources/models/color-atlas-new2.png" id="1_1yr4p"]
 [ext_resource type="Texture2D" uid="uid://eyrofmhd5w2f" path="res://_resources/models/color-atlas-emission.png" id="2_m18yp"]
-[ext_resource type="Script" path="res://_scripts/packable.gd" id="3_xxss8"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable.gd" id="3_xxss8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7gb7h"]
 size = Vector3(1.1, 0.71, 2.255)

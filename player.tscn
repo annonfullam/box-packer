@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dre0q5tlkirnq"]
+
+[ext_resource type="Script" path="res://_scripts/FPS/player.gd" id="1_pfo61"]
+[ext_resource type="Script" path="res://_scripts/FPS/fps_input_handler.gd" id="2_7sf7o"]
+[ext_resource type="PackedScene" uid="uid://fn4ue284pmgv" path="res://addons/motion_blur/motion_blur.tscn" id="2_rw6e4"]
+[ext_resource type="Shader" path="res://addons/motion_blur/moblur_shader.gdshader" id="3_u7s4s"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6jg2e"]
+size = Vector2(40, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vse6w"]
+render_priority = -1
+shader = ExtResource("3_u7s4s")
+shader_parameter/linear_velocity = Vector3(0, 0, 0)
+shader_parameter/angular_velocity = Vector3(0, 0, 0)
+shader_parameter/iteration_count = 15
+shader_parameter/intensity = 1.0
+shader_parameter/startRadius = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_48bmk"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_pfo61")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.25)
+
+[node name="motion_blur" parent="Camera3D" instance=ExtResource("2_rw6e4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1.5, -1.75)
+mesh = SubResource("PlaneMesh_6jg2e")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_vse6w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_48bmk")
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_7sf7o")

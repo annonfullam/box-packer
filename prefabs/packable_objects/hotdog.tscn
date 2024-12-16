@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://cgmw1kqt07lgu"]
 
-[ext_resource type="Script" path="res://_scripts/packable.gd" id="1_alf4l"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable.gd" id="1_alf4l"]
 [ext_resource type="Texture2D" uid="uid://cdup4b7k55ogf" path="res://_resources/models/color-atlas-new2.png" id="2_olbk0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt6iq"]

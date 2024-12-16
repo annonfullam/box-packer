@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chokr2k2cwdie"]
 
 [ext_resource type="PackedScene" uid="uid://bnmg2cgsri8yc" path="res://_resources/models/can-paint.fbx" id="1_744xj"]
-[ext_resource type="Script" path="res://_scripts/packable.gd" id="2_0dohl"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable.gd" id="2_0dohl"]
 [ext_resource type="Shape3D" uid="uid://cbtx5ia6su1y2" path="res://_resources/low_poly_cylinder.tres" id="2_6pnug"]
 
 [node name="PaintCan" type="RigidBody3D"]

@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://sasgxyma4a7m" path="res://prefabs/box_area.tscn" id="1_l8qyw"]
 [ext_resource type="PackedScene" uid="uid://crh5t25n41rt8" path="res://prefabs/box.tscn" id="2_ni0yt"]
 [ext_resource type="PackedScene" uid="uid://lfq2guaerm2q" path="res://prefabs/fence_area.tscn" id="3_0rg4g"]
-[ext_resource type="Script" path="res://_scripts/packable_container.gd" id="4_2sjot"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable_container.gd" id="4_2sjot"]
 [ext_resource type="Texture2D" uid="uid://cdup4b7k55ogf" path="res://_resources/models/color-atlas-new2.png" id="5_6kn18"]
-[ext_resource type="Script" path="res://_scripts/level.gd" id="5_b3ck6"]
+[ext_resource type="Script" path="res://_scripts/Packing/level.gd" id="5_b3ck6"]
 [ext_resource type="Texture2D" uid="uid://eyrofmhd5w2f" path="res://_resources/models/color-atlas-emission.png" id="6_2ad7e"]
-[ext_resource type="Script" path="res://_scripts/packable.gd" id="7_ti7ga"]
+[ext_resource type="Script" path="res://_scripts/Packing/packable.gd" id="7_ti7ga"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7gb7h"]
 size = Vector3(1.1, 0.71, 2.255)
